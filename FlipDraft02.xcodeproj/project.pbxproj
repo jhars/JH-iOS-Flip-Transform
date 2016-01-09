@@ -14,6 +14,7 @@
 		923AA8411C4091B20012AE6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 923AA83F1C4091B20012AE6C /* Main.storyboard */; };
 		923AA8431C4091B20012AE6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 923AA8421C4091B20012AE6C /* Assets.xcassets */; };
 		923AA8461C4091B20012AE6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 923AA8441C4091B20012AE6C /* LaunchScreen.storyboard */; };
+		92DBC3CE1C40E5F00004F91C /* FacebookOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DBC3CD1C40E5F00004F91C /* FacebookOAuthViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		923AA8421C4091B20012AE6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		923AA8451C4091B20012AE6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		923AA8471C4091B20012AE6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92DBC3CD1C40E5F00004F91C /* FacebookOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookOAuthViewController.swift; sourceTree = "<group>"; };
 		B54BE5B76902CE967389C66E /* Pods-FlipDraft02.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlipDraft02.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlipDraft02/Pods-FlipDraft02.debug.xcconfig"; sourceTree = "<group>"; };
 		BAEDF5D3C7D47799DFDD66A1 /* Pods-FlipDraft02.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlipDraft02.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlipDraft02/Pods-FlipDraft02.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,9 +95,10 @@
 		923AA83A1C4091B20012AE6C /* FlipDraft02 */ = {
 			isa = PBXGroup;
 			children = (
-				923943021C409A4400BACD2C /* AnimationViewController.swift */,
 				923AA83F1C4091B20012AE6C /* Main.storyboard */,
+				923943021C409A4400BACD2C /* AnimationViewController.swift */,
 				923AA83D1C4091B20012AE6C /* ViewController.swift */,
+				92DBC3CD1C40E5F00004F91C /* FacebookOAuthViewController.swift */,
 				923942FF1C4099DE00BACD2C /* Support Files */,
 			);
 			path = FlipDraft02;
@@ -225,6 +228,7 @@
 			files = (
 				923943031C409A4400BACD2C /* AnimationViewController.swift in Sources */,
 				923AA83E1C4091B20012AE6C /* ViewController.swift in Sources */,
+				92DBC3CE1C40E5F00004F91C /* FacebookOAuthViewController.swift in Sources */,
 				923AA83C1C4091B20012AE6C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
