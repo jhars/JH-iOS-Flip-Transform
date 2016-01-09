@@ -1,0 +1,6 @@
+framework module iOS_Flip_Transform {
+  umbrella header "iOS-Flip-Transform-umbrella.h"
+
+  export *
+  module * { export * }
+}

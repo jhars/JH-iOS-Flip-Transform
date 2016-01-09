@@ -1,0 +1,10 @@
+PODS:
+  - iOS-Flip-Transform (0.0.1)
+
+DEPENDENCIES:
+  - iOS-Flip-Transform (~> 0.0)
+
+SPEC CHECKSUMS:
+  iOS-Flip-Transform: b58523b801b61404c5e1659c75e86e3dac35084c
+
+COCOAPODS: 0.39.0

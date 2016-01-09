@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import FlipView
 
 class ViewController: UIViewController {
 
