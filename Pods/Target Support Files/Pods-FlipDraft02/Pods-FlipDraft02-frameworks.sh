@@ -84,8 +84,18 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-FlipDraft02/Bolts.framework"
+  install_framework "Pods-FlipDraft02/FBSDKCoreKit.framework"
+  install_framework "Pods-FlipDraft02/FBSDKLoginKit.framework"
+  install_framework "Pods-FlipDraft02/FBSDKShareKit.framework"
+  install_framework "Pods-FlipDraft02/Firebase.framework"
   install_framework "Pods-FlipDraft02/iOS_Flip_Transform.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-FlipDraft02/Bolts.framework"
+  install_framework "Pods-FlipDraft02/FBSDKCoreKit.framework"
+  install_framework "Pods-FlipDraft02/FBSDKLoginKit.framework"
+  install_framework "Pods-FlipDraft02/FBSDKShareKit.framework"
+  install_framework "Pods-FlipDraft02/Firebase.framework"
   install_framework "Pods-FlipDraft02/iOS_Flip_Transform.framework"
 fi

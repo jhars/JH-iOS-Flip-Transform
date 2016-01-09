@@ -6,6 +6,10 @@ use_frameworks!
 target 'FlipDraft02' do
 
 pod 'iOS-Flip-Transform', '~> 0.0'
+pod 'Firebase', '>= 2.5.0'
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
+pod 'FBSDKShareKit'
 
 
 

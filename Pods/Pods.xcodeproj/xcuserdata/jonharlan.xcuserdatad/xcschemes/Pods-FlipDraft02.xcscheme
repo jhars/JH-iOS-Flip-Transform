@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '5E4A7A2D326F841A7BAB8C85'
+               BlueprintIdentifier = '6B001476A5D12F7B0EB04595'
                BlueprintName = 'Pods-FlipDraft02'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_FlipDraft02.framework'>
