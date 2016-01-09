@@ -14,11 +14,11 @@ class AnimationViewController: UIViewController {
 
     var animationDelegate:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceTriggered, directionType: kDirectionForward)
 //    var animationDelegate2:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceTriggered, directionType: kDirectionNone)
-
-    
     var step = Int()
     
+    @IBOutlet weak var TopNavBar: UINavigationBar!
     @IBOutlet weak var NavBar: UINavigationBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        var loginView = flipView
@@ -47,6 +47,7 @@ class AnimationViewController: UIViewController {
         //        animationDelegate.startAnimation(kDirectionForward)
         self.view.addSubview(flipView)
         self.view.bringSubviewToFront(self.NavBar)
+        self.view.bringSubviewToFront(self.TopNavBar)
 
 
         
@@ -65,12 +66,15 @@ class AnimationViewController: UIViewController {
         animationDelegate.startAnimation(kDirectionForward)
         self.view.addSubview(flipView)
         self.view.bringSubviewToFront(NavBar)
+        self.view.bringSubviewToFront(self.TopNavBar)
+        
 //        animationDelegate.startAnimation(kDirectionForward)
     }
     
     @IBAction func ReverseButton(sender: AnyObject) {
         animationDelegate.startAnimation(kDirectionBackward)
         self.view.bringSubviewToFront(NavBar)
+        self.view.bringSubviewToFront(self.TopNavBar)
         self.view.sendSubviewToBack(flipView)
     }
     

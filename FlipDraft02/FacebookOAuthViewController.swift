@@ -16,7 +16,7 @@
 
 import UIKit
 import FBSDKLoginKit
-//import FBSDKCoreKit
+import FBSDKCoreKit
 
 class FacebookOAuthViewController: UIViewController, FBSDKLoginButtonDelegate {
 
