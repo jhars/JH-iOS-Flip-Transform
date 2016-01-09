@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Animation View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="AnimationViewController" customModule="FlipDraft02" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,36 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wh2-KD-aZl">
+                                <rect key="frame" x="20" y="524" width="560" height="56"/>
+                                <state key="normal" title="Animate"/>
+                                <connections>
+                                    <action selector="AnimateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lGn-Mc-zDZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmT-Xa-MP5">
+                                <rect key="frame" x="20" y="406" width="560" height="71"/>
+                                <state key="normal" title="Reverse"/>
+                                <connections>
+                                    <action selector="ReverseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Ql-Yr-iiy"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="qmT-Xa-MP5" secondAttribute="leading" id="4zF-fX-Vbi"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Wh2-KD-aZl" secondAttribute="bottom" constant="20" id="8gb-9J-Rdj"/>
+                            <constraint firstItem="Wh2-KD-aZl" firstAttribute="top" secondItem="qmT-Xa-MP5" secondAttribute="bottom" constant="47" id="Cg9-Ro-KaM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wh2-KD-aZl" secondAttribute="trailing" id="Vfb-Tl-bZn"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Wh2-KD-aZl" secondAttribute="leading" id="WG3-l5-sZU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qmT-Xa-MP5" secondAttribute="trailing" id="ZNS-Sp-jE4"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="662" y="415"/>
         </scene>
     </scenes>
 </document>

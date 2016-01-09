@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		206A10717282B6816C1903D9 /* Pods_FlipDraft02.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4A11976005197B6977A11F /* Pods_FlipDraft02.framework */; };
+		923943031C409A4400BACD2C /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923943021C409A4400BACD2C /* AnimationViewController.swift */; };
 		923AA83C1C4091B20012AE6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923AA83B1C4091B20012AE6C /* AppDelegate.swift */; };
 		923AA83E1C4091B20012AE6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923AA83D1C4091B20012AE6C /* ViewController.swift */; };
 		923AA8411C4091B20012AE6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 923AA83F1C4091B20012AE6C /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		3C4A11976005197B6977A11F /* Pods_FlipDraft02.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlipDraft02.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		923942FC1C40947900BACD2C /* Bridge-Head.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Head.h"; sourceTree = "<group>"; };
+		923943021C409A4400BACD2C /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		923AA8381C4091B20012AE6C /* FlipDraft02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipDraft02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		923AA83B1C4091B20012AE6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		923AA83D1C4091B20012AE6C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		923942FF1C4099DE00BACD2C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				923AA83B1C4091B20012AE6C /* AppDelegate.swift */,
+				923AA8421C4091B20012AE6C /* Assets.xcassets */,
+				923AA8441C4091B20012AE6C /* LaunchScreen.storyboard */,
+				923AA8471C4091B20012AE6C /* Info.plist */,
+				923942FC1C40947900BACD2C /* Bridge-Head.h */,
+			);
+			name = "Support Files";
+			sourceTree = "<group>";
+		};
 		923AA82F1C4091B20012AE6C = {
 			isa = PBXGroup;
 			children = (
@@ -79,13 +93,10 @@
 		923AA83A1C4091B20012AE6C /* FlipDraft02 */ = {
 			isa = PBXGroup;
 			children = (
-				923AA83B1C4091B20012AE6C /* AppDelegate.swift */,
-				923AA83D1C4091B20012AE6C /* ViewController.swift */,
+				923943021C409A4400BACD2C /* AnimationViewController.swift */,
 				923AA83F1C4091B20012AE6C /* Main.storyboard */,
-				923AA8421C4091B20012AE6C /* Assets.xcassets */,
-				923AA8441C4091B20012AE6C /* LaunchScreen.storyboard */,
-				923AA8471C4091B20012AE6C /* Info.plist */,
-				923942FC1C40947900BACD2C /* Bridge-Head.h */,
+				923AA83D1C4091B20012AE6C /* ViewController.swift */,
+				923942FF1C4099DE00BACD2C /* Support Files */,
 			);
 			path = FlipDraft02;
 			sourceTree = "<group>";
@@ -212,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				923943031C409A4400BACD2C /* AnimationViewController.swift in Sources */,
 				923AA83E1C4091B20012AE6C /* ViewController.swift in Sources */,
 				923AA83C1C4091B20012AE6C /* AppDelegate.swift in Sources */,
 			);
