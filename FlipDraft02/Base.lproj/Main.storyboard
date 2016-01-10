@@ -62,20 +62,61 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XDD-Op-jKg">
+                                <rect key="frame" x="20" y="66" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="eSV-7i-9pP"/>
+                                    <constraint firstAttribute="height" constant="100" id="xhs-tg-HRq"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Sj-Qp-NGT">
+                                <rect key="frame" x="480" y="429" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="mB9-lx-LPm"/>
+                                    <constraint firstAttribute="width" constant="100" id="qIY-gC-CGv"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N0b-9C-w1V">
+                                <rect key="frame" x="480" y="66" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Llg-Qi-BgV"/>
+                                    <constraint firstAttribute="width" constant="100" id="TOz-D4-5Mc"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XyO-6B-WWw">
+                                <rect key="frame" x="20" y="429" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="4Jn-fy-vjr"/>
+                                    <constraint firstAttribute="height" constant="100" id="rVb-8h-kL5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="6gi-mp-mkO" secondAttribute="trailing" constant="-20" id="2a7-Rt-C0O"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0Sj-Qp-NGT" secondAttribute="bottom" constant="71" id="3De-8Z-IFp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UYG-nA-eSo" secondAttribute="trailing" constant="-20" id="8bv-zJ-lyt"/>
                             <constraint firstItem="6gi-mp-mkO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="DSf-kf-T2K"/>
+                            <constraint firstItem="N0b-9C-w1V" firstAttribute="top" secondItem="6gi-mp-mkO" secondAttribute="bottom" constant="22" id="FwU-bT-X3X"/>
                             <constraint firstItem="UYG-nA-eSo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="IoB-gN-CHc"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="XDD-Op-jKg" secondAttribute="leading" id="Lfw-9U-OFJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Sj-Qp-NGT" secondAttribute="trailing" id="Zv0-Tz-9sI"/>
+                            <constraint firstItem="XDD-Op-jKg" firstAttribute="top" secondItem="6gi-mp-mkO" secondAttribute="bottom" constant="22" id="d12-D1-YyT"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UYG-nA-eSo" secondAttribute="bottom" id="hV2-Ti-27c"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="N0b-9C-w1V" secondAttribute="trailing" id="kPW-gg-Cxt"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="XyO-6B-WWw" secondAttribute="leading" id="kqC-hf-cCB"/>
+                            <constraint firstItem="UYG-nA-eSo" firstAttribute="top" secondItem="XyO-6B-WWw" secondAttribute="bottom" constant="27" id="v1J-cP-3Ic"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Sj-Qp-NGT" secondAttribute="trailing" id="v7f-eZ-z38"/>
                             <constraint firstItem="6gi-mp-mkO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="ybV-T5-KMS"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="NavBar" destination="UYG-nA-eSo" id="zq6-HC-8aT"/>
                         <outlet property="TopNavBar" destination="6gi-mp-mkO" id="a9b-VH-ku5"/>
+                        <outlet property="bottomProfileImgView" destination="0Sj-Qp-NGT" id="qIc-Dm-Mwv"/>
+                        <outlet property="btmLeftProfileView" destination="XyO-6B-WWw" id="dVb-zU-Kv0"/>
+                        <outlet property="btmRightProfileView" destination="0Sj-Qp-NGT" id="U3D-Lm-pWS"/>
+                        <outlet property="topProfileImgView" destination="XDD-Op-jKg" id="X2B-A4-c5W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -395,6 +436,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="jvQ-6z-WMj"/>
         <segue reference="vfg-As-u2a"/>
-        <segue reference="XIm-or-Z7j"/>
+        <segue reference="vf6-uk-5An"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,22 +7,33 @@
 //
 
 import UIKit
-
+var step = Int()
 var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(0,0,450,600))
 class AnimationViewController: UIViewController {
 
 
     var animationDelegate:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceTriggered, directionType: kDirectionForward)
 //    var animationDelegate2:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceTriggered, directionType: kDirectionNone)
-    var step = Int()
+
     
     @IBOutlet weak var TopNavBar: UINavigationBar!
     @IBOutlet weak var NavBar: UINavigationBar!
     
+    
+    @IBOutlet weak var btmLeftProfileView: UIImageView!
+    
+    @IBOutlet weak var btmRightProfileView: UIImageView!
+    
+    @IBOutlet weak var topProfileImgView: UIImageView!
+    @IBOutlet weak var bottomProfileImgView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        var loginView = flipView
+        self.topProfileImgView.image = UIImage(named: "bedford")
+        self.bottomProfileImgView.image = UIImage(named: "zane")
         flipView.center = self.view.center
+//        flipView.
 //        let X_Co = ((self.view.frame.size.width - flipView.frame.width)/2)
 //        print(X_Co)
 //        let Y_Co = ((self.view.frame.size.height - flipView.frame.height)/2)
@@ -41,16 +52,17 @@ class AnimationViewController: UIViewController {
 //        flipView.textTruncationMode = kCATruncationEnd;
 
 
-        flipView.printText("Hello-ANIMATE ", usingImage: nil, backgroundColor: UIColor.redColor(), textColor: UIColor.blueColor())
+        flipView.printText("Hello-ANIMATE ", usingImage: UIImage(named: "zane"), backgroundColor: nil, textColor: UIColor.blueColor())
         flipView.printText("Hello-REVERSE", usingImage: nil, backgroundColor: UIColor.greenColor(), textColor: UIColor.yellowColor())
         flipView.printText("START-HERE", usingImage: nil, backgroundColor: UIColor.blueColor(), textColor: UIColor.whiteColor())
         //        animationDelegate.startAnimation(kDirectionForward)
         self.view.addSubview(flipView)
+
+//        self.view.bringSubviewToFront(self.topProfileImgView)
+        self.view.bringSubviewToFront(self.bottomProfileImgView)
         self.view.bringSubviewToFront(self.NavBar)
         self.view.bringSubviewToFront(self.TopNavBar)
 
-
-        
 //        flipView.sublayerCornerRadius = 6.0
 //        var animationDelegate2:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceAuto, directionType: kDirectionForward)
 //        var flipView2 = FlipView(animationType: kAnimationFlipHorizontal, frame: CGRectMake(60, 240, 200, 110))
@@ -64,18 +76,38 @@ class AnimationViewController: UIViewController {
 
 
         animationDelegate.startAnimation(kDirectionForward)
+
+
         self.view.addSubview(flipView)
+        self.view.bringSubviewToFront(self.bottomProfileImgView)
+
+        
+        
+        
         self.view.bringSubviewToFront(NavBar)
         self.view.bringSubviewToFront(self.TopNavBar)
-        
+
+        self.view.bringSubviewToFront(self.topProfileImgView)
 //        animationDelegate.startAnimation(kDirectionForward)
     }
     
     @IBAction func ReverseButton(sender: AnyObject) {
         animationDelegate.startAnimation(kDirectionBackward)
+
+
+        self.view.addSubview(flipView)
+
+        self.topProfileImgView.image = UIImage(named: "zane")
+        self.view.bringSubviewToFront(self.topProfileImgView)
+
+        
+        
         self.view.bringSubviewToFront(NavBar)
         self.view.bringSubviewToFront(self.TopNavBar)
-        self.view.sendSubviewToBack(flipView)
+        
+//        self.view.addSubview(self.bottomProfileImgView)
+        
+
     }
     
     override func viewWillAppear(animated: Bool) {
