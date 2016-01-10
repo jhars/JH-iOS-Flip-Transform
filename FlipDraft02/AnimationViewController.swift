@@ -9,107 +9,147 @@
 import UIKit
 var step = Int()
 var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(0,0,450,600))
+// frame:CGRectMake(60, 95, 200, 50)];
+//var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(60, 95, 200, 400))
+
+
 class AnimationViewController: UIViewController {
 
+    //    var panRegion = UIView(frame: CGRectMake(60, 95, 200, 400))
+    //    var panRecognizer:UIPanGestureRecognizer = UIPanGestureRecognizer()
 
     var animationDelegate:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceTriggered, directionType: kDirectionForward)
-//    var animationDelegate2:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceTriggered, directionType: kDirectionNone)
-
     
     @IBOutlet weak var TopNavBar: UINavigationBar!
     @IBOutlet weak var NavBar: UINavigationBar!
     
-    
     @IBOutlet weak var btmLeftProfileView: UIImageView!
-    
     @IBOutlet weak var btmRightProfileView: UIImageView!
-    
     @IBOutlet weak var topProfileImgView: UIImageView!
     @IBOutlet weak var bottomProfileImgView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        var loginView = flipView
+        flipView.center = self.view.center
+
         self.topProfileImgView.image = UIImage(named: "bedford")
         self.bottomProfileImgView.image = UIImage(named: "zane")
-        flipView.center = self.view.center
-//        flipView.
-//        let X_Co = ((self.view.frame.size.width - flipView.frame.width)/2)
-//        print(X_Co)
-//        let Y_Co = ((self.view.frame.size.height - flipView.frame.height)/2)
-//        print(Y_Co)
-//        flipView.frame = CGRectMake(X_Co, Y_Co - 35, self.view.frame.size.width, 600)
-        
-        
+
+
         animationDelegate.transformView = flipView
         animationDelegate.controller = self
         animationDelegate.perspectiveDepth = 15000
-        //        self.view.addSubview(flipView)
+
         flipView.font = "HelveticaNeue-Bold"
         flipView.fontSize = 24.0
         flipView.fontAlignment = "right" // not working yet... maybe when words wrap?
         flipView.textOffset = CGPointMake(75.0, 75.0);
 //        flipView.textTruncationMode = kCATruncationEnd;
 
-
         flipView.printText("Hello-ANIMATE ", usingImage: UIImage(named: "zane"), backgroundColor: nil, textColor: UIColor.blueColor())
         flipView.printText("Hello-REVERSE", usingImage: nil, backgroundColor: UIColor.greenColor(), textColor: UIColor.yellowColor())
         flipView.printText("START-HERE", usingImage: nil, backgroundColor: UIColor.blueColor(), textColor: UIColor.whiteColor())
-        //        animationDelegate.startAnimation(kDirectionForward)
         self.view.addSubview(flipView)
 
-//        self.view.bringSubviewToFront(self.topProfileImgView)
+        self.view.bringSubviewToFront(self.topProfileImgView)
         self.view.bringSubviewToFront(self.bottomProfileImgView)
         self.view.bringSubviewToFront(self.NavBar)
         self.view.bringSubviewToFront(self.TopNavBar)
+        
+        //========================= PAN-GESTURE ===============================//
+//        self.panRegion = UIView(frame: self.view.frame)
+//        view.addSubview(panRegion)
+//        self.panned(panRecognizer)
+//        self panRecognizer = UIPanGestureRecognizer(target: self, action: UIPanGestureRecognizer( -> Void in ))
+//        self.panRecognizer.maximumNumberOfTouches = 1;
+//        self.panRecognizer.minimumNumberOfTouches = 1;
+//        self.view.addGestureRecognizer(self.panRecognizer)
+        //========================= PAN-GESTURE ===============================//
 
-//        flipView.sublayerCornerRadius = 6.0
-//        var animationDelegate2:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceAuto, directionType: kDirectionForward)
-//        var flipView2 = FlipView(animationType: kAnimationFlipHorizontal, frame: CGRectMake(60, 240, 200, 110))
-//        animationDelegate2.transformView = flipView2
-//        animationDelegate2.controller = self
-//        animationDelegate2.perspectiveDepth = 2000
-//        flipView2.printText("flipview #2 !!!!", usingImage: nil, backgroundColor: UIColor.yellowColor(), textColor: UIColor.blackColor())
-    }
+    } // ________________________ END ViewDidLoad ____________________________//
+    
 
     @IBAction func AnimateButton(sender: AnyObject) {
 
-
         animationDelegate.startAnimation(kDirectionForward)
 
-
         self.view.addSubview(flipView)
-        self.view.bringSubviewToFront(self.bottomProfileImgView)
-
-        
-        
         
         self.view.bringSubviewToFront(NavBar)
         self.view.bringSubviewToFront(self.TopNavBar)
-
+        
         self.view.bringSubviewToFront(self.topProfileImgView)
-//        animationDelegate.startAnimation(kDirectionForward)
+        self.topProfileImgView.image = UIImage(named: "me")
+        self.view.bringSubviewToFront(self.bottomProfileImgView)
+        self.bottomProfileImgView.image = UIImage(named: "jessica")
     }
     
     @IBAction func ReverseButton(sender: AnyObject) {
         animationDelegate.startAnimation(kDirectionBackward)
-
 
         self.view.addSubview(flipView)
 
         self.topProfileImgView.image = UIImage(named: "zane")
         self.view.bringSubviewToFront(self.topProfileImgView)
 
-        
-        
         self.view.bringSubviewToFront(NavBar)
         self.view.bringSubviewToFront(self.TopNavBar)
-        
-//        self.view.addSubview(self.bottomProfileImgView)
-        
-
     }
     
+    
+// - - - - - - - - - - - - - -  - - (PETER) PAN FUNCTION - - - - - - - - - - - - - - - - - - - - - - //
+    //    func panned(recognizer: UIPanGestureRecognizer) {
+    //        switch recognizer.state {
+    //
+    //        case .Began:
+    //            if CGRectContainsPoint(panRegion.frame, recognizer.locationInView(view!)) {
+    //                print("began 02")
+    //                if animationDelegate.animationState == 0 {
+    //                    print("began 03")
+    //                    NSObject.cancelPreviousPerformRequestsWithTarget(self)
+    //                    animationDelegate.sequenceType = kSequenceControlled
+    //                    animationDelegate.animationLock = true
+    //                }
+    //            }
+    //        case .Cancelled:
+    //            print("UIGestureRecognizer")
+    //
+    //        case .Ended:
+    //            if animationDelegate.animationLock {
+    //                print("animationLock")
+    //                let value = sqrtf(fabsf(recognizer.velocityInView(self.view!).x as! Float) / 10.0)          //(fabsf(recognizer.velocityInView:self.view.x)) / 10.0.floatingPointClass
+    //                self.animationDelegate.endStateWithSpeed(value)
+    //            }
+    //
+    //        case .Possible:
+    //            print("possible?")
+    //
+    //        case .Changed:
+    //            if animationDelegate.animationLock {
+    //                switch flipView.animationType {
+    //                case kAnimationFlipHorizontal:
+    //                    print("Horizontal")
+    //                    var value = recognizer.translationInView(self.view!).x as! Float
+    //                    animationDelegate.setTransformValue(value, delegating: false)
+    //                case kAnimationFlipVertical:
+    //                    print("vertical")
+    //                    var value = recognizer.translationInView(self.view!).y as! Float
+    //                    animationDelegate.setTransformValue(value, delegating: false)
+    //                    break
+    //                default:
+    //                    print("began 0555")
+    //                }
+    //            }
+    //
+    //        case .Failed:
+    //            print("failed :( ")
+    //
+    //        default:
+    //            print("default")
+    //        }
+    //    }
+// - - - - - - - - - - - - - -  - - END PAN FUNCTION - - - - - - - - - - - - - - - - - - - - - - //
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 //        animationDelegate.startAnimation(kDirectionNone)
@@ -120,5 +160,6 @@ class AnimationViewController: UIViewController {
 //        animationDelegate.resetTransformValues()
 //        NSObject.cancelPreviousPerformRequestsWithTarget(animationDelegate)
     }
+    
 
 }

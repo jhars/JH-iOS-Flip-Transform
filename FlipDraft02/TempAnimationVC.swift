@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class TempAnimationVC: UIViewController {
 
     override func viewDidLoad() {
@@ -18,8 +19,9 @@ class TempAnimationVC: UIViewController {
     //    func onBackButtonPressed(sender: UIBarButtonItem) {
     //    }
     //
-    //    func panned(recognizer: UIPanGestureRecognizer) {
-    //    }
+//        func panned(recognizer: UIPanGestureRecognizer) {
+//            
+//        }
     //    // animation delegate will notify the controller when the animation frame has reached a position of rest
     //
     //    func animationDidFinish(direction: Int) {
