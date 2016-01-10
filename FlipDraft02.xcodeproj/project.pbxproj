@@ -14,7 +14,10 @@
 		923AA8411C4091B20012AE6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 923AA83F1C4091B20012AE6C /* Main.storyboard */; };
 		923AA8431C4091B20012AE6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 923AA8421C4091B20012AE6C /* Assets.xcassets */; };
 		923AA8461C4091B20012AE6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 923AA8441C4091B20012AE6C /* LaunchScreen.storyboard */; };
-		92C678491C41C23B0083F68F /* UpdateUserData-VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C678481C41C23B0083F68F /* UpdateUserData-VC.swift */; };
+		92C6784E1C41DCF40083F68F /* UpdateUserDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C6784D1C41DCF40083F68F /* UpdateUserDataVC.swift */; };
+		92C678501C41DD040083F68F /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C6784F1C41DD030083F68F /* HomeScreenVC.swift */; };
+		92C678521C41DD330083F68F /* SitterMatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C678511C41DD330083F68F /* SitterMatchVC.swift */; };
+		92C678541C41E3670083F68F /* FlipBrowseSittersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C678531C41E3670083F68F /* FlipBrowseSittersVC.swift */; };
 		92DBC3CE1C40E5F00004F91C /* FacebookOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DBC3CD1C40E5F00004F91C /* FacebookOAuthViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,7 +32,10 @@
 		923AA8421C4091B20012AE6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		923AA8451C4091B20012AE6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		923AA8471C4091B20012AE6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92C678481C41C23B0083F68F /* UpdateUserData-VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UpdateUserData-VC.swift"; sourceTree = "<group>"; };
+		92C6784D1C41DCF40083F68F /* UpdateUserDataVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateUserDataVC.swift; sourceTree = "<group>"; };
+		92C6784F1C41DD030083F68F /* HomeScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenVC.swift; sourceTree = "<group>"; };
+		92C678511C41DD330083F68F /* SitterMatchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SitterMatchVC.swift; sourceTree = "<group>"; };
+		92C678531C41E3670083F68F /* FlipBrowseSittersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipBrowseSittersVC.swift; sourceTree = "<group>"; };
 		92DBC3CD1C40E5F00004F91C /* FacebookOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookOAuthViewController.swift; sourceTree = "<group>"; };
 		B54BE5B76902CE967389C66E /* Pods-FlipDraft02.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlipDraft02.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlipDraft02/Pods-FlipDraft02.debug.xcconfig"; sourceTree = "<group>"; };
 		BAEDF5D3C7D47799DFDD66A1 /* Pods-FlipDraft02.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlipDraft02.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlipDraft02/Pods-FlipDraft02.release.xcconfig"; sourceTree = "<group>"; };
@@ -67,9 +73,10 @@
 		921BFE241C41BFF700D3B92E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				92C6784C1C41DC710083F68F /* Main-Menu Ctrlrs */,
+				92C678551C41E3C80083F68F /* Browse-Sitters Ctlrs */,
 				921BFE281C41C12700D3B92E /* Facebook Ctlrs */,
 				921BFE271C41C11500D3B92E /* Flip-Animation Ctrlrs */,
-				92C678481C41C23B0083F68F /* UpdateUserData-VC.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -129,6 +136,24 @@
 				923942FF1C4099DE00BACD2C /* Support Files */,
 			);
 			path = FlipDraft02;
+			sourceTree = "<group>";
+		};
+		92C6784C1C41DC710083F68F /* Main-Menu Ctrlrs */ = {
+			isa = PBXGroup;
+			children = (
+				92C6784D1C41DCF40083F68F /* UpdateUserDataVC.swift */,
+				92C6784F1C41DD030083F68F /* HomeScreenVC.swift */,
+			);
+			name = "Main-Menu Ctrlrs";
+			sourceTree = "<group>";
+		};
+		92C678551C41E3C80083F68F /* Browse-Sitters Ctlrs */ = {
+			isa = PBXGroup;
+			children = (
+				92C678511C41DD330083F68F /* SitterMatchVC.swift */,
+				92C678531C41E3670083F68F /* FlipBrowseSittersVC.swift */,
+			);
+			name = "Browse-Sitters Ctlrs";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,11 +278,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92C678541C41E3670083F68F /* FlipBrowseSittersVC.swift in Sources */,
 				923943031C409A4400BACD2C /* AnimationViewController.swift in Sources */,
+				92C6784E1C41DCF40083F68F /* UpdateUserDataVC.swift in Sources */,
 				921BFE261C41C04900D3B92E /* TempAnimationVC.swift in Sources */,
 				92DBC3CE1C40E5F00004F91C /* FacebookOAuthViewController.swift in Sources */,
-				92C678491C41C23B0083F68F /* UpdateUserData-VC.swift in Sources */,
 				923AA83C1C4091B20012AE6C /* AppDelegate.swift in Sources */,
+				92C678501C41DD040083F68F /* HomeScreenVC.swift in Sources */,
+				92C678521C41DD330083F68F /* SitterMatchVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  UpdateUserData-VC.swift
+//  HomeScreenVC.swift
 //  FlipDraft02
 //
 //  Created by Jon Harlan on 1/9/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UpdateUserData_VC: UIViewController {
+class HomeScreenVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

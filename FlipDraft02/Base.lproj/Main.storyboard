@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H3e-9z-IiO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0l0-zg-5yH">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -54,7 +54,9 @@
                                     <navigationItem title="Browse Sitters" id="QS2-pd-FKl">
                                         <barButtonItem key="rightBarButtonItem" title="Login" id="MIl-Vu-Yei">
                                             <connections>
-                                                <segue destination="H3e-9z-IiO" kind="presentation" modalTransitionStyle="partialCurl" id="vf6-uk-5An"/>
+                                                <segue destination="H3e-9z-IiO" kind="popoverPresentation" popoverAnchorBarButtonItem="MIl-Vu-Yei" id="vf6-uk-5An">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -78,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="422" y="378"/>
+            <point key="canvasLocation" x="3234" y="387"/>
         </scene>
         <!--FacebookO Auth View Controller-->
         <scene sceneID="CWA-0R-hGa">
@@ -98,7 +100,9 @@
                                     <navigationItem title="SitterBook" id="k98-VL-seR">
                                         <barButtonItem key="leftBarButtonItem" title="Flipper" id="sfw-8y-lVM">
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="show" id="vxt-Gf-fcy"/>
+                                                <segue destination="BYZ-38-t0r" kind="popoverPresentation" popoverAnchorBarButtonItem="sfw-8y-lVM" id="vxt-Gf-fcy">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="My Account" id="1fV-Xs-YCQ">
@@ -125,7 +129,7 @@
         <!--Update User DataVC-->
         <scene sceneID="GKh-wQ-44p">
             <objects>
-                <viewController id="0l0-zg-5yH" customClass="UpdateUserData_VC" customModule="FlipDraft02" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0l0-zg-5yH" customClass="UpdateUserDataVC" customModule="FlipDraft02" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XAg-il-Fkx"/>
                         <viewControllerLayoutGuide type="bottom" id="l4z-Rl-o2W"/>
@@ -148,8 +152,8 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Main Menu &gt;" id="dal-Cm-HWf">
                                             <connections>
-                                                <segue destination="J0N-1E-Wai" kind="popoverPresentation" popoverAnchorBarButtonItem="dal-Cm-HWf" id="PGJ-xX-zxt">
-                                                    <popoverArrowDirection key="popoverArrowDirection" right="YES"/>
+                                                <segue destination="J0N-1E-Wai" kind="popoverPresentation" popoverAnchorBarButtonItem="dal-Cm-HWf" id="jvQ-6z-WMj">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                 </segue>
                                             </connections>
                                         </barButtonItem>
@@ -213,10 +217,10 @@
             </objects>
             <point key="canvasLocation" x="1834" y="387"/>
         </scene>
-        <!--Temp AnimationVC-->
+        <!--Home ScreenVC-->
         <scene sceneID="9wD-48-4dK">
             <objects>
-                <viewController id="J0N-1E-Wai" customClass="TempAnimationVC" customModule="FlipDraft02" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="J0N-1E-Wai" customClass="HomeScreenVC" customModule="FlipDraft02" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c75-On-g39"/>
                         <viewControllerLayoutGuide type="bottom" id="pf9-WV-SBs"/>
@@ -225,52 +229,125 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fC9-Ai-I4F">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fC9-Ai-I4F">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="WdH-4y-Uzc"/>
-                                </constraints>
                                 <items>
                                     <navigationItem title="SitterBook" id="Wwd-pI-cAo">
                                         <barButtonItem key="leftBarButtonItem" title="Preferences" id="O6A-KI-0Wa">
                                             <connections>
-                                                <segue destination="0l0-zg-5yH" kind="popoverPresentation" popoverAnchorBarButtonItem="O6A-KI-0Wa" id="cpg-3H-h1n">
-                                                    <popoverArrowDirection key="popoverArrowDirection" right="YES"/>
+                                                <segue destination="0l0-zg-5yH" kind="popoverPresentation" popoverAnchorBarButtonItem="O6A-KI-0Wa" id="vfg-As-u2a">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                 </segue>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmv-h4-6Wt">
-                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1R-iC-hNe">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
-                                    <tabBarItem systemItem="favorites" id="VL5-rN-Pei"/>
-                                    <tabBarItem title="Messages" id="iav-kc-vM9"/>
-                                    <tabBarItem systemItem="mostViewed" id="wN7-5s-1AX"/>
-                                    <tabBarItem title="Browse" systemItem="search" id="627-2b-hT9"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Nhu-kN-HBj"/>
+                                    <barButtonItem title="Home" id="Zwc-6N-cmq"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uCs-bA-0qx"/>
+                                    <barButtonItem title="Favorites" id="lY2-Ke-zCx"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="e81-sz-2Lq"/>
+                                    <barButtonItem title="Messages" id="MIF-kn-H45"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Tvb-07-hKF"/>
+                                    <barButtonItem title="Item" systemItem="search" id="iwh-4d-Gl5">
+                                        <connections>
+                                            <segue destination="tLI-Tz-Jng" kind="presentation" modalTransitionStyle="coverVertical" id="Hfg-vw-xTt"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="zA3-5u-Efp"/>
                                 </items>
-                            </tabBar>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fC9-Ai-I4F" firstAttribute="top" secondItem="DQw-AI-gdx" secondAttribute="topMargin" id="Ooy-rW-QUl"/>
-                            <constraint firstItem="pf9-WV-SBs" firstAttribute="top" secondItem="rmv-h4-6Wt" secondAttribute="bottom" id="UQf-LK-I6P"/>
-                            <constraint firstItem="rmv-h4-6Wt" firstAttribute="leading" secondItem="DQw-AI-gdx" secondAttribute="leadingMargin" constant="-20" id="VZ3-vk-iqJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rmv-h4-6Wt" secondAttribute="trailing" constant="-20" id="bUb-bv-pZI"/>
-                            <constraint firstItem="fC9-Ai-I4F" firstAttribute="leading" secondItem="DQw-AI-gdx" secondAttribute="leadingMargin" constant="-20" id="hOy-dT-1wT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fC9-Ai-I4F" secondAttribute="trailing" constant="-20" id="muL-yu-IRZ"/>
+                            <constraint firstItem="fC9-Ai-I4F" firstAttribute="top" secondItem="DQw-AI-gdx" secondAttribute="top" id="2eH-jI-dN1"/>
+                            <constraint firstItem="pf9-WV-SBs" firstAttribute="top" secondItem="J1R-iC-hNe" secondAttribute="bottom" id="8LT-33-IQq"/>
+                            <constraint firstAttribute="trailing" secondItem="fC9-Ai-I4F" secondAttribute="trailing" id="ALp-0b-HBQ"/>
+                            <constraint firstItem="J1R-iC-hNe" firstAttribute="leading" secondItem="DQw-AI-gdx" secondAttribute="leadingMargin" constant="-20" id="K1Y-jn-Oa4"/>
+                            <constraint firstItem="fC9-Ai-I4F" firstAttribute="leading" secondItem="DQw-AI-gdx" secondAttribute="leading" id="V98-Tf-bWI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="J1R-iC-hNe" secondAttribute="trailing" constant="-20" id="ohl-BZ-I4P"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D4u-GO-hTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2460" y="387"/>
+            <point key="canvasLocation" x="2563" y="387"/>
+        </scene>
+        <!--Sitter MatchVC-->
+        <scene sceneID="A1g-e5-EKh">
+            <objects>
+                <viewController id="tLI-Tz-Jng" customClass="SitterMatchVC" customModule="FlipDraft02" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="waI-HU-Dhc"/>
+                        <viewControllerLayoutGuide type="bottom" id="fSe-yK-pOG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FAB-3T-JYm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQH-yo-aVP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Searching for sitters..." id="6Db-Iw-eDI">
+                                        <barButtonItem key="leftBarButtonItem" title="Home" id="A6h-1z-XUL">
+                                            <connections>
+                                                <segue destination="J0N-1E-Wai" kind="popoverPresentation" popoverAnchorBarButtonItem="A6h-1z-XUL" id="H9r-WT-rno">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mj2-Zt-RNt">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mj2-Zt-RNt" firstAttribute="centerY" secondItem="FAB-3T-JYm" secondAttribute="centerY" id="AKY-6L-es9"/>
+                            <constraint firstItem="mj2-Zt-RNt" firstAttribute="centerX" secondItem="FAB-3T-JYm" secondAttribute="centerX" id="KtZ-JM-SGq"/>
+                            <constraint firstItem="BQH-yo-aVP" firstAttribute="top" secondItem="FAB-3T-JYm" secondAttribute="topMargin" id="Ukl-gH-MGK"/>
+                            <constraint firstItem="BQH-yo-aVP" firstAttribute="leading" secondItem="FAB-3T-JYm" secondAttribute="leadingMargin" constant="-20" id="Urw-3M-26s"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BQH-yo-aVP" secondAttribute="trailing" constant="-20" id="vEf-xo-LDM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="YEj-1n-2Z1" kind="show" identifier="showSitters" id="bBG-YA-nU5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="20b-FH-ai7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2563" y="1055"/>
+        </scene>
+        <!--Flip Browse SittersVC-->
+        <scene sceneID="9Hd-9c-QvF">
+            <objects>
+                <viewController id="YEj-1n-2Z1" customClass="FlipBrowseSittersVC" customModule="FlipDraft02" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cvq-6j-irW"/>
+                        <viewControllerLayoutGuide type="bottom" id="abg-SJ-k94"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k5s-Wg-A2Z">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4cD-3T-DmK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3234" y="1055"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XIm-or-Z7j"/>
-        <segue reference="cpg-3H-h1n"/>
+        <segue reference="H9r-WT-rno"/>
+        <segue reference="vfg-As-u2a"/>
+        <segue reference="vf6-uk-5An"/>
     </inferredMetricsTieBreakers>
 </document>
