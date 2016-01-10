@@ -45,7 +45,7 @@ class UpdateUserDataVC: UIViewController {
 // __________________________________________________________________________ //
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(FBSDKAccessToken.currentAccessToken().tokenString)
+
         zipTextField.text = "12345"
         emailTextField.text = "Jon.Harlan@sitterbook.com"
     }
@@ -74,9 +74,9 @@ class UpdateUserDataVC: UIViewController {
                 
                 //_________________________________________________//
                 //FreBAse OAuth Signup & Login
-                self.ref.createUser(userEmail, password: "1111", withValueCompletionBlock:{(result) -> Void in
-                    //                    print("success sign up!"); print("User has been Created, result is \(result)")
-                    self.ref.authUser(userEmail, password:"1111", withCompletionBlock: { (authData) -> Void in
+//                self.ref.createUser(userEmail, password: "1111", withValueCompletionBlock:{(result) -> Void in
+//                    //                    print("success sign up!"); print("User has been Created, result is \(result)")
+//                    self.ref.authUser(userEmail, password:"1111", withCompletionBlock: { (authData) -> Void in
                         // ===== DATA WRITING ROUTES =========== //
                         updateUserInfoRef.updateChildValues(["token": FBSDKAccessToken.currentAccessToken().tokenString])
 //                        updateUserInfoRef.updateChildValues(["testKey": "testValue"])
@@ -86,8 +86,8 @@ class UpdateUserDataVC: UIViewController {
                         updateUserInfoRef.updateChildValues(["sitter": userSitterStatus])
                         updateUserInfoRef.updateChildValues(["zip": userZip])
                         
-                    })
-                })
+//                    })
+//                })
             }
         })
     }
