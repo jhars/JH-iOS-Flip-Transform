@@ -294,10 +294,19 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQH-yo-aVP">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
-                                    <navigationItem title="Searching for sitters..." id="6Db-Iw-eDI">
-                                        <barButtonItem key="leftBarButtonItem" title="Home" id="A6h-1z-XUL">
+                                    <navigationItem title="Searching for sitters..." id="6Db-Iw-eDI"/>
+                                </items>
+                            </navigationBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mj2-Zt-RNt">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lD-y6-2FI">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <navigationItem id="w5i-5y-WcS">
+                                        <barButtonItem key="leftBarButtonItem" title="Home" id="M9s-Im-8Lq">
                                             <connections>
-                                                <segue destination="J0N-1E-Wai" kind="popoverPresentation" popoverAnchorBarButtonItem="A6h-1z-XUL" id="H9r-WT-rno">
+                                                <segue destination="J0N-1E-Wai" kind="popoverPresentation" popoverAnchorBarButtonItem="M9s-Im-8Lq" id="UdQ-cz-VXO">
                                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                 </segue>
                                             </connections>
@@ -305,21 +314,21 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mj2-Zt-RNt">
-                                <rect key="frame" x="290" y="290" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mj2-Zt-RNt" firstAttribute="centerY" secondItem="FAB-3T-JYm" secondAttribute="centerY" id="AKY-6L-es9"/>
                             <constraint firstItem="mj2-Zt-RNt" firstAttribute="centerX" secondItem="FAB-3T-JYm" secondAttribute="centerX" id="KtZ-JM-SGq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8lD-y6-2FI" secondAttribute="trailing" constant="-20" id="PfY-ku-anc"/>
                             <constraint firstItem="BQH-yo-aVP" firstAttribute="top" secondItem="FAB-3T-JYm" secondAttribute="topMargin" id="Ukl-gH-MGK"/>
                             <constraint firstItem="BQH-yo-aVP" firstAttribute="leading" secondItem="FAB-3T-JYm" secondAttribute="leadingMargin" constant="-20" id="Urw-3M-26s"/>
+                            <constraint firstItem="fSe-yK-pOG" firstAttribute="top" secondItem="8lD-y6-2FI" secondAttribute="bottom" id="jsT-U6-n0D"/>
+                            <constraint firstItem="8lD-y6-2FI" firstAttribute="leading" secondItem="FAB-3T-JYm" secondAttribute="leadingMargin" constant="-20" id="pfK-m4-vcR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BQH-yo-aVP" secondAttribute="trailing" constant="-20" id="vEf-xo-LDM"/>
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="YEj-1n-2Z1" kind="show" identifier="showSitters" id="bBG-YA-nU5"/>
+                        <segue destination="YEj-1n-2Z1" kind="show" identifier="showSitter" id="bBG-YA-nU5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20b-FH-ai7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -337,7 +346,37 @@
                     <view key="view" contentMode="scaleToFill" id="k5s-Wg-A2Z">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGx-12-F6K">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Flip Through Sitters!" id="Yak-3B-PMk"/>
+                                </items>
+                            </navigationBar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGg-xg-y7e">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="SitterBook" id="8jp-Se-Ogk">
+                                        <barButtonItem key="leftBarButtonItem" title="Home" id="KJp-xm-CWe">
+                                            <connections>
+                                                <segue destination="J0N-1E-Wai" kind="popoverPresentation" popoverAnchorBarButtonItem="KJp-xm-CWe" id="flC-1E-w4h">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="fGx-12-F6K" secondAttribute="trailing" constant="-20" id="1f7-vJ-ucj"/>
+                            <constraint firstItem="fGx-12-F6K" firstAttribute="top" secondItem="k5s-Wg-A2Z" secondAttribute="topMargin" id="4Fo-aL-7jZ"/>
+                            <constraint firstItem="abg-SJ-k94" firstAttribute="top" secondItem="EGg-xg-y7e" secondAttribute="bottom" id="LdV-k2-YcI"/>
+                            <constraint firstItem="EGg-xg-y7e" firstAttribute="leading" secondItem="k5s-Wg-A2Z" secondAttribute="leadingMargin" constant="-20" id="PkW-yr-lKO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EGg-xg-y7e" secondAttribute="trailing" constant="-20" id="Ucb-Ub-Eh5"/>
+                            <constraint firstItem="fGx-12-F6K" firstAttribute="leading" secondItem="k5s-Wg-A2Z" secondAttribute="leadingMargin" constant="-20" id="vZF-Gw-xNO"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4cD-3T-DmK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -346,8 +385,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="H9r-WT-rno"/>
+        <segue reference="UdQ-cz-VXO"/>
         <segue reference="vfg-As-u2a"/>
-        <segue reference="vf6-uk-5An"/>
+        <segue reference="XIm-or-Z7j"/>
     </inferredMetricsTieBreakers>
 </document>

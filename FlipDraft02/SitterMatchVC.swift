@@ -7,29 +7,87 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import FBSDKCoreKit
+import Firebase
+
+
+var sitterMatchModelName = [String]()
+var sitterMatchModelScore = [Int]()
+var sitterModelObjects = [SitterMatchModel]()
 
 class SitterMatchVC: UIViewController {
+    
+    var currentUserId:String = ""
+    var tempFireBaseUrlForCurrentUser:String = ""
+    var cnxImageUrl:String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+//        sitterModelObjects.removeAll()
+        returnUserData()
     }
     
+    let fireBaseRef = Firebase(url: "https://sitterbookapi.firebaseio.com/users/")
+    //=================================================================\\
+    func returnUserData() {
+        
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        let task = graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {   // Process error
+                print("Error: \(error)")
+            } else {
+                let userID : NSString = result.valueForKey("id") as! NSString
+                print("User ID is is: \(userID)")
+                self.currentUserId = userID as String
+                self.tempFireBaseUrlForCurrentUser = "https://sitterbookapi.firebaseio.com/users/" + (userID as String)
+                
+//                let currentUserPath = self.tempFireBaseUrlForCurrentUser
+//                let firebaseRef = Firebase(url:(currentUserPath as String) + "/sitter-list/")
 
-    /*
-    // MARK: - Navigation
+                self.fireBaseRef.observeEventType(.Value, withBlock: { snapshot in
+                    
+                    //Need To ADD ERROR HANDLING HERE
+                    
+//                    let sitterObjDict = snapshot.value
+                    //as! NSDictionary
+                    print(snapshot.value)
+                    print("below SitterObjDict")
+                    //=================================================================\\
+//                    let imgUrlModel = sitterObjDict["image-url"] as! String
+                    
+//                    let AlamoRef = Alamofire.request(.GET, imgUrlModel)
+//                    AlamoRef.responseImage { response in
+//                        debugPrint(response)
+//                        
+//                        print(response.request)
+//                        print(response.response)
+//                        debugPrint(response.result)
+//                        
+//                        if let image = snapshot.value {
+//                            let sitterImageModel = image as! UIImage
+//                            let sitterNameModel = sitterObjDict["name"] as! String
+//                            let sitterScoreModel = sitterObjDict["cnx-score"] as! Int
+//                            let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: UIImage(named: "bedford")!)
+//                            sitterModelObjects.append(SitterObject)
+//                            self.performSegueWithIdentifier("showSitter", sender: nil)
+//                        }
+//                        AlamoRef.resume()
+//                    }
+                })
+                
+//                firebaseRef.resume()
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+            } // ----- END 'else' Statement --------------//
+            self.performSegueWithIdentifier("showSitter", sender: nil)
+
+        }) // - - - - - - - - END Graph Request - - - - - - - - - - - - - - //
+//                            task.resume()
+    } //============================ END  func returnUserData() ============================== //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let newsTVC = segue.destinationViewController as! FlipBrowseSittersVC
+        newsTVC.models = sitterModelObjects
     }
-    */
-
 }
