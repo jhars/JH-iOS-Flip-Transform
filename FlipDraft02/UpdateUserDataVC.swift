@@ -18,7 +18,7 @@ class UpdateUserDataVC: UIViewController {
         var userFbookData = self.returnUserData()
     }
     
-    
+//    var token  = FBSDKAccessToken.currentAccessToken().tokenString
     @IBOutlet weak var sitterStatus: UISegmentedControl!
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -40,13 +40,14 @@ class UpdateUserDataVC: UIViewController {
             break;
         }
     }
-
-    // ______________________VIEW DID LOAD_______________________________________ //
-    // __________________________________________________________________________ //
+// __________________________________________________________________________ //
+// ______________________VIEW DID LOAD_______________________________________ //
+// __________________________________________________________________________ //
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(FBSDKAccessToken.currentAccessToken().tokenString)
         zipTextField.text = "12345"
-        emailTextField.text = "test@sitterbook.com"
+        emailTextField.text = "Jon.Harlan@sitterbook.com"
     }
     
     func returnUserData() {
@@ -77,6 +78,8 @@ class UpdateUserDataVC: UIViewController {
                     //                    print("success sign up!"); print("User has been Created, result is \(result)")
                     self.ref.authUser(userEmail, password:"1111", withCompletionBlock: { (authData) -> Void in
                         // ===== DATA WRITING ROUTES =========== //
+                        updateUserInfoRef.updateChildValues(["token": FBSDKAccessToken.currentAccessToken().tokenString])
+//                        updateUserInfoRef.updateChildValues(["testKey": "testValue"])
                         updateUserInfoRef.updateChildValues(["last-login": lastLogin])
                         updateUserInfoRef.updateChildValues(["user-name": userName])
                         updateUserInfoRef.updateChildValues(["email": userEmail])
@@ -97,15 +100,6 @@ class UpdateUserDataVC: UIViewController {
         //        }
     }
     // ********************************************************** //
-
-    
-    
-
-    
-    
-    
-    
-    
 
     /*
     // MARK: - Navigation

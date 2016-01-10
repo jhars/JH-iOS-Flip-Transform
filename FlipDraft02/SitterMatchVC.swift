@@ -41,20 +41,36 @@ class SitterMatchVC: UIViewController {
                 print("User ID is is: \(userID)")
                 self.currentUserId = userID as String
                 self.tempFireBaseUrlForCurrentUser = "https://sitterbookapi.firebaseio.com/users/" + (userID as String)
-                
-                let currentUserPath = self.tempFireBaseUrlForCurrentUser
-                let firebaseRef = Firebase(url:(currentUserPath as String) + "/sitter-list/")
-                
-                firebaseRef.queryOrderedByValue().observeEventType(.ChildAdded, withBlock: { snapshot in
-//                self.fireBaseRef.observeEventType(.Value, withBlock: { snapshot in
-                    //Need To ADD ERROR HANDLING HERE
-                    print(snapshot.value)
+
                     //=================================================================\\
                     //       IMAGES HERE - - - - - - - - - - } AlamoRef.resume()       \\
                     //=================================================================\\
-                })
-            } // ----- END 'else' Statement --------------//
-            self.performSegueWithIdentifier("showSitter", sender: nil)
+                    
+                    
+                    //=================================================================\\
+                    //   [SITTER MATCH MODEL]()  ->   is this delegation...?
+                    //=================================================================\\
+                    
+                    let currentUserPath = self.tempFireBaseUrlForCurrentUser
+                    let fireBaseRef = Firebase(url:(currentUserPath as String) + "/sitter-list/")
+                    
+                    self.fireBaseRef.queryOrderedByValue().observeEventType(.ChildAdded, withBlock: { snapshot in
+                        print(snapshot.value)
+                        //Need To ADD ERROR HANDLING HERE
+                        
+//                        let sitterObjDict = snapshot.value as! NSDictionary
+                        //=================================================================\\
+//                        let imgUrlModel = sitterObjDict["image-url"] as! String
+//                        let sitterNameModel = sitterObjDict["name"] as! String
+//                        let sitterScoreModel = sitterObjDict["cnx-score"] as! Int
+//                        let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: UIImage(named:"bedford")!)
+                        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//                        sitterModelObjects.append(SitterObject)
+                        self.performSegueWithIdentifier("showSitter", sender: nil)
+                    })//- - - - - - - - - - END -- 'fireBaseRef' ({ snapshot in }) --//
+                
+            }  //----- END 'else' Statement --------------//
+//            self.performSegueWithIdentifier("showSitter", sender: nil)
         }) // - - - - - - - - END Graph Request - - - - - - - - - - - - - - //
 
     } //============================ END  func returnUserData() ============================== //

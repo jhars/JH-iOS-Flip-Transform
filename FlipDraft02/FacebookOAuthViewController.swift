@@ -17,6 +17,7 @@
 import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
+import Firebase
 
 class FacebookOAuthViewController: UIViewController, FBSDKLoginButtonDelegate {
 
@@ -28,7 +29,7 @@ class FacebookOAuthViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if (FBSDKAccessToken.currentAccessToken() != nil) {
             print("already logged in")
-            print(FBSDKAccessToken.currentAccessToken().tokenString)
+//            print(FBSDKAccessToken.currentAccessToken().tokenString)
 //            self.performSegueWithIdentifier("showNew", sender: self)
             
             //            print(FBSDKAccessToken.getToken())
