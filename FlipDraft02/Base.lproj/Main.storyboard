@@ -165,6 +165,9 @@
                                 <color key="backgroundColor" red="1" green="0.85285458305557249" blue="0.33950074391620555" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <state key="normal" title="Update My Info!"/>
+                                <connections>
+                                    <action selector="updatBtnTapped:" destination="0l0-zg-5yH" eventType="touchUpInside" id="G9f-k6-g4h"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Wd-aj-gKs">
                                 <rect key="frame" x="20" y="215" width="560" height="30"/>
@@ -212,6 +215,11 @@
                             <constraint firstAttribute="leadingMargin" secondItem="8Wd-aj-gKs" secondAttribute="leading" id="yLT-UW-h9F"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="ote-KK-KG7" id="ALN-KA-Dl2"/>
+                        <outlet property="sitterStatus" destination="3CJ-mX-T45" id="5yj-Pv-grX"/>
+                        <outlet property="zipTextField" destination="8Wd-aj-gKs" id="B2q-Sg-3Yp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4qm-aR-qyR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -385,7 +393,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UdQ-cz-VXO"/>
+        <segue reference="jvQ-6z-WMj"/>
         <segue reference="vfg-As-u2a"/>
         <segue reference="XIm-or-Z7j"/>
     </inferredMetricsTieBreakers>
