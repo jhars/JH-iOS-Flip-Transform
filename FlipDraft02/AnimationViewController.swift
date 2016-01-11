@@ -100,6 +100,7 @@ class AnimationViewController: UIViewController {
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Down) {
                 print("swiped downtown charlie brown funkiee TOWN")
 //            showSideBar(true)
+            animationDelegate.startAnimation(kDirectionForward)
             self.view.addSubview(flipView)
             
             self.view.bringSubviewToFront(NavBar)
