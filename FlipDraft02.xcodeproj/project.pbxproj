@@ -75,10 +75,9 @@
 		921BFE241C41BFF700D3B92E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				92C6784C1C41DC710083F68F /* Main-Menu Ctrlrs */,
 				92C678551C41E3C80083F68F /* Browse-Sitters Ctlrs */,
-				921BFE281C41C12700D3B92E /* Facebook Ctlrs */,
 				921BFE271C41C11500D3B92E /* Flip-Animation Ctrlrs */,
+				92C6784C1C41DC710083F68F /* Main-Menu Ctrlrs */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -145,6 +144,7 @@
 			children = (
 				92C6784D1C41DCF40083F68F /* UpdateUserDataVC.swift */,
 				92C6784F1C41DD030083F68F /* HomeScreenVC.swift */,
+				921BFE281C41C12700D3B92E /* Facebook Ctlrs */,
 			);
 			name = "Main-Menu Ctrlrs";
 			sourceTree = "<group>";

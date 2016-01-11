@@ -1,72 +1,60 @@
-//
-//  AnimationViewController.swift
-//  FlipDraft02
-//
-//  Created by Jon Harlan on 1/8/16.
-//  Copyright © 2016 Jon Harlan. All rights reserved.
-//
 
 import UIKit
 var step = Int()
-var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(0,0,450,600))
-// frame:CGRectMake(60, 95, 200, 50)];
-//var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(60, 95, 200, 400))
-
+var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(0,100,450,500))
+//var image : UIImage = UIImage()
+var page4 = UIImage(named: "page4")
 
 class AnimationViewController: UIViewController {
 
-    //    var panRegion = UIView(frame: CGRectMake(60, 95, 200, 400))
-    //    var panRecognizer:UIPanGestureRecognizer = UIPanGestureRecognizer()
-
-    var animationDelegate:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceTriggered, directionType: kDirectionForward)
+    var animationDelegate:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceControlled, directionType: kDirectionNone)
     
+    @IBOutlet weak var imageOnVC: UIImageView!
     @IBOutlet weak var TopNavBar: UINavigationBar!
     @IBOutlet weak var NavBar: UINavigationBar!
+//    var bgImage = UIImageView(image: image)
+//    var bgImage = bedford! as UIImage
+    @IBOutlet weak var labelOnVC: UILabel!
     
-    @IBOutlet weak var btmLeftProfileView: UIImageView!
-    @IBOutlet weak var btmRightProfileView: UIImageView!
-    @IBOutlet weak var topProfileImgView: UIImageView!
-    @IBOutlet weak var bottomProfileImgView: UIImageView!
-    
+    @IBOutlet weak var imageCover: UIImageView!
+    var helloPage4 = UIImageView(image: page4)
+    var helloZane = UIImage(named: "zane")
     override func viewDidLoad() {
         super.viewDidLoad()
-        flipView.center = self.view.center
-
-        self.topProfileImgView.image = UIImage(named: "bedford")
-        self.bottomProfileImgView.image = UIImage(named: "zane")
-
-
+       labelOnVC.hidden = true
+//        flipView.center = self.view.center
+//        let helloPage4 = UIImageView(image: page4)
         animationDelegate.transformView = flipView
         animationDelegate.controller = self
-        animationDelegate.perspectiveDepth = 15000
+        animationDelegate.perspectiveDepth = 75000
+        animationDelegate.nextDuration = 0.44    //0.75
+        animationDelegate.shadow = true
+        animationDelegate.sensitivity = 10000
+        animationDelegate.gravity = 5000
 
         flipView.font = "HelveticaNeue-Bold"
         flipView.fontSize = 24.0
         flipView.fontAlignment = "right" // not working yet... maybe when words wrap?
         flipView.textOffset = CGPointMake(75.0, 75.0);
-//        flipView.textTruncationMode = kCATruncationEnd;
 
-        flipView.printText("Hello-ANIMATE ", usingImage: UIImage(named: "zane"), backgroundColor: nil, textColor: UIColor.blueColor())
-        flipView.printText("Hello-REVERSE", usingImage: nil, backgroundColor: UIColor.greenColor(), textColor: UIColor.yellowColor())
-        flipView.printText("START-HERE", usingImage: nil, backgroundColor: UIColor.blueColor(), textColor: UIColor.whiteColor())
+        flipView.printText("Hello-ANIMATE!", usingImage: UIImage(named: "zane"), backgroundColor: nil, textColor: UIColor.blueColor())
+        flipView.printText("Hello-REVERSE", usingImage:  UIImage(named: "jessica"), backgroundColor: nil, textColor: UIColor.blueColor())
+        flipView.printText("!!START-HERE!!", usingImage: UIImage(named: "me"), backgroundColor: nil, textColor: UIColor.blueColor())
+//        flipView.printText("BEDFORD", usingImage: self.bgImage, backgroundColor: nil, textColor: UIColor.blueColor())
+        flipView.printText("Hello Zane", usingImage: self.helloZane, backgroundColor: nil, textColor: UIColor.blueColor())
+        
         self.view.addSubview(flipView)
-
-        self.view.bringSubviewToFront(self.topProfileImgView)
-        self.view.bringSubviewToFront(self.bottomProfileImgView)
         self.view.bringSubviewToFront(self.NavBar)
         self.view.bringSubviewToFront(self.TopNavBar)
+        self.imageCover = UIImageView(image: page4)
+//        self.view.bringSubviewToFront(imageCover!)
         
         //========================= PAN-GESTURE ===============================//
 //        self.panRegion = UIView(frame: self.view.frame)
 //        view.addSubview(panRegion)
 //        self.panned(panRecognizer)
-//        self panRecognizer = UIPanGestureRecognizer(target: self, action: UIPanGestureRecognizer( -> Void in ))
 //        self.panRecognizer.maximumNumberOfTouches = 1;
 //        self.panRecognizer.minimumNumberOfTouches = 1;
-//        self.view.addGestureRecognizer(self.panRecognizer)
-        //========================= PAN-GESTURE ===============================//
-        
-        
         
         let showGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target:self, action: "handleSwipe:")
         showGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Up
@@ -76,125 +64,47 @@ class AnimationViewController: UIViewController {
         hideGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Down
         flipView.addGestureRecognizer(hideGestureRecognizer)
         
+        //========================= PAN-GESTURE ===============================//
+        
 
     } // ________________________ END ViewDidLoad ____________________________//
     
     func handleSwipe(recognizer:UISwipeGestureRecognizer){
+//Scroll Thru Sitters
         
+//===========================>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//  Flick-Up => FORWARD
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Up) {
-            print("Im goin uop chuck who gives a fuck?")
-//            showSideBar(false)
-//            delegate?.sideBarWillOpen?()
             animationDelegate.startAnimation(kDirectionBackward)
-            
             self.view.addSubview(flipView)
-            
-            self.topProfileImgView.image = UIImage(named: "zane")
-            self.view.bringSubviewToFront(self.topProfileImgView)
-            
             self.view.bringSubviewToFront(NavBar)
             self.view.bringSubviewToFront(self.TopNavBar)
-
-            
         }
+        
+        
+//  Flick-Down => BACKWARD (thru Sitter Array)
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Down) {
-                print("swiped downtown charlie brown funkiee TOWN")
-//            showSideBar(true)
+
             animationDelegate.startAnimation(kDirectionForward)
-            self.view.addSubview(flipView)
-            
+//            self.view.sendSubviewToBack(imageOnVC)
+            self.view.sendSubviewToBack(flipView)
+
+// THIS WORKS... sort of...
+            UIView.animateWithDuration(0.33, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                self.labelOnVC.alpha = 0.33
+                self.labelOnVC.hidden = false
+                }, completion: nil)
+//            self.view.bringSubviewToFront(self.labelOnVC)
             self.view.bringSubviewToFront(NavBar)
             self.view.bringSubviewToFront(self.TopNavBar)
-            
-            self.view.bringSubviewToFront(self.topProfileImgView)
-            self.topProfileImgView.image = UIImage(named: "me")
-            self.view.bringSubviewToFront(self.bottomProfileImgView)
-            self.bottomProfileImgView.image = UIImage(named: "jessica")
-//            delegate?.sideBarWillClose?()
-  
         }
     }
-
-    @IBAction func AnimateButton(sender: AnyObject) {
-
-        animationDelegate.startAnimation(kDirectionForward)
-
-        self.view.addSubview(flipView)
-        
-        self.view.bringSubviewToFront(NavBar)
-        self.view.bringSubviewToFront(self.TopNavBar)
-        
-        self.view.bringSubviewToFront(self.topProfileImgView)
-        self.topProfileImgView.image = UIImage(named: "me")
-        self.view.bringSubviewToFront(self.bottomProfileImgView)
-        self.bottomProfileImgView.image = UIImage(named: "jessica")
-    }
+    // ---------- END HandleSwipe func ---------------//
     
-    @IBAction func ReverseButton(sender: AnyObject) {
-        animationDelegate.startAnimation(kDirectionBackward)
+// - - - - - - - - - - -  - - END PAN FUNCTION - - - - - - - - - - - - - - - - - - - - - - //
 
-        self.view.addSubview(flipView)
-
-        self.topProfileImgView.image = UIImage(named: "zane")
-        self.view.bringSubviewToFront(self.topProfileImgView)
-
-        self.view.bringSubviewToFront(NavBar)
-        self.view.bringSubviewToFront(self.TopNavBar)
-    }
     
-    
-// - - - - - - - - - - - - - -  - - (PETER) PAN FUNCTION - - - - - - - - - - - - - - - - - - - - - - //
-    //    func panned(recognizer: UIPanGestureRecognizer) {
-    //        switch recognizer.state {
-    //
-    //        case .Began:
-    //            if CGRectContainsPoint(panRegion.frame, recognizer.locationInView(view!)) {
-    //                print("began 02")
-    //                if animationDelegate.animationState == 0 {
-    //                    print("began 03")
-    //                    NSObject.cancelPreviousPerformRequestsWithTarget(self)
-    //                    animationDelegate.sequenceType = kSequenceControlled
-    //                    animationDelegate.animationLock = true
-    //                }
-    //            }
-    //        case .Cancelled:
-    //            print("UIGestureRecognizer")
-    //
-    //        case .Ended:
-    //            if animationDelegate.animationLock {
-    //                print("animationLock")
-    //                let value = sqrtf(fabsf(recognizer.velocityInView(self.view!).x as! Float) / 10.0)          //(fabsf(recognizer.velocityInView:self.view.x)) / 10.0.floatingPointClass
-    //                self.animationDelegate.endStateWithSpeed(value)
-    //            }
-    //
-    //        case .Possible:
-    //            print("possible?")
-    //
-    //        case .Changed:
-    //            if animationDelegate.animationLock {
-    //                switch flipView.animationType {
-    //                case kAnimationFlipHorizontal:
-    //                    print("Horizontal")
-    //                    var value = recognizer.translationInView(self.view!).x as! Float
-    //                    animationDelegate.setTransformValue(value, delegating: false)
-    //                case kAnimationFlipVertical:
-    //                    print("vertical")
-    //                    var value = recognizer.translationInView(self.view!).y as! Float
-    //                    animationDelegate.setTransformValue(value, delegating: false)
-    //                    break
-    //                default:
-    //                    print("began 0555")
-    //                }
-    //            }
-    //
-    //        case .Failed:
-    //            print("failed :( ")
-    //
-    //        default:
-    //            print("default")
-    //        }
-    //    }
-// - - - - - - - - - - - - - -  - - END PAN FUNCTION - - - - - - - - - - - - - - - - - - - - - - //
+
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
