@@ -66,7 +66,7 @@ class SitterMatchVC: UIViewController {
                         print(sitterScoreModel)
                         
 
-//                        let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: self.userImage!)
+//                         let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: self.userImage!)
                         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //                        sitterModelObjects.append(SitterObject)
 

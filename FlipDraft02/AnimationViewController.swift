@@ -65,9 +65,33 @@ class AnimationViewController: UIViewController {
 //        self.panRecognizer.minimumNumberOfTouches = 1;
 //        self.view.addGestureRecognizer(self.panRecognizer)
         //========================= PAN-GESTURE ===============================//
+        
+        
+        
+        let showGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target:self, action: "handleSwipe:")
+        showGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Up
+        flipView.addGestureRecognizer(showGestureRecognizer)
+        
+        let hideGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipe:")
+        hideGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Down
+        flipView.addGestureRecognizer(hideGestureRecognizer)
+        
 
     } // ________________________ END ViewDidLoad ____________________________//
     
+    func handleSwipe(recognizer:UISwipeGestureRecognizer){
+        
+        if (recognizer.direction == UISwipeGestureRecognizerDirection.Up) {
+            print("Im goin uop chuck who gives a fuck?")
+//            showSideBar(false)
+//            delegate?.sideBarWillOpen?()
+        }
+        if ((recognizer.direction == UISwipeGestureRecognizerDirection.Down)){
+                print("swiped downtown charlie brown funkiee TOWN")
+//            showSideBar(true)
+//            delegate?.sideBarWillClose?()
+        }
+    }
 
     @IBAction func AnimateButton(sender: AnyObject) {
 
