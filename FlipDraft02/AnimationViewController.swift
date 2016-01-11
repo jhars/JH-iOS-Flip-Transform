@@ -85,11 +85,32 @@ class AnimationViewController: UIViewController {
             print("Im goin uop chuck who gives a fuck?")
 //            showSideBar(false)
 //            delegate?.sideBarWillOpen?()
+            animationDelegate.startAnimation(kDirectionBackward)
+            
+            self.view.addSubview(flipView)
+            
+            self.topProfileImgView.image = UIImage(named: "zane")
+            self.view.bringSubviewToFront(self.topProfileImgView)
+            
+            self.view.bringSubviewToFront(NavBar)
+            self.view.bringSubviewToFront(self.TopNavBar)
+
+            
         }
-        if ((recognizer.direction == UISwipeGestureRecognizerDirection.Down)){
+        if (recognizer.direction == UISwipeGestureRecognizerDirection.Down) {
                 print("swiped downtown charlie brown funkiee TOWN")
 //            showSideBar(true)
+            self.view.addSubview(flipView)
+            
+            self.view.bringSubviewToFront(NavBar)
+            self.view.bringSubviewToFront(self.TopNavBar)
+            
+            self.view.bringSubviewToFront(self.topProfileImgView)
+            self.topProfileImgView.image = UIImage(named: "me")
+            self.view.bringSubviewToFront(self.bottomProfileImgView)
+            self.bottomProfileImgView.image = UIImage(named: "jessica")
 //            delegate?.sideBarWillClose?()
+  
         }
     }
 
