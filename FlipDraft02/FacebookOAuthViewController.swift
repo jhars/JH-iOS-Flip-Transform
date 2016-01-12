@@ -47,7 +47,7 @@ class FacebookOAuthViewController: UIViewController, FBSDKLoginButtonDelegate {
         //        let Y_Position:CGFloat? = 500.0 //use your Y position here
         //        let Y_Co = ((self.view.frame.size.height - loginView.frame.height)/2)
         //        loginView.frame = CGRectMake(X_Co, Y_Co, 240, 40)
-        loginView.readPermissions = ["public_profile", "email"]
+        loginView.readPermissions = ["public_profile", "email", "user_education_history", "user_friends"]
         loginView.delegate = self
         
     }

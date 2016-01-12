@@ -75,6 +75,8 @@
 		921BFE241C41BFF700D3B92E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				92C678511C41DD330083F68F /* SitterMatchVC.swift */,
+				923943021C409A4400BACD2C /* AnimationViewController.swift */,
 				92C678551C41E3C80083F68F /* Browse-Sitters Ctlrs */,
 				921BFE271C41C11500D3B92E /* Flip-Animation Ctrlrs */,
 				92C6784C1C41DC710083F68F /* Main-Menu Ctrlrs */,
@@ -85,7 +87,6 @@
 		921BFE271C41C11500D3B92E /* Flip-Animation Ctrlrs */ = {
 			isa = PBXGroup;
 			children = (
-				923943021C409A4400BACD2C /* AnimationViewController.swift */,
 				921BFE251C41C04900D3B92E /* TempAnimationVC.swift */,
 			);
 			name = "Flip-Animation Ctrlrs";
@@ -153,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				92C678561C41F0510083F68F /* SitterMatchModel.swift */,
-				92C678511C41DD330083F68F /* SitterMatchVC.swift */,
 				92C678531C41E3670083F68F /* FlipBrowseSittersVC.swift */,
 			);
 			name = "Browse-Sitters Ctlrs";

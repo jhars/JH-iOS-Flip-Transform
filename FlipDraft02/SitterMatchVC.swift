@@ -61,24 +61,27 @@ class SitterMatchVC: UIViewController {
                         let imgUrlModel = sitterObjDict["image-url"] as! String
                         let sitterNameModel = sitterObjDict["name"] as! String
                         let sitterScoreModel = sitterObjDict["cnx-score"] as! Int
-                        print(imgUrlModel)
-                        print(sitterNameModel)
-                        print(sitterScoreModel)
-                        
+//                        print(imgUrlModel)
+//                        print(sitterNameModel)
+//                        print(sitterScoreModel)
+                        let SitterObject = SitterMatchModel(name: sitterNameModel)
 
 //                         let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: self.userImage!)
                         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//                        sitterModelObjects.append(SitterObject)
+                        sitterModelObjects.append(SitterObject)
 
-                    })//- - - - - - - - - - END -- 'fireBaseRef' ({ snapshot in }) --//
+                    })
+                    //- - - - - - - - - - END -- 'fireBaseRef' ({ snapshot in }) --//
+
                self.performSegueWithIdentifier("showSitter", sender: nil)
+                
             }  //----- END 'else' Statement --------------//
-
+//            task.relo
         }) // - - - - - - - - END Graph Request - - - - - - - - - - - - - - //
 
     } //============================ END  func returnUserData() ============================== //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let newsTVC = segue.destinationViewController as! FlipBrowseSittersVC
+        let newsTVC = segue.destinationViewController as! AnimationViewController
         newsTVC.models = sitterModelObjects
     }
 }

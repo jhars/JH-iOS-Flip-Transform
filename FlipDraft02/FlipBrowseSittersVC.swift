@@ -17,7 +17,8 @@ class FlipBrowseSittersVC: UIViewController {
         
         print("BELOW:---_____________>>>>")
 //        print(sitterModelObjects.count)
-//        print(sitterModelObjects)
+        print(sitterModelObjects)
+        print(self.models)
         print("DATA ABOVE ________^^^^^^^")
 
     }

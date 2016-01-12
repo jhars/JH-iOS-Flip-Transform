@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J0N-1E-Wai">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -35,19 +35,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tod-R0-tEo">
-                                <rect key="frame" x="157" y="300" width="287" height="211"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hFt-dD-gbg">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGi-SS-cu4">
-                                <rect key="frame" x="157" y="71" width="293" height="103"/>
-                                <color key="backgroundColor" red="0.54680672280567499" green="1" blue="0.97637577864029113" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UYG-nA-eSo">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
@@ -67,27 +54,25 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7K2-1o-mwY">
+                                <rect key="frame" x="51" y="473" width="102" height="43"/>
+                                <color key="backgroundColor" red="1" green="0.85285458309999995" blue="0.33950074390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title=" Favorite"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="6gi-mp-mkO" secondAttribute="trailing" constant="-20" id="2a7-Rt-C0O"/>
-                            <constraint firstItem="tod-R0-tEo" firstAttribute="top" secondItem="hFt-dD-gbg" secondAttribute="bottom" constant="-64" id="6xP-4X-qto"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UYG-nA-eSo" secondAttribute="trailing" constant="-20" id="8bv-zJ-lyt"/>
                             <constraint firstItem="6gi-mp-mkO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="DSf-kf-T2K"/>
                             <constraint firstItem="UYG-nA-eSo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="IoB-gN-CHc"/>
-                            <constraint firstItem="hFt-dD-gbg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="M0r-AO-XAD"/>
-                            <constraint firstItem="uGi-SS-cu4" firstAttribute="top" secondItem="6gi-mp-mkO" secondAttribute="bottom" constant="27" id="cXU-js-e6i"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UYG-nA-eSo" secondAttribute="bottom" id="hV2-Ti-27c"/>
-                            <constraint firstItem="hFt-dD-gbg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hXM-q4-svH"/>
                             <constraint firstItem="6gi-mp-mkO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="ybV-T5-KMS"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="NavBar" destination="UYG-nA-eSo" id="zq6-HC-8aT"/>
                         <outlet property="TopNavBar" destination="6gi-mp-mkO" id="a9b-VH-ku5"/>
-                        <outlet property="imageCover" destination="tod-R0-tEo" id="gRN-DI-Bif"/>
-                        <outlet property="imageOnVC" destination="tod-R0-tEo" id="EQb-HM-8Xo"/>
-                        <outlet property="labelOnVC" destination="uGi-SS-cu4" id="XTX-UV-46O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -302,7 +287,7 @@
         <!--Sitter MatchVC-->
         <scene sceneID="A1g-e5-EKh">
             <objects>
-                <viewController id="tLI-Tz-Jng" customClass="SitterMatchVC" customModule="FlipDraft02" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="partialCurl" id="tLI-Tz-Jng" customClass="SitterMatchVC" customModule="FlipDraft02" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="waI-HU-Dhc"/>
                         <viewControllerLayoutGuide type="bottom" id="fSe-yK-pOG"/>
@@ -348,12 +333,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="YEj-1n-2Z1" kind="show" identifier="showSitter" id="bBG-YA-nU5"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="showSitter" id="sEQ-aF-YqL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20b-FH-ai7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2563" y="1055"/>
+            <point key="canvasLocation" x="2568" y="1055"/>
         </scene>
         <!--Flip Browse SittersVC-->
         <scene sceneID="9Hd-9c-QvF">
@@ -405,8 +390,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jvQ-6z-WMj"/>
+        <segue reference="UdQ-cz-VXO"/>
         <segue reference="vfg-As-u2a"/>
+        <segue reference="sEQ-aF-YqL"/>
         <segue reference="vf6-uk-5An"/>
     </inferredMetricsTieBreakers>
 </document>
