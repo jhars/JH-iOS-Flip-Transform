@@ -35,7 +35,7 @@ class SitterMatchVC: UIViewController {
     let fireBaseRef = Firebase(url: "https://sitterbookapi.firebaseio.com/users/")
     //=================================================================\\
     func returnUserData() {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "email,id,name,photos"])
         let task = graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             if ((error) != nil)
             {   // Process error
@@ -43,6 +43,8 @@ class SitterMatchVC: UIViewController {
             }  else if (UserDataHasBeenLoaded == true) {
                 print("userData has been loaded")
 //                self.performSegueWithIdentifier("showSitter", sender: nil)
+               
+                
             } else {
                 
                 let userID : NSString = result.valueForKey("id") as! NSString
@@ -50,7 +52,16 @@ class SitterMatchVC: UIViewController {
                 self.currentUserId = userID as String
                 self.tempFireBaseUrlForCurrentUser = "https://sitterbookapi.firebaseio.com/users/" + (userID as String)
 
+                
+                var userEmail : NSString = result.valueForKey("email") as! NSString
+                var AllUserPhotosObject : NSObject = result.valueForKey("photos") as! NSObject
 
+                print(userEmail)
+                //You Will need this call to upload images from facebook later, in some other ViewController with a seperate Graph API Call
+                var AllUserPhotosData = AllUserPhotosObject.valueForKey("data")?.objectAtIndex(0).valueForKey("id") as! NSObject
+                print(AllUserPhotosData)
+//                var FirstPhoto = AllUserPhotosData
+                
                     //=================================================================\\
                     //   [SITTER MATCH MODEL]()  ->   is this delegation...?
                     //=================================================================\\
@@ -67,46 +78,23 @@ class SitterMatchVC: UIViewController {
                         
                         let AlamoRef = Alamofire.request(.GET, imgUrlModel)
                         AlamoRef.responseImage { response in
-//                            debugPrint(response)
-//                            
-//                            print(response.request)
-//                            print(response.response)
-//                            debugPrint(response.result)
-                            
                             if let image = response.result.value {
-
-                                
+// INSERT "h ttps://www.facebook.com/()"
                                 var sitterImageModel = image
                                 var sitterNameModel = sitterObjDict["name"] as! String
                                 var sitterScoreModel = sitterObjDict["cnx-score"] as! Int
                                 var SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel)
                                 sitterModelObjects.append(SitterObject)
-//                                self.performSegueWithIdentifier("showSitter", sender: nil)
-//                                self.performSegueWithIdentifier("showSitter", sender: nil)
-//                                self.sitterObjectLoader()
                                 flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.whiteColor())
-                                
-                                
-
-
-
-
                             }
                             AlamoRef.resume()
                             UserDataHasBeenLoaded = true
-
-//                            print(sitterModelObjects.count)
-
                         } // ==== End Almao Ref =====//
-
-                    })
-
+                    }) // |DB| ====== END FIRE BASE ========= |DB| //
             } // ----- END 'else' Statement --------------//
-
-                    self.performSegueWithIdentifier("showSitter", sender: nil)
+            self.performSegueWithIdentifier("showSitter", sender: nil)
 //            task.reloadDate()
         }) // - - - - - - - - END Graph Request - - - - - - - - - - - - - - //
-
     } //============================ END  func returnUserData() ============================== //
 //    func sitterObjectLoader () {
 //        for sitter in sitterModelObjects {

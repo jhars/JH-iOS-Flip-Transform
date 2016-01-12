@@ -2,24 +2,27 @@
 import UIKit
 var step = Int()
 
-var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(0,100,450,500))
+var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(-100,100,600,450))
 class AnimationViewController: UIViewController {
     
     var sitterObjArray = [SitterMatchModel]()
     var animationDelegate:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceControlled, directionType: kDirectionNone)
     
+    @IBOutlet weak var schedulizerLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var TopNavBar: UINavigationBar!
     @IBOutlet weak var NavBar: UINavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(sitterModelObjects.count)
+
         print("on view did load")
-        //        flipView.center = self.view.center
+//                flipView.center = self.view.center
         animationDelegate.startAnimation(kDirectionNone)
         self.view.bringSubviewToFront(NavBar)
-        self.view.bringSubviewToFront(self.TopNavBar)
+        self.view.bringSubviewToFront(TopNavBar)
+
+        
         animationDelegate.transformView = flipView
         animationDelegate.controller = self
         animationDelegate.perspectiveDepth = 75000
@@ -29,62 +32,54 @@ class AnimationViewController: UIViewController {
         animationDelegate.gravity = 32
 
         flipView.font = "HelveticaNeue-Bold"
-//        flipView.fontSize = 24
+        flipView.fontSize = 36.0
         flipView.fontAlignment = "right" // not working yet... maybe when words wrap?
-        flipView.textOffset = CGPointMake(75.0, 75.0);
+        flipView.textOffset = CGPointMake(150.0, 240.0);
 
-        flipView.printText("Hello-REVERSE", usingImage: nil, backgroundColor: UIColor.grayColor(), textColor: UIColor.blueColor())
+        flipView.printText("BASE LAYER", usingImage: UIImage(named: "jessica"), backgroundColor: nil, textColor: UIColor.blueColor())
 
-        
           self.view.addSubview(flipView)
         
 //========================= PAN-GESTURE ===============================//
-//        self.panRegion = UIView(frame: self.view.frame)
-//        view.addSubview(panRegion)
-//        self.panned(panRecognizer)
-//        self.panRecognizer.maximumNumberOfTouches = 1;
-//        self.panRecognizer.minimumNumberOfTouches = 1;
         let showGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target:self, action: "handleSwipe:")
         showGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Up
         flipView.addGestureRecognizer(showGestureRecognizer)
-        
+        //        self.panRecognizer.maximumNumberOfTouches = 1;
+        //        self.panRecognizer.minimumNumberOfTouches = 1;
         let hideGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipe:")
         hideGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Down
         flipView.addGestureRecognizer(hideGestureRecognizer)
 //========================= PAN-GESTURE ===============================//
-//        self.sitterObjectLoader()
-    } // ________________________ END ViewDidLoad ____________________________//    
-//    func sitterObjectLoader () {
-//        for sitter in sitterModelObjects {
-//            print(" - - - - - - - sitter Obj Loading Below - - - - - - -")
-//            if sitter.img != nil && sitter.name != nil {
-//                flipView.printText(sitter.name!, usingImage: sitter.img!, backgroundColor: nil, textColor: UIColor.blueColor())
-//                self.view.addSubview(flipView)
-//                print(sitter.name!)
-//                print(sitter.cnxScore!)
-//                print("sitter Loaded!")
-//            } else {
-//                print("sitterObject == nil")
-//            }
-//        }
-//    }
-//===========================> (thru Sitter Array) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        self.view.bringSubviewToFront(schedulizerLabel)
+        self.view.bringSubviewToFront(nameLabel)
+        self.nameLabel.text = "Social Context"
+        self.schedulizerLabel.text = "Schedulizer"
+    }
+ // __________________________________ END ViewDidLoad ____________________________//
+    
+//===========================> (SWIPE - HANDLER) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     func handleSwipe(recognizer:UISwipeGestureRecognizer){
 //  Flick-UP => FORWARD
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Up) {
             animationDelegate.startAnimation(kDirectionBackward)
             self.view.addSubview(flipView)
-//            var sitterName = sitterModelObjects[0].name!
-//            self.nameLabel.text = sitterName as String
+            print("on UP Swipe!")
+//            self.nameLabel.text = "Wendy Darling"
+            self.view.bringSubviewToFront(NavBar)
+            self.view.bringSubviewToFront(TopNavBar)
+            self.view.bringSubviewToFront(schedulizerLabel)
+            self.view.bringSubviewToFront(nameLabel)
         }
 //  Flick-DOWN => BACKWARD
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Down) {
-
             animationDelegate.startAnimation(kDirectionForward)
             self.view.addSubview(flipView)
+//            self.nameLabel.text = "Peter Pan"
             print("on down swipe")
-//            var sitterName = sitterModelObjects[1].name!
-//            self.nameLabel.text = sitterName as String
+            self.view.bringSubviewToFront(NavBar)
+            self.view.bringSubviewToFront(TopNavBar)
+            self.view.bringSubviewToFront(schedulizerLabel)
+            self.view.bringSubviewToFront(nameLabel)
         }
     }
     // ---------- END HandleSwipe func ---------------//
