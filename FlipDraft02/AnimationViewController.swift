@@ -2,12 +2,10 @@
 import UIKit
 var step = Int()
 
-
+var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(0,100,450,500))
 class AnimationViewController: UIViewController {
     
     var sitterObjArray = [SitterMatchModel]()
-    var flipViewArray = [UIView]()
-    var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(0,100,450,500))
     var animationDelegate:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceControlled, directionType: kDirectionNone)
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -25,7 +23,7 @@ class AnimationViewController: UIViewController {
         animationDelegate.transformView = flipView
         animationDelegate.controller = self
         animationDelegate.perspectiveDepth = 75000
-        animationDelegate.nextDuration = 0.18
+        animationDelegate.nextDuration = 0.44
         animationDelegate.shadow = true
         animationDelegate.sensitivity = 8000
         animationDelegate.gravity = 32
@@ -34,14 +32,9 @@ class AnimationViewController: UIViewController {
 //        flipView.fontSize = 24
         flipView.fontAlignment = "right" // not working yet... maybe when words wrap?
         flipView.textOffset = CGPointMake(75.0, 75.0);
-        
-//        for sitter in sitterModelObjects {
-//            flipView.printText(sitter.name, usingImage: sitter.img, backgroundColor: nil, textColor: UIColor.blueColor())
-//        }
-        
-        flipView.printText("Hello-ANIMATE!", usingImage: UIImage(named: "jessica"), backgroundColor: nil, textColor: UIColor.blueColor())
+
         flipView.printText("Hello-REVERSE", usingImage: nil, backgroundColor: UIColor.grayColor(), textColor: UIColor.blueColor())
-//        flipView.printText("!!START-HERE!!", usingImage: UIImage(named: "me"), backgroundColor: nil, textColor: UIColor.blueColor())
+
         
           self.view.addSubview(flipView)
         
@@ -59,24 +52,22 @@ class AnimationViewController: UIViewController {
         hideGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Down
         flipView.addGestureRecognizer(hideGestureRecognizer)
 //========================= PAN-GESTURE ===============================//
-        self.sitterObjectLoader()
-    } // ________________________ END ViewDidLoad ____________________________//
-
-    
-    func sitterObjectLoader () {
-        for sitter in sitterModelObjects {
-            print(" - - - - - - - sitter Obj Loading Below - - - - - - -")
-            if sitter.img != nil && sitter.name != nil {
-                self.flipView.printText(sitter.name!, usingImage: sitter.img!, backgroundColor: nil, textColor: UIColor.blueColor())
-                self.view.addSubview(flipView)
-                print(sitter.name!)
-                print(sitter.cnxScore!)
-                print("sitter Loaded!")
-            } else {
-                print("sitterObject == nil")
-            }
-        }
-    }
+//        self.sitterObjectLoader()
+    } // ________________________ END ViewDidLoad ____________________________//    
+//    func sitterObjectLoader () {
+//        for sitter in sitterModelObjects {
+//            print(" - - - - - - - sitter Obj Loading Below - - - - - - -")
+//            if sitter.img != nil && sitter.name != nil {
+//                flipView.printText(sitter.name!, usingImage: sitter.img!, backgroundColor: nil, textColor: UIColor.blueColor())
+//                self.view.addSubview(flipView)
+//                print(sitter.name!)
+//                print(sitter.cnxScore!)
+//                print("sitter Loaded!")
+//            } else {
+//                print("sitterObject == nil")
+//            }
+//        }
+//    }
 //===========================> (thru Sitter Array) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     func handleSwipe(recognizer:UISwipeGestureRecognizer){
 //  Flick-UP => FORWARD

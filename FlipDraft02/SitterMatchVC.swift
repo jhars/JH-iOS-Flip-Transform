@@ -18,6 +18,8 @@ var sitterMatchModelScore = [Int]()
 var sitterModelObjects = [SitterMatchModel]()
 var UserDataHasBeenLoaded = false
 
+var sitterFlipObjects = [FlipView]()
+
 class SitterMatchVC: UIViewController {
     
     var currentUserId:String = ""
@@ -81,6 +83,10 @@ class SitterMatchVC: UIViewController {
                                 sitterModelObjects.append(SitterObject)
 //                                self.performSegueWithIdentifier("showSitter", sender: nil)
 //                                self.performSegueWithIdentifier("showSitter", sender: nil)
+//                                self.sitterObjectLoader()
+                                flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.whiteColor())
+                                
+                                
 
 
 
@@ -102,6 +108,20 @@ class SitterMatchVC: UIViewController {
         }) // - - - - - - - - END Graph Request - - - - - - - - - - - - - - //
 
     } //============================ END  func returnUserData() ============================== //
+//    func sitterObjectLoader () {
+//        for sitter in sitterModelObjects {
+//            print(" - - - - - - - sitter Obj Loading Below - - - - - - -")
+//            if sitter.img != nil && sitter.name != nil {
+//                flipView.printText(sitter.name!, usingImage: sitter.img!, backgroundColor: nil, textColor: UIColor.blueColor())
+//                self.view.addSubview(flipView)
+//                print(sitter.name!)
+//                print(sitter.cnxScore!)
+//                print("sitter Loaded!")
+//            } else {
+//                print("sitterObject == nil")
+//            }
+//        }
+//    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let newsTVC = segue.destinationViewController as! AnimationViewController
         newsTVC.sitterObjArray = sitterModelObjects
