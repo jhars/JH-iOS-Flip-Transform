@@ -65,11 +65,11 @@ class SitterMatchVC: UIViewController {
                         
                         let AlamoRef = Alamofire.request(.GET, imgUrlModel)
                         AlamoRef.responseImage { response in
-                            debugPrint(response)
-                            
-                            print(response.request)
-                            print(response.response)
-                            debugPrint(response.result)
+//                            debugPrint(response)
+//                            
+//                            print(response.request)
+//                            print(response.response)
+//                            debugPrint(response.result)
                             
                             if let image = response.result.value {
 
@@ -104,6 +104,6 @@ class SitterMatchVC: UIViewController {
     } //============================ END  func returnUserData() ============================== //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let newsTVC = segue.destinationViewController as! AnimationViewController
-        newsTVC.models = sitterModelObjects
+        newsTVC.sitterObjArray = sitterModelObjects
     }
 }
