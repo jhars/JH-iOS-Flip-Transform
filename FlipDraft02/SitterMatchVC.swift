@@ -70,10 +70,11 @@ class SitterMatchVC: UIViewController {
                         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         sitterModelObjects.append(SitterObject)
 
+
                     })
                     //- - - - - - - - - - END -- 'fireBaseRef' ({ snapshot in }) --//
-
-               self.performSegueWithIdentifier("showSitter", sender: nil)
+                
+                  self.performSegueWithIdentifier("showSitter", sender: nil)
                 
             }  //----- END 'else' Statement --------------//
 //            task.relo

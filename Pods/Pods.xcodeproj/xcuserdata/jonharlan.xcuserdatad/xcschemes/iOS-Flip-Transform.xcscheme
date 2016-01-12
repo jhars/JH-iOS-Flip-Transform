@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'CACC59F46175227AE87F86E2'
+               BlueprintIdentifier = '76C42F32A440090B71C2B76D'
                BlueprintName = 'iOS-Flip-Transform'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'iOS_Flip_Transform.framework'>

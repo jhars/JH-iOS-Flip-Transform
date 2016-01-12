@@ -10,6 +10,8 @@ pod 'Firebase', '>= 2.5.0'
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
 pod 'FBSDKShareKit'
+pod 'Alamofire', '~> 3.0'
+pod 'AlamofireImage', '~> 2.0'
 
 
 

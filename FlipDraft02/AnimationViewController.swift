@@ -25,7 +25,8 @@ class AnimationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(sitterModelObjects)
+//        print(sitterModelObjects[0].name)
+//        print(sitterModelObjects[1])
 
 //       labelOnVC.hidden = true
 //        flipView.center = self.view.center
