@@ -10,21 +10,23 @@ import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
 import Firebase
+import Alamofire
+import AlamofireImage
 
 var sitterMatchModelName = [String]()
 var sitterMatchModelScore = [Int]()
 var sitterModelObjects = [SitterMatchModel]()
+var UserDataHasBeenLoaded = false
 
 class SitterMatchVC: UIViewController {
     
     var currentUserId:String = ""
     var tempFireBaseUrlForCurrentUser:String = ""
     var cnxImageUrl:String = ""
-    var userImage = UIImage(named: "bedford")
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        sitterModelObjects.removeAll()
+//remove all
         returnUserData()
     }
     
@@ -36,6 +38,9 @@ class SitterMatchVC: UIViewController {
             if ((error) != nil)
             {   // Process error
                 print("Error: \(error)")
+            }  else if (UserDataHasBeenLoaded == true) {
+                print("userData has been loaded")
+//                self.performSegueWithIdentifier("showSitter", sender: nil)
             } else {
                 
                 let userID : NSString = result.valueForKey("id") as! NSString
@@ -43,8 +48,6 @@ class SitterMatchVC: UIViewController {
                 self.currentUserId = userID as String
                 self.tempFireBaseUrlForCurrentUser = "https://sitterbookapi.firebaseio.com/users/" + (userID as String)
 
-
-                    
 
                     //=================================================================\\
                     //   [SITTER MATCH MODEL]()  ->   is this delegation...?
@@ -55,29 +58,47 @@ class SitterMatchVC: UIViewController {
                     
                     fireBaseRef.queryOrderedByValue().observeEventType(.ChildAdded, withBlock: { snapshot in
 //                        Need To ADD ERROR HANDLING HERE
-                        let sitterObjDict = snapshot.value as! NSDictionary
+
                         //=================================================================\\
+                        let sitterObjDict = snapshot.value as! NSDictionary
+                        var imgUrlModel = sitterObjDict["image-url"] as! String
+                        
+                        let AlamoRef = Alamofire.request(.GET, imgUrlModel)
+                        AlamoRef.responseImage { response in
+                            debugPrint(response)
+                            
+                            print(response.request)
+                            print(response.response)
+                            debugPrint(response.result)
+                            
+                            if let image = response.result.value {
 
-                        let imgUrlModel = sitterObjDict["image-url"] as! String
-                        let sitterNameModel = sitterObjDict["name"] as! String
-                        let sitterScoreModel = sitterObjDict["cnx-score"] as! Int
-//                        print(imgUrlModel)
-//                        print(sitterNameModel)
-//                        print(sitterScoreModel)
-                        let SitterObject = SitterMatchModel(name: sitterNameModel)
+                                
+                                var sitterImageModel = image
+                                var sitterNameModel = sitterObjDict["name"] as! String
+                                var sitterScoreModel = sitterObjDict["cnx-score"] as! Int
+                                var SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel)
+                                sitterModelObjects.append(SitterObject)
+//                                self.performSegueWithIdentifier("showSitter", sender: nil)
+//                                self.performSegueWithIdentifier("showSitter", sender: nil)
 
-//                         let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: self.userImage!)
-                        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                        sitterModelObjects.append(SitterObject)
 
+
+
+                            }
+                            AlamoRef.resume()
+                            UserDataHasBeenLoaded = true
+
+//                            print(sitterModelObjects.count)
+
+                        } // ==== End Almao Ref =====//
 
                     })
-                    //- - - - - - - - - - END -- 'fireBaseRef' ({ snapshot in }) --//
-                
-                  self.performSegueWithIdentifier("showSitter", sender: nil)
-                
-            }  //----- END 'else' Statement --------------//
-//            task.relo
+
+            } // ----- END 'else' Statement --------------//
+
+                    self.performSegueWithIdentifier("showSitter", sender: nil)
+//            task.reloadDate()
         }) // - - - - - - - - END Graph Request - - - - - - - - - - - - - - //
 
     } //============================ END  func returnUserData() ============================== //

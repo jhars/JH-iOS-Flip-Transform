@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Animation View Controller-->
@@ -24,27 +25,28 @@
                                     <constraint firstAttribute="height" constant="60" id="UPp-ek-c4E"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Browse Sitters" id="QS2-pd-FKl">
-                                        <barButtonItem key="rightBarButtonItem" title="Login" id="MIl-Vu-Yei">
-                                            <connections>
-                                                <segue destination="H3e-9z-IiO" kind="popoverPresentation" popoverAnchorBarButtonItem="MIl-Vu-Yei" id="vf6-uk-5An">
-                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                </segue>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Browse Sitters" id="QS2-pd-FKl"/>
                                 </items>
                             </navigationBar>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UYG-nA-eSo">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="FlipBook" id="HbP-JO-Yk0">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="KQ8-bu-iAv">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wh2-KD-aZl">
-                                                <rect key="frame" x="20" y="0.0" width="74" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </button>
-                                        </barButtonItem>
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Go Back" id="8Fl-Ug-FTW">
+                                                <connections>
+                                                    <segue destination="J0N-1E-Wai" kind="popoverPresentation" popoverAnchorBarButtonItem="8Fl-Ug-FTW" id="WUM-Mh-kGH">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="KQ8-bu-iAv">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wh2-KD-aZl">
+                                                    <rect key="frame" x="93" y="0.0" width="74" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </button>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="HCm-PH-SFs">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qmT-Xa-MP5">
                                                 <rect key="frame" x="491" y="2" width="89" height="40"/>
@@ -54,25 +56,29 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7K2-1o-mwY">
-                                <rect key="frame" x="51" y="473" width="102" height="43"/>
-                                <color key="backgroundColor" red="1" green="0.85285458309999995" blue="0.33950074390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title=" Favorite"/>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJH-VE-9we">
+                                <rect key="frame" x="212" y="54" width="176" height="58"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="6gi-mp-mkO" secondAttribute="trailing" constant="-20" id="2a7-Rt-C0O"/>
+                            <constraint firstItem="SJH-VE-9we" firstAttribute="top" secondItem="6gi-mp-mkO" secondAttribute="bottom" constant="10" id="4qe-Y0-4nW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UYG-nA-eSo" secondAttribute="trailing" constant="-20" id="8bv-zJ-lyt"/>
                             <constraint firstItem="6gi-mp-mkO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="DSf-kf-T2K"/>
                             <constraint firstItem="UYG-nA-eSo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="IoB-gN-CHc"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UYG-nA-eSo" secondAttribute="bottom" id="hV2-Ti-27c"/>
                             <constraint firstItem="6gi-mp-mkO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="ybV-T5-KMS"/>
+                            <constraint firstItem="SJH-VE-9we" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ycI-1q-o9E"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="NavBar" destination="UYG-nA-eSo" id="zq6-HC-8aT"/>
                         <outlet property="TopNavBar" destination="6gi-mp-mkO" id="a9b-VH-ku5"/>
+                        <outlet property="nameLabel" destination="SJH-VE-9we" id="Jst-fr-AXX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -251,7 +257,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1R-iC-hNe">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Nhu-kN-HBj"/>
+                                    <barButtonItem style="plain" systemItem="fixedSpace" id="Nhu-kN-HBj"/>
                                     <barButtonItem title="Home" id="Zwc-6N-cmq"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="uCs-bA-0qx"/>
                                     <barButtonItem title="Favorites" id="lY2-Ke-zCx"/>
@@ -263,17 +269,26 @@
                                             <segue destination="tLI-Tz-Jng" kind="presentation" modalTransitionStyle="coverVertical" id="Hfg-vw-xTt"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="zA3-5u-Efp"/>
+                                    <barButtonItem style="plain" systemItem="fixedSpace" id="zA3-5u-Efp"/>
                                 </items>
                             </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book-logo" translatesAutoresizingMaskIntoConstraints="NO" id="edC-Qo-xGb">
+                                <rect key="frame" x="202" y="232" width="197" height="136"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="197" id="Sl4-b3-2A6"/>
+                                    <constraint firstAttribute="height" constant="136" id="fex-Lm-znt"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fC9-Ai-I4F" firstAttribute="top" secondItem="DQw-AI-gdx" secondAttribute="top" id="2eH-jI-dN1"/>
+                            <constraint firstItem="edC-Qo-xGb" firstAttribute="centerY" secondItem="DQw-AI-gdx" secondAttribute="centerY" id="3VL-Mn-3rf"/>
                             <constraint firstItem="pf9-WV-SBs" firstAttribute="top" secondItem="J1R-iC-hNe" secondAttribute="bottom" id="8LT-33-IQq"/>
                             <constraint firstAttribute="trailing" secondItem="fC9-Ai-I4F" secondAttribute="trailing" id="ALp-0b-HBQ"/>
                             <constraint firstItem="J1R-iC-hNe" firstAttribute="leading" secondItem="DQw-AI-gdx" secondAttribute="leadingMargin" constant="-20" id="K1Y-jn-Oa4"/>
                             <constraint firstItem="fC9-Ai-I4F" firstAttribute="leading" secondItem="DQw-AI-gdx" secondAttribute="leading" id="V98-Tf-bWI"/>
+                            <constraint firstItem="edC-Qo-xGb" firstAttribute="centerX" secondItem="DQw-AI-gdx" secondAttribute="centerX" id="Zhd-pP-86l"/>
                             <constraint firstAttribute="trailingMargin" secondItem="J1R-iC-hNe" secondAttribute="trailing" constant="-20" id="ohl-BZ-I4P"/>
                         </constraints>
                     </view>
@@ -389,10 +404,12 @@
             <point key="canvasLocation" x="3234" y="1055"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="book-logo" width="53" height="50"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UdQ-cz-VXO"/>
         <segue reference="vfg-As-u2a"/>
+        <segue reference="WUM-Mh-kGH"/>
         <segue reference="sEQ-aF-YqL"/>
-        <segue reference="vf6-uk-5An"/>
     </inferredMetricsTieBreakers>
 </document>

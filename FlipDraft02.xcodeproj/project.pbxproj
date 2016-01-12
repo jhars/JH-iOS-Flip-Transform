@@ -75,8 +75,8 @@
 		921BFE241C41BFF700D3B92E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				92C678511C41DD330083F68F /* SitterMatchVC.swift */,
 				923943021C409A4400BACD2C /* AnimationViewController.swift */,
+				92C678511C41DD330083F68F /* SitterMatchVC.swift */,
 				92C678551C41E3C80083F68F /* Browse-Sitters Ctlrs */,
 				921BFE271C41C11500D3B92E /* Flip-Animation Ctrlrs */,
 				92C6784C1C41DC710083F68F /* Main-Menu Ctrlrs */,
@@ -135,9 +135,18 @@
 				923AA8421C4091B20012AE6C /* Assets.xcassets */,
 				923AA83F1C4091B20012AE6C /* Main.storyboard */,
 				921BFE241C41BFF700D3B92E /* View Controllers */,
+				927947591C44A7C000AD3361 /* User Model */,
 				923942FF1C4099DE00BACD2C /* Support Files */,
 			);
 			path = FlipDraft02;
+			sourceTree = "<group>";
+		};
+		927947591C44A7C000AD3361 /* User Model */ = {
+			isa = PBXGroup;
+			children = (
+				92C678561C41F0510083F68F /* SitterMatchModel.swift */,
+			);
+			name = "User Model";
 			sourceTree = "<group>";
 		};
 		92C6784C1C41DC710083F68F /* Main-Menu Ctrlrs */ = {
@@ -153,7 +162,6 @@
 		92C678551C41E3C80083F68F /* Browse-Sitters Ctlrs */ = {
 			isa = PBXGroup;
 			children = (
-				92C678561C41F0510083F68F /* SitterMatchModel.swift */,
 				92C678531C41E3670083F68F /* FlipBrowseSittersVC.swift */,
 			);
 			name = "Browse-Sitters Ctlrs";

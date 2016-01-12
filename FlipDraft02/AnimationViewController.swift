@@ -1,13 +1,15 @@
 
 import UIKit
 var step = Int()
-var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(0,100,450,500))
+
 //var image : UIImage = UIImage()
 //var page4 = UIImage(named: "page4")
 
 class AnimationViewController: UIViewController {
     
     var models = [SitterMatchModel]()
+    
+    var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(0,100,450,500))
 
     var animationDelegate:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceControlled, directionType: kDirectionNone)
 //    @IBOutlet weak var imageCover: UIImageView!
@@ -16,6 +18,7 @@ class AnimationViewController: UIViewController {
 //    @IBOutlet weak var imageOnVC: UIImageView!
     //    var bgImage = UIImageView(image: image)
     //    var bgImage = bedford! as UIImage
+    @IBOutlet weak var nameLabel: UILabel!
     
     
     @IBOutlet weak var TopNavBar: UINavigationBar!
@@ -25,9 +28,15 @@ class AnimationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(sitterModelObjects[0].name)
-//        print(sitterModelObjects[1])
+        print(sitterModelObjects.count)
+        print("on view did load")
+//        print(self.models)
+//        print(self.models.count)
+        
+        animationDelegate.startAnimation(kDirectionNone)
 
+        self.view.bringSubviewToFront(NavBar)
+        self.view.bringSubviewToFront(self.TopNavBar)
 //       labelOnVC.hidden = true
 //        flipView.center = self.view.center
 //        let helloPage4 = UIImageView(image: page4)
@@ -50,11 +59,12 @@ class AnimationViewController: UIViewController {
 //        flipView.printText("BEDFORD", usingImage: self.bgImage, backgroundColor: nil, textColor: UIColor.blueColor())
 //        flipView.printText("Hello Zane", usingImage: self.helloZane!, backgroundColor: nil, textColor: UIColor.blueColor())
         
-        self.view.addSubview(flipView)
-        self.view.bringSubviewToFront(self.NavBar)
-        self.view.bringSubviewToFront(self.TopNavBar)
+//        self.view.bringSubviewToFront(flipView)
+//        self.view.bringSubviewToFront(self.NavBar)
+//        self.view.bringSubviewToFront(self.TopNavBar)
 //        self.imageCover = UIImageView(image: page4)
 //        self.view.bringSubviewToFront(imageCover!)
+          self.view.addSubview(flipView)
         
         //========================= PAN-GESTURE ===============================//
 //        self.panRegion = UIView(frame: self.view.frame)
@@ -84,8 +94,9 @@ class AnimationViewController: UIViewController {
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Up) {
             animationDelegate.startAnimation(kDirectionBackward)
             self.view.addSubview(flipView)
-            self.view.bringSubviewToFront(NavBar)
-            self.view.bringSubviewToFront(self.TopNavBar)
+//            self.view.bringSubviewToFront(NavBar)
+//            self.view.bringSubviewToFront(self.TopNavBar)
+            self.nameLabel.text = "Jon Harlan"
         }
         
         
@@ -94,7 +105,8 @@ class AnimationViewController: UIViewController {
 
             animationDelegate.startAnimation(kDirectionForward)
 //            self.view.sendSubviewToBack(imageOnVC)
-            self.view.sendSubviewToBack(flipView)
+            self.view.addSubview(flipView)
+
 
 // THIS WORKS... sort of...
 //            UIView.animateWithDuration(0.33, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
@@ -104,6 +116,8 @@ class AnimationViewController: UIViewController {
 //            self.view.bringSubviewToFront(self.labelOnVC)
 //            self.view.bringSubviewToFront(NavBar)
 //            self.view.bringSubviewToFront(self.TopNavBar)
+            print("on down swipe")
+            print(sitterModelObjects)
         }
     }
     // ---------- END HandleSwipe func ---------------//

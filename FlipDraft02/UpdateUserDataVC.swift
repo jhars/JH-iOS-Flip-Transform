@@ -11,6 +11,8 @@ import FBSDKLoginKit
 import FBSDKCoreKit
 import Firebase
 
+var CurrentUserID = String()
+
 class UpdateUserDataVC: UIViewController {
 
     
@@ -58,6 +60,7 @@ class UpdateUserDataVC: UIViewController {
             } else {
                 let userID : NSString = result.valueForKey("id") as! NSString
                 print("User ID is is: \(userID)")
+                CurrentUserID = userID as String
                 
                 let userName : NSString = result.valueForKey("name") as! NSString
                 print("User Name is: \(userName)")

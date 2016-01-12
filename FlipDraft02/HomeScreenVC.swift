@@ -12,7 +12,7 @@ class HomeScreenVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        sitterModelObjects.removeAll()
         // Do any additional setup after loading the view.
     }
 
