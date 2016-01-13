@@ -48,44 +48,45 @@ class SitterMatchVC: UIViewController {
                 self.tempFireBaseUrlForCurrentUser = "https://sitterbookapi.firebaseio.com/users/" + (userID as String)
 
                 let userEmail : NSString = result.valueForKey("email") as! NSString
-                let AllUserPhotosObject : NSObject = result.valueForKey("photos") as! NSObject
                 print(userEmail)
-//You Will need this call to upload images from facebook later, in some other ViewController with a seperate Graph API Call
-                let FirstPhoto = AllUserPhotosObject.valueForKey("data")?.objectAtIndex(0).valueForKey("id") as! NSObject
-                print(FirstPhoto)
+
 
                     //=================================================================\\
                     //   [SITTER MATCH MODEL]()  ->   is this delegation...?
                     //=================================================================\\
                     
                     let currentUserPath = self.tempFireBaseUrlForCurrentUser
-                    let fireBaseRef = Firebase(url:(currentUserPath as String) + "/sitter-list/")
+                    let fireBaseRef = Firebase(url:(currentUserPath as String) + "/sitterList/")
                     
                     fireBaseRef.queryOrderedByValue().observeEventType(.ChildAdded, withBlock: { snapshot in
 //Need To ADD ERROR HANDLING HERE
-                        //=================================================================\\
-                        let sitterObjDict = snapshot.value as! NSDictionary
-                        let imgUrlModel = sitterObjDict["image-url"] as! String
+                        if snapshot.value != nil {
+                            let sitterObjDict = snapshot.value as! NSDictionary
+                            let imgUrlModel = sitterObjDict["profileImgUrl"] as! String
                         
-                        let AlamoRef = Alamofire.request(.GET, imgUrlModel)
-                        AlamoRef.responseImage { response in
-                            if let image = response.result.value {
-// INSERT "h ttps://www.facebook.com/(FirstPhoto)" --> See Above
-                                let sitterImageModel = image
-                                let sitterNameModel = sitterObjDict["name"] as! String
-                                let sitterScoreModel = sitterObjDict["cnx-score"] as! Int
-                                let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel)
-                                sitterModelObjects.append(SitterObject)
-                                flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.whiteColor())
-                            }
-                            AlamoRef.resume()
-                            UserDataHasBeenLoaded = true
-                        } // ==== End Almao Ref =====//
+                            let AlamoRef = Alamofire.request(.GET, imgUrlModel)
+                            AlamoRef.responseImage { response in
+                                if let image = response.result.value {
+                                    
+                                    let sitterImageModel = image
+                                    let sitterNameModel = sitterObjDict["userName"] as! String
+                                    let sitterScoreModel = sitterObjDict["cnxScore"] as! Int
+                                    let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel)
+                                    sitterModelObjects.append(SitterObject)
+                                    flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.lightGrayColor())
+                                }
+                                AlamoRef.resume()
+                                UserDataHasBeenLoaded = true
+                            } // @l@m0 - - - - - End Almao Ref - - - - - - - - //
+                        
+                        } else {
+                            print("no Sitter Data Available")
+                        }// ----- END 'if/else' ... directly above --------\\
                     }) // |DB| ====== END FIRE BASE ========= |DB| //
             } // ----- END 'else' Statement --------------//
             self.performSegueWithIdentifier("showSitter", sender: nil)
 //            task.reloadDate()
-        }) // - - - - - - - - END Graph Request - - - - - - - - - - - - - - //
+        }) // - - - - END Graph Request - - -  - //
     } //============================ END  func returnUserData() ============================== //
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

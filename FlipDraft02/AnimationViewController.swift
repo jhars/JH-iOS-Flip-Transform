@@ -2,7 +2,7 @@
 import UIKit
 var step = Int()
 
-var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(-100,100,600,450))
+var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(-100,100,575,500))
 class AnimationViewController: UIViewController {
     
     var sitterObjArray = [SitterMatchModel]()
@@ -12,6 +12,7 @@ class AnimationViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var TopNavBar: UINavigationBar!
     @IBOutlet weak var NavBar: UINavigationBar!
+//    @IBOutlet weak var profileNameGradientBG: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class AnimationViewController: UIViewController {
         animationDelegate.startAnimation(kDirectionNone)
         self.view.bringSubviewToFront(NavBar)
         self.view.bringSubviewToFront(TopNavBar)
+//        self.view.bringSubviewToFront(profileNameGradientBG)
 
         
         animationDelegate.transformView = flipView
@@ -34,9 +36,10 @@ class AnimationViewController: UIViewController {
         flipView.font = "HelveticaNeue-Bold"
         flipView.fontSize = 36.0
         flipView.fontAlignment = "right" // not working yet... maybe when words wrap?
-        flipView.textOffset = CGPointMake(150.0, 240.0);
+        flipView.textOffset = CGPointMake(125.0, 330.0);
 
         flipView.printText("BASE LAYER", usingImage: UIImage(named: "jessica"), backgroundColor: nil, textColor: UIColor.blueColor())
+
 
           self.view.addSubview(flipView)
         
@@ -69,6 +72,7 @@ class AnimationViewController: UIViewController {
             self.view.bringSubviewToFront(TopNavBar)
             self.view.bringSubviewToFront(schedulizerLabel)
             self.view.bringSubviewToFront(nameLabel)
+//                    self.view.bringSubviewToFront(profileNameGradientBG)
         }
 //  Flick-DOWN => BACKWARD
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Down) {
@@ -80,6 +84,7 @@ class AnimationViewController: UIViewController {
             self.view.bringSubviewToFront(TopNavBar)
             self.view.bringSubviewToFront(schedulizerLabel)
             self.view.bringSubviewToFront(nameLabel)
+//            self.view.bringSubviewToFront(profileNameGradientBG)
         }
     }
     // ---------- END HandleSwipe func ---------------//
