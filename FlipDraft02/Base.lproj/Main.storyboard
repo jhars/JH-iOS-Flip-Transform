@@ -29,6 +29,7 @@
                                         <leftBarButtonItems>
                                             <barButtonItem title="Go Back" id="8Fl-Ug-FTW">
                                                 <connections>
+                                                    <action selector="goBackBtn:" destination="BYZ-38-t0r" id="rGt-Ba-PWK"/>
                                                     <segue destination="J0N-1E-Wai" kind="popoverPresentation" popoverAnchorBarButtonItem="8Fl-Ug-FTW" id="WUM-Mh-kGH">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                     </segue>
@@ -119,13 +120,6 @@
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="SitterBook" id="k98-VL-seR">
-                                        <barButtonItem key="leftBarButtonItem" title="Flipper" id="sfw-8y-lVM">
-                                            <connections>
-                                                <segue destination="BYZ-38-t0r" kind="popoverPresentation" popoverAnchorBarButtonItem="sfw-8y-lVM" id="vxt-Gf-fcy">
-                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                </segue>
-                                            </connections>
-                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="My Account" id="1fV-Xs-YCQ">
                                             <connections>
                                                 <segue destination="0l0-zg-5yH" kind="presentation" modalTransitionStyle="flipHorizontal" id="VmW-zb-emt"/>
@@ -429,8 +423,7 @@
         <image name="book-logo" width="53" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jvQ-6z-WMj"/>
-        <segue reference="vfg-As-u2a"/>
-        <segue reference="sEQ-aF-YqL"/>
+        <segue reference="VmW-zb-emt"/>
+        <segue reference="WUM-Mh-kGH"/>
     </inferredMetricsTieBreakers>
 </document>
