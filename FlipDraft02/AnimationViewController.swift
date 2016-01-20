@@ -3,6 +3,8 @@ import UIKit
 var step = Int()
 var baseLayer:Bool = false
 
+var weeklyTimeSlotArray = [UILabel]()
+
 var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(-100,100,575,500))
 class AnimationViewController: UIViewController {
     
@@ -14,8 +16,39 @@ class AnimationViewController: UIViewController {
     @IBOutlet weak var TopNavBar: UINavigationBar!
     @IBOutlet weak var NavBar: UINavigationBar!
     
+    
+    var mon0 = true
+    
+    @IBOutlet weak var MON_0: UILabel!
+    @IBOutlet weak var MON_1: UILabel!
+    @IBOutlet weak var MON_2: UILabel!
+    
+    @IBOutlet weak var TUE_0: UILabel!
+    @IBOutlet weak var TUE_1: UILabel!
+    @IBOutlet weak var TUE_2: UILabel!
+    
+    @IBOutlet weak var WED_0: UILabel!
+    @IBOutlet weak var WED_1: UILabel!
+    @IBOutlet weak var WED_2: UILabel!
+    
+    @IBOutlet weak var THU_0: UILabel!
+    @IBOutlet weak var THU_1: UILabel!
+    @IBOutlet weak var THU_2: UILabel!
+    
+    @IBOutlet weak var FRI_0: UILabel!
+    @IBOutlet weak var FRI_1: UILabel!
+    @IBOutlet weak var FRI_2: UILabel!
+    
+    @IBOutlet weak var SAT_0: UILabel!
+    @IBOutlet weak var SAT_1: UILabel!
+    @IBOutlet weak var SAT_2: UILabel!
+    
+    @IBOutlet weak var SUN_0: UILabel!
+    @IBOutlet weak var SUN_1: UILabel!
+    @IBOutlet weak var SUN_2: UILabel!
+    
     @IBAction func goBackBtn(sender: AnyObject) {
-        flipView.removeFromSuperview()
+//        flipView.removeFromSuperview()
     }
     
     
@@ -23,11 +56,21 @@ class AnimationViewController: UIViewController {
         super.viewDidLoad()
         flipView.removeFromSuperview()
         print("on view did load")
+        
+        weeklyTimeSlotArray = [MON_0,MON_1,MON_2,TUE_0,TUE_1,TUE_2,WED_0,WED_1,WED_2,THU_0,THU_1,THU_2,FRI_0, FRI_1,FRI_2,SAT_0,SAT_1,SAT_2,SUN_0,SUN_1,SUN_2]
+        print(weeklyTimeSlotArray[0].text)
+        
+        if mon0 == true {
+            weeklyTimeSlotArray[0].backgroundColor = UIColor.blueColor()
+        }
+
+        
+        
+        
 //                flipView.center = self.view.center
         animationDelegate.startAnimation(kDirectionNone)
         self.view.bringSubviewToFront(NavBar)
         self.view.bringSubviewToFront(TopNavBar)
-
         
         animationDelegate.transformView = flipView
         animationDelegate.controller = self
@@ -61,7 +104,11 @@ class AnimationViewController: UIViewController {
         self.view.bringSubviewToFront(schedulizerLabel)
         self.view.bringSubviewToFront(nameLabel)
         self.nameLabel.text = "Social Context"
-        self.schedulizerLabel.text = "Schedulizer"
+        
+        for squares in weeklyTimeSlotArray {
+            self.view.bringSubviewToFront(squares)
+        }
+        
     }
  // __________________________________ END ViewDidLoad ____________________________//
     
@@ -77,6 +124,9 @@ class AnimationViewController: UIViewController {
             self.view.bringSubviewToFront(TopNavBar)
             self.view.bringSubviewToFront(schedulizerLabel)
             self.view.bringSubviewToFront(nameLabel)
+            for squares in weeklyTimeSlotArray {
+                self.view.bringSubviewToFront(squares)
+            }
         }
 //  Flick-DOWN => BACKWARD
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Down) {
@@ -88,6 +138,9 @@ class AnimationViewController: UIViewController {
             self.view.bringSubviewToFront(TopNavBar)
             self.view.bringSubviewToFront(schedulizerLabel)
             self.view.bringSubviewToFront(nameLabel)
+            for squares in weeklyTimeSlotArray {
+                self.view.bringSubviewToFront(squares)
+            }
         }
     }
     // ---------- END HandleSwipe func ---------------//

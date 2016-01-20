@@ -72,6 +72,8 @@ class SitterMatchVC: UIViewController {
                                     let sitterNameModel = sitterObjDict["userName"] as! String
                                     let sitterScoreModel = sitterObjDict["cnxScore"] as! Int
                                     let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel)
+                                    
+
                                     sitterModelObjects.append(SitterObject)
                                     flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.lightGrayColor())
                                 }
