@@ -18,6 +18,28 @@ var sitterMatchModelScore = [Int]()
 var sitterModelObjects = [SitterMatchModel]()
 var UserDataHasBeenLoaded = false
 
+var mon0 = true
+var mon1 = true
+var mon2 = true
+var tue0 = true
+var tue1 = true
+var tue2 = true
+var wed0 = true
+var wed1 = true
+var wed2 = true
+var thu0 = true
+var thu1 = true
+var thu2 = true
+var fri0 = true
+var fri1 = true
+var fri2 = true
+var sat0 = true
+var sat1 = true
+var sat2 = true
+var sun0 = true
+var sun1 = true
+var sun2 = true
+
 class SitterMatchVC: UIViewController {
     
     var currentUserId:String = ""
@@ -76,12 +98,15 @@ class SitterMatchVC: UIViewController {
 //                                    print(sitterTimeArrayModel)
                                     let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel,timeSlots: sitterTimeArrayModel)
 //                                    let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel)
-                                    print(SitterObject.name)
-                                    print(SitterObject.cnxScore)
-                                    print(SitterObject.timeSlots)
+//                                    print(SitterObject.name)
+//                                    print(SitterObject.cnxScore)
+//                                    print(SitterObject.timeSlots)
 
                                     sitterModelObjects.append(SitterObject)
                                     flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.lightGrayColor())
+//                                    if ((SitterObject.timeSlots?) != nil) {
+//                                        print(SitterObject.timeSlots)
+//                                    }
                                 }
                                 AlamoRef.resume()
                                 UserDataHasBeenLoaded = true
