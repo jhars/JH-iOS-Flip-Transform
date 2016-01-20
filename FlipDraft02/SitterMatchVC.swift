@@ -18,27 +18,34 @@ var sitterMatchModelScore = [Int]()
 var sitterModelObjects = [SitterMatchModel]()
 var UserDataHasBeenLoaded = false
 
-var mon0 = true
-var mon1 = true
-var mon2 = true
-var tue0 = true
-var tue1 = true
-var tue2 = true
-var wed0 = true
-var wed1 = true
-var wed2 = true
-var thu0 = true
-var thu1 = true
-var thu2 = true
-var fri0 = true
-var fri1 = true
-var fri2 = true
-var sat0 = true
-var sat1 = true
-var sat2 = true
-var sun0 = true
-var sun1 = true
-var sun2 = true
+var mon0 = false
+var mon1 = false
+var mon2 = false
+var tue0 = false
+var tue1 = false
+var tue2 = false
+var wed0 = false
+var wed1 = false
+var wed2 = false
+var thu0 = false
+var thu1 = false
+var thu2 = false
+var fri0 = false
+var fri1 = false
+var fri2 = false
+var sat0 = false
+var sat1 = false
+var sat2 = false
+var sun0 = false
+var sun1 = false
+var sun2 = false
+
+//var tempSitterDisplayDictionary:NSDictionary = [String : NSArray<String>]()
+//var tempSitterDisplayDictionary = [String : Array<String>]()
+//var tempSitterDisplayDictionary = [ : ]
+
+
+var tempUserNameIdentifier = [String]()
 
 class SitterMatchVC: UIViewController {
     
@@ -94,8 +101,9 @@ class SitterMatchVC: UIViewController {
                                     let sitterNameModel = sitterObjDict["userName"] as! String
                                     let sitterScoreModel = sitterObjDict["cnxScore"] as! Int
 //                                    for schedMatches
-                                    let sitterTimeArrayModel = sitterObjDict["sitterSchedMatches"] as! NSArray
+                                    let sitterTimeArrayModel = sitterObjDict["sitterSchedMatches"] as! NSDictionary
 //                                    print(sitterTimeArrayModel)
+                                    
                                     let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel,timeSlots: sitterTimeArrayModel)
 //                                    let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel)
 //                                    print(SitterObject.name)
@@ -104,6 +112,20 @@ class SitterMatchVC: UIViewController {
 
                                     sitterModelObjects.append(SitterObject)
                                     flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.lightGrayColor())
+//                                    step += 1
+                                    
+                                    tempUserNameIdentifier.append(sitterNameModel)
+                                    
+                                    //Arrays load in SAME Order, this is good!
+                                    //You can pair/sync them together have
+                                    //schedule cycle as you flip
+                                    //using the name OR index as an identifier
+                                    //but I still need the name in the flipView Object
+                                    
+                                    
+//                                    var tempFlipperView = flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.lightGrayColor())
+//                                    print(tempFlipperView)
+                                    
 //                                    if ((SitterObject.timeSlots?) != nil) {
 //                                        print(SitterObject.timeSlots)
 //                                    }
