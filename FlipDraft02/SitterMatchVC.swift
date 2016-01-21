@@ -18,34 +18,14 @@ var sitterMatchModelScore = [Int]()
 var sitterModelObjects = [SitterMatchModel]()
 var UserDataHasBeenLoaded = false
 
-var mon0 = false
-var mon1 = false
-var mon2 = false
-var tue0 = false
-var tue1 = false
-var tue2 = false
-var wed0 = false
-var wed1 = false
-var wed2 = false
-var thu0 = false
-var thu1 = false
-var thu2 = false
-var fri0 = false
-var fri1 = false
-var fri2 = false
-var sat0 = false
-var sat1 = false
-var sat2 = false
-var sun0 = false
-var sun1 = false
-var sun2 = false
-
 //var tempSitterDisplayDictionary:NSDictionary = [String : NSArray<String>]()
 //var tempSitterDisplayDictionary = [String : Array<String>]()
 //var tempSitterDisplayDictionary = [ : ]
 
 
 var tempUserNameIdentifier = [String]()
+var tempUserCnxScoreIdentifier = [Int]()
+var tempUserSitterSchedIdentifier = [NSDictionary]()
 
 class SitterMatchVC: UIViewController {
     
@@ -115,7 +95,8 @@ class SitterMatchVC: UIViewController {
 //                                    step += 1
                                     
                                     tempUserNameIdentifier.append(sitterNameModel)
-                                    
+                                    tempUserCnxScoreIdentifier.append(sitterScoreModel)
+                                    tempUserSitterSchedIdentifier.append(sitterTimeArrayModel)
                                     //Arrays load in SAME Order, this is good!
                                     //You can pair/sync them together have
                                     //schedule cycle as you flip
