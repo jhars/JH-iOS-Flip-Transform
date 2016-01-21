@@ -72,7 +72,7 @@ class AnimationViewController: UIViewController {
             baseLayer = true
             self.view.bringSubviewToFront(flipView)
         } else {
-            
+            print("base layer loaded on initial ViewDidLoad")
         }
         self.view.sendSubviewToBack(flipView)
         //========================= PAN-GESTURE ===============================//
@@ -133,6 +133,8 @@ class AnimationViewController: UIViewController {
         for squares in self.weeklyTimeSlotArray {
             self.view.bringSubviewToFront(squares)
         }
+        print(tempUserNameIdentifier)
+        step = tempUserNameIdentifier.count - 1
     }
 //((((((((((((((((((((((((((((((((((((((MAIN BUTTON)))))))))))))))))))))))))))))//
     
@@ -148,13 +150,17 @@ class AnimationViewController: UIViewController {
             self.view.bringSubviewToFront(TopNavBar)
             self.view.bringSubviewToFront(schedulizerLabel)
             self.view.bringSubviewToFront(nameLabel)
-            print(tempUserNameIdentifier[step])
-            if step >= (tempUserNameIdentifier.count - 1) {
+
+            if step < (tempUserNameIdentifier.count - 1) {
+                print(tempUserNameIdentifier.count)
                 print("No More Sitters")
-                step = 0
-            } else {
                 step += 1
+            } else {
+                step = 0
             }
+            print(step)
+            print(tempUserNameIdentifier[step])
+            
 //            print(flipView)
             for squares in self.weeklyTimeSlotArray {
                 self.view.bringSubviewToFront(squares)
@@ -170,14 +176,16 @@ class AnimationViewController: UIViewController {
             self.view.bringSubviewToFront(TopNavBar)
             self.view.bringSubviewToFront(schedulizerLabel)
             self.view.bringSubviewToFront(nameLabel)
-            
-            print(tempUserNameIdentifier[step])
-            if step == 0 {
-                print("cant go to negative Array Index")
-                step = tempUserNameIdentifier.count - 1
-            } else {
+            if step > 0 {
                 step -= 1
+            } else {
+                step = tempUserNameIdentifier.count - 1
             }
+            print(step)
+            print(tempUserNameIdentifier[step])
+            
+            
+            
 
             for squares in self.weeklyTimeSlotArray {
                 self.view.bringSubviewToFront(squares)
