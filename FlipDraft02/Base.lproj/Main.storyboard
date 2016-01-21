@@ -253,6 +253,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsu-jY-UqQ">
+                                <rect key="frame" x="230" y="241" width="140" height="30"/>
+                                <color key="backgroundColor" red="0.64035166628609552" green="1" blue="0.79920211566955335" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Flip Through Sitters!"/>
+                                <connections>
+                                    <action selector="tappedFlipThruSitters:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kcT-s8-RIe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -332,6 +340,8 @@
                             <constraint firstItem="OLI-S6-epE" firstAttribute="firstBaseline" secondItem="Rem-w1-g7M" secondAttribute="firstBaseline" id="qwJ-Ii-dkm"/>
                             <constraint firstItem="zA4-s9-hwO" firstAttribute="leading" secondItem="4AU-vE-T4f" secondAttribute="leading" id="rLb-qV-CUs"/>
                             <constraint firstItem="UYG-nA-eSo" firstAttribute="top" secondItem="fDA-8E-phv" secondAttribute="bottom" constant="-5" id="ryz-WX-ZAv"/>
+                            <constraint firstItem="Bsu-jY-UqQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="slq-rg-HMp"/>
+                            <constraint firstItem="Bsu-jY-UqQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="sxf-eA-m2t"/>
                             <constraint firstItem="Rem-w1-g7M" firstAttribute="leading" secondItem="OLI-S6-epE" secondAttribute="trailing" constant="8" symbolic="YES" id="t2l-74-rIP"/>
                             <constraint firstItem="a97-Ac-GTB" firstAttribute="baseline" secondItem="myo-CK-uLO" secondAttribute="baseline" id="t8f-kG-Ekh"/>
                             <constraint firstItem="8Ch-dJ-92e" firstAttribute="firstBaseline" secondItem="mgt-tM-bnl" secondAttribute="firstBaseline" id="tGC-c0-Rg2"/>
@@ -371,6 +381,7 @@
                         <outlet property="WED_0" destination="Lrr-Ir-7ao" id="cHm-7S-PEB"/>
                         <outlet property="WED_1" destination="ik6-rD-uJF" id="FGc-uv-C2X"/>
                         <outlet property="WED_2" destination="ZsV-fq-eie" id="gXb-Ja-Box"/>
+                        <outlet property="flipThruBtn" destination="Bsu-jY-UqQ" id="Wif-Mx-Cf7"/>
                         <outlet property="nameLabel" destination="SJH-VE-9we" id="Jst-fr-AXX"/>
                         <outlet property="schedulizerLabel" destination="fDA-8E-phv" id="9cm-na-DZs"/>
                     </connections>

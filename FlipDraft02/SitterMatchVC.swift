@@ -144,8 +144,8 @@ class SitterMatchVC: UIViewController {
         }) // - - - - END Graph Request - - -  - //
     } //============================ END  func returnUserData() ============================== //
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let newsTVC = segue.destinationViewController as! AnimationViewController
-        newsTVC.sitterObjArray = sitterModelObjects
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        let newsTVC = segue.destinationViewController as! AnimationViewController
+//        newsTVC.sitterObjArray = sitterModelObjects
+//    }
 }
