@@ -66,40 +66,64 @@ class AnimationViewController: UIViewController {
     
     func displayTargetSitterSchedule () {
         print("update schedulizer here")
-        //Friday
+//Friday
         self.fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
         self.fri1 = tempUserSitterSchedIdentifier[step]["fri1"] as! Int
         self.fri2 = tempUserSitterSchedIdentifier[step]["fri2"] as! Int
-        //Monday
+        
+        if self.fri0 == 1 { self.FRI_0.backgroundColor = UIColor.blueColor() } else { self.FRI_0.backgroundColor = UIColor.greenColor() }
+        if self.fri1 == 1 { self.FRI_1.backgroundColor = UIColor.blueColor() } else { self.FRI_1.backgroundColor = UIColor.greenColor() }
+        if self.fri2 == 1 { self.FRI_2.backgroundColor = UIColor.blueColor() } else { self.FRI_2.backgroundColor = UIColor.greenColor() }
+        
+//Monday
         self.mon0 = tempUserSitterSchedIdentifier[step]["mon0"] as! Int
         self.mon1 = tempUserSitterSchedIdentifier[step]["mon1"] as! Int
         self.mon2 = tempUserSitterSchedIdentifier[step]["mon2"] as! Int
-        //Saturday
+        
+        if self.mon0 == 1 { self.MON_0.backgroundColor = UIColor.blueColor() } else { self.MON_0.backgroundColor = UIColor.greenColor() }
+        if self.mon1 == 1 { self.MON_1.backgroundColor = UIColor.blueColor() } else { self.MON_1.backgroundColor = UIColor.greenColor() }
+        if self.mon2 == 1 { self.MON_2.backgroundColor = UIColor.blueColor() } else { self.MON_2.backgroundColor = UIColor.greenColor() }
+        
+//Saturday
         self.sat0 = tempUserSitterSchedIdentifier[step]["sat0"] as! Int
         self.sat1 = tempUserSitterSchedIdentifier[step]["sat1"] as! Int
         self.sat2 = tempUserSitterSchedIdentifier[step]["sat2"] as! Int
-        //Sunday
+        if self.sat0 == 1 { self.SAT_0.backgroundColor = UIColor.blueColor() } else { self.SAT_0.backgroundColor = UIColor.greenColor() }
+        if self.sat1 == 1 { self.SAT_1.backgroundColor = UIColor.blueColor() } else { self.SAT_1.backgroundColor = UIColor.greenColor() }
+        if self.sat2 == 1 { self.SAT_2.backgroundColor = UIColor.blueColor() } else { self.SAT_2.backgroundColor = UIColor.greenColor() }
+//Sunday
         self.sun0 = tempUserSitterSchedIdentifier[step]["sun0"] as! Int
         self.sun1 = tempUserSitterSchedIdentifier[step]["sun1"] as! Int
         self.sun2 = tempUserSitterSchedIdentifier[step]["sun2"] as! Int
-        //Thursday
+        
+        if self.sun0 == 1 { self.SUN_0.backgroundColor = UIColor.blueColor() } else { self.SUN_0.backgroundColor = UIColor.greenColor() }
+        if self.sun1 == 1 { self.SUN_1.backgroundColor = UIColor.blueColor() } else { self.SUN_1.backgroundColor = UIColor.greenColor() }
+        if self.sun2 == 1 { self.SUN_2.backgroundColor = UIColor.blueColor() } else { self.SUN_2.backgroundColor = UIColor.greenColor() }
+//Thursday
         self.thu0 = tempUserSitterSchedIdentifier[step]["thu0"] as! Int
         self.thu1 = tempUserSitterSchedIdentifier[step]["thu1"] as! Int
         self.thu2 = tempUserSitterSchedIdentifier[step]["thu2"] as! Int
-        //Tuesday
+        
+        if self.thu0 == 1 { self.THU_0.backgroundColor = UIColor.blueColor() } else { self.THU_0.backgroundColor = UIColor.greenColor() }
+        if self.thu1 == 1 { self.THU_1.backgroundColor = UIColor.blueColor() } else { self.THU_1.backgroundColor = UIColor.greenColor() }
+        if self.thu2 == 1 { self.THU_2.backgroundColor = UIColor.blueColor() } else { self.THU_2.backgroundColor = UIColor.greenColor() }
+//Tuesday
         self.tue0 = tempUserSitterSchedIdentifier[step]["tue0"] as! Int
         self.tue1 = tempUserSitterSchedIdentifier[step]["tue1"] as! Int
         self.tue2 = tempUserSitterSchedIdentifier[step]["tue2"] as! Int
-        //Wednesday
+        
+        if self.tue0 == 1 { self.TUE_0.backgroundColor = UIColor.blueColor() } else { self.TUE_0.backgroundColor = UIColor.greenColor() }
+        if self.tue1 == 1 { self.TUE_1.backgroundColor = UIColor.blueColor() } else { self.TUE_1.backgroundColor = UIColor.greenColor() }
+        if self.tue2 == 1 { self.TUE_2.backgroundColor = UIColor.blueColor() } else { self.TUE_2.backgroundColor = UIColor.greenColor() }
+//Wednesday
         self.wed0 = tempUserSitterSchedIdentifier[step]["wed0"] as! Int
         self.wed1 = tempUserSitterSchedIdentifier[step]["wed1"] as! Int
         self.wed2 = tempUserSitterSchedIdentifier[step]["wed2"] as! Int
         
-        if self.fri0 == 1 {
-            self.FRI_0.backgroundColor = UIColor.blueColor()
-        } else {
-            self.FRI_0.backgroundColor = UIColor.greenColor()
-        }
+        if self.wed0 == 1 { self.WED_0.backgroundColor = UIColor.blueColor() } else { self.WED_0.backgroundColor = UIColor.greenColor() }
+        if self.wed1 == 1 { self.WED_1.backgroundColor = UIColor.blueColor() } else { self.WED_1.backgroundColor = UIColor.greenColor() }
+        if self.wed2 == 1 { self.WED_2.backgroundColor = UIColor.blueColor() } else { self.WED_2.backgroundColor = UIColor.greenColor() }
+
     }
     
     override func viewDidLoad() {
@@ -122,7 +146,7 @@ class AnimationViewController: UIViewController {
         if baseLayer == false {
             flipView.printText("BASE LAYER", usingImage: nil, backgroundColor: UIColor.lightGrayColor(), textColor: UIColor.blueColor())
             tempUserCnxScoreIdentifier.append(0)
-            tempUserSitterSchedIdentifier.append([ "fri0" : 1,"fri1": 0,"fri2":0,"mon0":0,"mon1":0,"mon2":0,"sat0":0,"sat1":0,"sat2":0,"sun0":0,"sun1":0,"sun2":0,"thu0":0,"thu1":0,"thu2":0,"tue0":0,"tue1":0,"tue2":0,"wed0":0,"wed1":0,"wed2":0])
+            tempUserSitterSchedIdentifier.append([ "fri0" : 1,"fri1": 0,"fri2":0,"mon0":0,"mon1":1,"mon2":0,"sat0":0,"sat1":0,"sat2":0,"sun0":1,"sun1":0,"sun2":0,"thu0":0,"thu1":1,"thu2":0,"tue0":0,"tue1":1,"tue2":1,"wed0":0,"wed1":0,"wed2":0])
             tempUserNameIdentifier.append("BASE-LAYER")
             baseLayer = true
             self.view.bringSubviewToFront(flipView)
