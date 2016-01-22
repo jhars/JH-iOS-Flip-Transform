@@ -1,82 +1,73 @@
-
+// ************************************ //
+// SitterBook Flip-Animation Controller //
+// ************************************ //
 import UIKit
+
+
 var step = 0
 var baseLayer = false
-
-
 var tempSitterDisplayDictionary = [ : ]
 var tempTimeSlotArrFromAPI = [Int]()
 
 var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(-100,100,575,500))
+
 class AnimationViewController: UIViewController {
     
     var sitterObjArray = [SitterMatchModel]()
     var animationDelegate:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceControlled, directionType: kDirectionNone)
-    var weeklyTimeSlotArray = [UILabel]()
-
+    var timeSlotLabelsOnViewArray = [UILabel]()
+    //[[[[[[[[[[ CENTER-BUTTON ]]]]]]]]]]]\\
+    @IBOutlet weak var flipThruBtn: UIButton!
     
+// ================ SCHEDULIZER ================== //
+//************************************************//
     @IBOutlet weak var schedulizerLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var TopNavBar: UINavigationBar!
     @IBOutlet weak var NavBar: UINavigationBar!
     //MONDAY
-    var mon0 = 0
-    var mon1 = 0
-    var mon2 = 0
+    var mon0 = 0;var mon1 = 0;var mon2 = 0
     @IBOutlet weak var MON_0: UILabel!
     @IBOutlet weak var MON_1: UILabel!
     @IBOutlet weak var MON_2: UILabel!
     //TUESDAY
-    var tue0 = 0
-    var tue1 = 0
-    var tue2 = 0
+    var tue0 = 0;var tue1 = 0;var tue2 = 0
     @IBOutlet weak var TUE_0: UILabel!
     @IBOutlet weak var TUE_1: UILabel!
     @IBOutlet weak var TUE_2: UILabel!
     //WEDNESDAY
-    var wed0 = 0
-    var wed1 = 0
-    var wed2 = 0
+    var wed0 = 0;var wed1 = 0;var wed2 = 0
     @IBOutlet weak var WED_0: UILabel!
     @IBOutlet weak var WED_1: UILabel!
     @IBOutlet weak var WED_2: UILabel!
     //THURSDAY
-    var thu0 = 0
-    var thu1 = 0
-    var thu2 = 0
+    var thu0 = 0;var thu1 = 0;var thu2 = 0
     @IBOutlet weak var THU_0: UILabel!
     @IBOutlet weak var THU_1: UILabel!
     @IBOutlet weak var THU_2: UILabel!
     //FRIDAY
-    var fri0 = 0
-    var fri1 = 0
-    var fri2 = 0
+    var fri0 = 0;var fri1 = 0;var fri2 = 0
     @IBOutlet weak var FRI_0: UILabel!
     @IBOutlet weak var FRI_1: UILabel!
     @IBOutlet weak var FRI_2: UILabel!
     //SATURDAY
-    var sat0 = 0
-    var sat1 = 0
-    var sat2 = 0
+    var sat0 = 0;var sat1 = 0;var sat2 = 0
     @IBOutlet weak var SAT_0: UILabel!
     @IBOutlet weak var SAT_1: UILabel!
     @IBOutlet weak var SAT_2: UILabel!
     //SUNDAY
-    var sun0 = 0
-    var sun1 = 0
-    var sun2 = 0
+    var sun0 = 0;var sun1 = 0;var sun2 = 0
     @IBOutlet weak var SUN_0: UILabel!
     @IBOutlet weak var SUN_1: UILabel!
     @IBOutlet weak var SUN_2: UILabel!
+//**************************************************//
+//--------------- END SCHEDULIZER ----------------- //
+
     
     func displayTargetSitterSchedule (sitterSchedMatches:NSDictionary) {
-        
         print("update schedulizer here")
         print(sitterSchedMatches)
-        
     }
-    
-    @IBOutlet weak var flipThruBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,18 +140,17 @@ class AnimationViewController: UIViewController {
         self.nameLabel.text = "Social Context"
         
         //========================================================================================================================//
-        self.weeklyTimeSlotArray = [FRI_0, FRI_1,FRI_2,MON_0,MON_1,MON_2,SAT_0,SAT_1,SAT_2,SUN_0,SUN_1,SUN_2,THU_0,THU_1,THU_2,TUE_0,TUE_1,TUE_2,WED_0,WED_1,WED_2]
+        self.timeSlotLabelsOnViewArray = [FRI_0, FRI_1,FRI_2,MON_0,MON_1,MON_2,SAT_0,SAT_1,SAT_2,SUN_0,SUN_1,SUN_2,THU_0,THU_1,THU_2,TUE_0,TUE_1,TUE_2,WED_0,WED_1,WED_2]
         tempTimeSlotArrFromAPI = [fri0,fri1,fri2,mon0,mon1,mon2,sat0,sat1,sat2,sun0,sun1,sun2,thu0,thu1,thu2,tue0,tue1,tue2,wed0,wed1,wed2]
         //========================================================================================================================//
         print("checkpoint-01")
-        for squares in self.weeklyTimeSlotArray {
+        for squares in self.timeSlotLabelsOnViewArray {
             self.view.bringSubviewToFront(squares)
         }
         print(tempUserNameIdentifier)
         step = tempUserNameIdentifier.count - 1
     }
 //((((((((((((((((((((((((((((((((((((((MAIN BUTTON)))))))))))))))))))))))))))))//
-
     var timeSlotIndex:Int = 0
 //===========================> (SWIPE - HANDLER) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     func handleSwipe(recognizer:UISwipeGestureRecognizer){
@@ -168,12 +158,9 @@ class AnimationViewController: UIViewController {
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Up) {
             animationDelegate.startAnimation(kDirectionBackward)
             self.view.addSubview(flipView)
-            print("on UP Swipe!")
 //            self.nameLabel.text = "Wendy Darling"
-            self.view.bringSubviewToFront(NavBar)
-            self.view.bringSubviewToFront(TopNavBar)
-            self.view.bringSubviewToFront(schedulizerLabel)
-            self.view.bringSubviewToFront(nameLabel)
+            print("on UP Swipe!")
+            self.view.bringSubviewToFront(NavBar);self.view.bringSubviewToFront(TopNavBar);self.view.bringSubviewToFront(schedulizerLabel);self.view.bringSubviewToFront(nameLabel)
 
             if step < (tempUserNameIdentifier.count - 1) {
                 print(tempUserNameIdentifier.count)
@@ -182,28 +169,24 @@ class AnimationViewController: UIViewController {
             } else {
                 step = 0
             }
-            print(step)
-            print(tempUserNameIdentifier[step])
-            print(tempUserCnxScoreIdentifier)
-            print(tempUserCnxScoreIdentifier[step])
+            print(step);print(tempUserNameIdentifier[step]);print(tempUserCnxScoreIdentifier[step]);print(tempUserSitterSchedIdentifier[step])
             
-            print(tempUserSitterSchedIdentifier[step])
-            for squares in self.weeklyTimeSlotArray {
+            for squares in self.timeSlotLabelsOnViewArray {
                 self.view.bringSubviewToFront(squares)
             }
-//            print(tempUserSitterSchedIdentifier[step].valueForKey(tempTimeSlotArrFromAPI[self.timeSlotIndex])
+
             for timeSlot in tempUserSitterSchedIdentifier[step] {
-//                print(tempUserSitterSchedIdentifier[step][tempTimeSlotArrFromAPI[timeSlotIndex]])
-//                print(tempUserSitterSchedIdentifier[step]["fri0"])
-//                self.fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
+
+                var Fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
+                print(Fri0)
+                
+                self.fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
                 if self.fri0 == 1 {
                     self.FRI_0.backgroundColor = UIColor.blueColor()
                 } else {
                     self.FRI_0.backgroundColor = UIColor.greenColor()
                 }
-//                .valueForKey(tempTimeSlotArrFromAPI[self.timeSlotIndex] as! String) === 1 {
-//                    print(timeSlot)
-                }
+            }
 
         }
 //  Flick-DOWN => BACKWARD
@@ -212,31 +195,22 @@ class AnimationViewController: UIViewController {
             self.view.addSubview(flipView)
 //            self.nameLabel.text = "Peter Pan"
             print("on down swipe")
-            self.view.bringSubviewToFront(NavBar)
-            self.view.bringSubviewToFront(TopNavBar)
-            self.view.bringSubviewToFront(schedulizerLabel)
-            self.view.bringSubviewToFront(nameLabel)
+            self.view.bringSubviewToFront(NavBar);self.view.bringSubviewToFront(TopNavBar);self.view.bringSubviewToFront(schedulizerLabel);self.view.bringSubviewToFront(nameLabel)
+            
             if step > 0 {
                 step -= 1
             } else {
                 step = tempUserNameIdentifier.count - 1
             }
-            print(step)
-            print(tempUserNameIdentifier[step])
-            print(tempUserCnxScoreIdentifier[step])
-            print(tempUserSitterSchedIdentifier[step])
-
-            for squares in self.weeklyTimeSlotArray {
+            print(step);print(tempUserNameIdentifier[step]);print(tempUserCnxScoreIdentifier[step]);print(tempUserSitterSchedIdentifier[step])
+            
+            for squares in self.timeSlotLabelsOnViewArray {
                 self.view.bringSubviewToFront(squares)
             }
             for timeSlot in tempUserSitterSchedIdentifier[step] {
-                //                print(tempUserSitterSchedIdentifier[step][tempTimeSlotArrFromAPI[timeSlotIndex]])
+
                 var Fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
                 print(Fri0)
-                
-//                for i in tempTimeSlotArrFromAPI {
-//                    
-//                }
                 
                 self.fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
                 if self.fri0 == 1 {
@@ -244,8 +218,7 @@ class AnimationViewController: UIViewController {
                 } else {
                     self.FRI_0.backgroundColor = UIColor.greenColor()
                 }
-                //                .valueForKey(tempTimeSlotArrFromAPI[self.timeSlotIndex] as! String) === 1 {
-                //                    print(timeSlot)
+
             }
         }
     }
