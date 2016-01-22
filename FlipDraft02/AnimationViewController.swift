@@ -64,9 +64,42 @@ class AnimationViewController: UIViewController {
 //--------------- END SCHEDULIZER ----------------- //
 
     
-    func displayTargetSitterSchedule (sitterSchedMatches:NSDictionary) {
+    func displayTargetSitterSchedule () {
         print("update schedulizer here")
-        print(sitterSchedMatches)
+        //Friday
+        self.fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
+        self.fri1 = tempUserSitterSchedIdentifier[step]["fri1"] as! Int
+        self.fri2 = tempUserSitterSchedIdentifier[step]["fri2"] as! Int
+        //Monday
+        self.mon0 = tempUserSitterSchedIdentifier[step]["mon0"] as! Int
+        self.mon1 = tempUserSitterSchedIdentifier[step]["mon1"] as! Int
+        self.mon2 = tempUserSitterSchedIdentifier[step]["mon2"] as! Int
+        //Saturday
+        self.sat0 = tempUserSitterSchedIdentifier[step]["sat0"] as! Int
+        self.sat1 = tempUserSitterSchedIdentifier[step]["sat1"] as! Int
+        self.sat2 = tempUserSitterSchedIdentifier[step]["sat2"] as! Int
+        //Sunday
+        self.sun0 = tempUserSitterSchedIdentifier[step]["sun0"] as! Int
+        self.sun1 = tempUserSitterSchedIdentifier[step]["sun1"] as! Int
+        self.sun2 = tempUserSitterSchedIdentifier[step]["sun2"] as! Int
+        //Thursday
+        self.thu0 = tempUserSitterSchedIdentifier[step]["thu0"] as! Int
+        self.thu1 = tempUserSitterSchedIdentifier[step]["thu1"] as! Int
+        self.thu2 = tempUserSitterSchedIdentifier[step]["thu2"] as! Int
+        //Tuesday
+        self.tue0 = tempUserSitterSchedIdentifier[step]["tue0"] as! Int
+        self.tue1 = tempUserSitterSchedIdentifier[step]["tue1"] as! Int
+        self.tue2 = tempUserSitterSchedIdentifier[step]["tue2"] as! Int
+        //Wednesday
+        self.wed0 = tempUserSitterSchedIdentifier[step]["wed0"] as! Int
+        self.wed1 = tempUserSitterSchedIdentifier[step]["wed1"] as! Int
+        self.wed2 = tempUserSitterSchedIdentifier[step]["wed2"] as! Int
+        
+        if self.fri0 == 1 {
+            self.FRI_0.backgroundColor = UIColor.blueColor()
+        } else {
+            self.FRI_0.backgroundColor = UIColor.greenColor()
+        }
     }
     
     override func viewDidLoad() {
@@ -89,7 +122,7 @@ class AnimationViewController: UIViewController {
         if baseLayer == false {
             flipView.printText("BASE LAYER", usingImage: nil, backgroundColor: UIColor.lightGrayColor(), textColor: UIColor.blueColor())
             tempUserCnxScoreIdentifier.append(0)
-            tempUserSitterSchedIdentifier.append([ "fri0" : 1 ])
+            tempUserSitterSchedIdentifier.append([ "fri0" : 1,"fri1": 0,"fri2":0,"mon0":0,"mon1":0,"mon2":0,"sat0":0,"sat1":0,"sat2":0,"sun0":0,"sun1":0,"sun2":0,"thu0":0,"thu1":0,"thu2":0,"tue0":0,"tue1":0,"tue2":0,"wed0":0,"wed1":0,"wed2":0])
             tempUserNameIdentifier.append("BASE-LAYER")
             baseLayer = true
             self.view.bringSubviewToFront(flipView)
@@ -154,6 +187,8 @@ class AnimationViewController: UIViewController {
     var timeSlotIndex:Int = 0
 //===========================> (SWIPE - HANDLER) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     func handleSwipe(recognizer:UISwipeGestureRecognizer){
+
+
 //  Flick-UP => FORWARD
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Up) {
             animationDelegate.startAnimation(kDirectionBackward)
@@ -179,13 +214,7 @@ class AnimationViewController: UIViewController {
 
                 var Fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
                 print(Fri0)
-                
-                self.fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
-                if self.fri0 == 1 {
-                    self.FRI_0.backgroundColor = UIColor.blueColor()
-                } else {
-                    self.FRI_0.backgroundColor = UIColor.greenColor()
-                }
+                self.displayTargetSitterSchedule()
             }
 
         }
@@ -211,14 +240,7 @@ class AnimationViewController: UIViewController {
 
                 var Fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
                 print(Fri0)
-                
-                self.fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
-                if self.fri0 == 1 {
-                    self.FRI_0.backgroundColor = UIColor.blueColor()
-                } else {
-                    self.FRI_0.backgroundColor = UIColor.greenColor()
-                }
-
+                self.displayTargetSitterSchedule()
             }
         }
     }
