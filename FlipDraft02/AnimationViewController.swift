@@ -98,7 +98,7 @@ class AnimationViewController: UIViewController {
         if baseLayer == false {
             flipView.printText("BASE LAYER", usingImage: nil, backgroundColor: UIColor.lightGrayColor(), textColor: UIColor.blueColor())
             tempUserCnxScoreIdentifier.append(0)
-            tempUserSitterSchedIdentifier.append(["baseLayer":"dummy"])
+            tempUserSitterSchedIdentifier.append([ "fri0" : 1 ])
             tempUserNameIdentifier.append("BASE-LAYER")
             baseLayer = true
             self.view.bringSubviewToFront(flipView)
@@ -151,10 +151,6 @@ class AnimationViewController: UIViewController {
         //========================================================================================================================//
         self.weeklyTimeSlotArray = [FRI_0, FRI_1,FRI_2,MON_0,MON_1,MON_2,SAT_0,SAT_1,SAT_2,SUN_0,SUN_1,SUN_2,THU_0,THU_1,THU_2,TUE_0,TUE_1,TUE_2,WED_0,WED_1,WED_2]
         tempTimeSlotArrFromAPI = [fri0,fri1,fri2,mon0,mon1,mon2,sat0,sat1,sat2,sun0,sun1,sun2,thu0,thu1,thu2,tue0,tue1,tue2,wed0,wed1,wed2]
-        //        print(sitterModelObjects)
-        //        if mon0 == true {
-        //            weeklyTimeSlotArray[0].backgroundColor = UIColor.blueColor()
-        //        }
         //========================================================================================================================//
         print("checkpoint-01")
         for squares in self.weeklyTimeSlotArray {
@@ -198,8 +194,8 @@ class AnimationViewController: UIViewController {
 //            print(tempUserSitterSchedIdentifier[step].valueForKey(tempTimeSlotArrFromAPI[self.timeSlotIndex])
             for timeSlot in tempUserSitterSchedIdentifier[step] {
 //                print(tempUserSitterSchedIdentifier[step][tempTimeSlotArrFromAPI[timeSlotIndex]])
-                print(tempUserSitterSchedIdentifier[step]["fri0"])
-                self.fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
+//                print(tempUserSitterSchedIdentifier[step]["fri0"])
+//                self.fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
                 if self.fri0 == 1 {
                     self.FRI_0.backgroundColor = UIColor.blueColor()
                 } else {
@@ -235,7 +231,13 @@ class AnimationViewController: UIViewController {
             }
             for timeSlot in tempUserSitterSchedIdentifier[step] {
                 //                print(tempUserSitterSchedIdentifier[step][tempTimeSlotArrFromAPI[timeSlotIndex]])
-                print(tempUserSitterSchedIdentifier[step]["fri0"])
+                var Fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
+                print(Fri0)
+                
+//                for i in tempTimeSlotArrFromAPI {
+//                    
+//                }
+                
                 self.fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
                 if self.fri0 == 1 {
                     self.FRI_0.backgroundColor = UIColor.blueColor()
@@ -249,8 +251,6 @@ class AnimationViewController: UIViewController {
     }
     // ---------- END HandleSwipe func ---------------//
 //===========================> (thru Sitter Array) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    
-// - - - - - - - - - - -  - - END PAN FUNCTION - - - - - - - - - - - - - - - - - - - - - - //
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
