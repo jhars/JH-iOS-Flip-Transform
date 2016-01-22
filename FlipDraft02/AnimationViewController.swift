@@ -206,8 +206,9 @@ class AnimationViewController: UIViewController {
         }
         print(tempUserNameIdentifier)
         step = tempUserNameIdentifier.count - 1
+        self.displayTargetSitterSchedule()
     }
-//((((((((((((((((((((((((((((((((((((((MAIN BUTTON)))))))))))))))))))))))))))))//
+//((((((((((((((((((((((((((((((((END -- MAIN BUTTON)))))))))))))))))))))))))))//
     var timeSlotIndex:Int = 0
 //===========================> (SWIPE - HANDLER) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     func handleSwipe(recognizer:UISwipeGestureRecognizer){
