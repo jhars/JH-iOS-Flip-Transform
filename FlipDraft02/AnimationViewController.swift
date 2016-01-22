@@ -19,6 +19,8 @@ class AnimationViewController: UIViewController {
     //[[[[[[[[[[ CENTER-BUTTON ]]]]]]]]]]]\\
     @IBOutlet weak var flipThruBtn: UIButton!
     
+    @IBOutlet weak var coverLabel: UILabel!
+    
 // ================ SCHEDULIZER ================== //
 //************************************************//
     @IBOutlet weak var schedulizerLabel: UILabel!
@@ -129,6 +131,7 @@ class AnimationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        flipView.removeFromSuperview()
+        
         print("on view did load")
         animationDelegate.transformView = flipView
         animationDelegate.controller = self
@@ -154,6 +157,8 @@ class AnimationViewController: UIViewController {
             print("base layer loaded on initial ViewDidLoad")
         }
         self.view.sendSubviewToBack(flipView)
+        self.coverLabel.backgroundColor = UIColor.lightGrayColor()
+        self.view.bringSubviewToFront(self.coverLabel)
         self.view.bringSubviewToFront(flipThruBtn)
         
         //========================= PAN-GESTURE ===============================//
@@ -165,6 +170,7 @@ class AnimationViewController: UIViewController {
         hideGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Down
         flipView.addGestureRecognizer(hideGestureRecognizer)
         //========================= PAN-GESTURE ===============================//
+
         
     }
  // __________________________________ END ViewDidLoad ____________________________//
