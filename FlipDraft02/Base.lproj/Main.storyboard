@@ -11,7 +11,7 @@
         <!--Animation View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="AnimationViewController" customModule="FlipDraft02" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnimationView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="AnimationViewController" customModule="FlipDraft02" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -243,16 +243,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gi-mp-mkO">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="MrT-5p-yxw"/>
-                                    <constraint firstAttribute="height" constant="60" id="UPp-ek-c4E"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Browse Sitters" id="QS2-pd-FKl"/>
-                                </items>
-                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsu-jY-UqQ">
                                 <rect key="frame" x="230" y="241" width="140" height="30"/>
                                 <color key="backgroundColor" red="0.64035166628609552" green="1" blue="0.79920211566955335" alpha="1" colorSpace="calibratedRGB"/>
@@ -267,6 +257,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gi-mp-mkO">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="MrT-5p-yxw"/>
+                                    <constraint firstAttribute="height" constant="60" id="UPp-ek-c4E"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Browse Sitters" id="QS2-pd-FKl"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -931,7 +931,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Tvb-07-hKF"/>
                                     <barButtonItem title="Item" systemItem="search" id="iwh-4d-Gl5">
                                         <connections>
-                                            <segue destination="tLI-Tz-Jng" kind="presentation" modalTransitionStyle="coverVertical" id="Hfg-vw-xTt"/>
+                                            <action selector="searchButton:" destination="J0N-1E-Wai" id="WXk-Rz-me6"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="zA3-5u-Efp"/>
@@ -967,7 +967,7 @@
         <!--Sitter MatchVC-->
         <scene sceneID="A1g-e5-EKh">
             <objects>
-                <viewController modalTransitionStyle="partialCurl" id="tLI-Tz-Jng" customClass="SitterMatchVC" customModule="FlipDraft02" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SitterMatchView" modalTransitionStyle="partialCurl" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tLI-Tz-Jng" customClass="SitterMatchVC" customModule="FlipDraft02" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="waI-HU-Dhc"/>
                         <viewControllerLayoutGuide type="bottom" id="fSe-yK-pOG"/>

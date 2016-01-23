@@ -16,7 +16,7 @@ import AlamofireImage
 var sitterMatchModelName = [String]()
 var sitterMatchModelScore = [Int]()
 var sitterModelObjects = [SitterMatchModel]()
-var UserDataHasBeenLoaded = false
+var UserDataHasBeenLoaded = Bool()
 
 //var tempSitterDisplayDictionary:NSDictionary = [String : NSArray<String>]()
 //var tempSitterDisplayDictionary = [String : Array<String>]()
@@ -35,8 +35,8 @@ class SitterMatchVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //remove all
-        returnUserData()
+            returnUserData()
+
     }
     
     let fireBaseRef = Firebase(url: "https://sitterbookapi.firebaseio.com/users/")
@@ -81,7 +81,7 @@ class SitterMatchVC: UIViewController {
                                     let sitterNameModel = sitterObjDict["userName"] as! String
                                     let sitterScoreModel = sitterObjDict["cnxScore"] as! Int
 //                                    for schedMatches
-                                    let sitterTimeArrayModel = sitterObjDict["sitterSchedMatches"] as! NSDictionary
+                                    let sitterTimeArrayModel = sitterObjDict["SitterSchedule"] as! NSDictionary
 //                                    print(sitterTimeArrayModel)
                                     
                                     let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel,timeSlots: sitterTimeArrayModel)

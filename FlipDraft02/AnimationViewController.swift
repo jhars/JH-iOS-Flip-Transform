@@ -68,6 +68,7 @@ class AnimationViewController: UIViewController {
     
     func displayTargetSitterSchedule () {
         print("update schedulizer here")
+
 //Friday
         self.fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
         self.fri1 = tempUserSitterSchedIdentifier[step]["fri1"] as! Int
@@ -146,6 +147,7 @@ class AnimationViewController: UIViewController {
         flipView.fontAlignment = "right" // not working yet... maybe when words wrap?
         flipView.textOffset = CGPointMake(125.0, 330.0);
         
+//BASE-LAYER + dummyDATA
         if baseLayer == false {
             flipView.printText("BASE LAYER", usingImage: nil, backgroundColor: UIColor.lightGrayColor(), textColor: UIColor.blueColor())
             tempUserCnxScoreIdentifier.append(0)
@@ -161,15 +163,7 @@ class AnimationViewController: UIViewController {
         self.view.bringSubviewToFront(self.coverLabel)
         self.view.bringSubviewToFront(flipThruBtn)
         
-        //========================= PAN-GESTURE ===============================//
-        let showGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target:self, action: "handleSwipe:")
-        showGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Up
-        flipView.addGestureRecognizer(showGestureRecognizer)
-        
-        let hideGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipe:")
-        hideGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Down
-        flipView.addGestureRecognizer(hideGestureRecognizer)
-        //========================= PAN-GESTURE ===============================//
+
 
         
     }
@@ -186,9 +180,9 @@ class AnimationViewController: UIViewController {
         animationDelegate.transformView = flipView
         animationDelegate.controller = self
         animationDelegate.perspectiveDepth = 75000
-        animationDelegate.nextDuration = 0.44
+        animationDelegate.nextDuration = 0.22
         animationDelegate.shadow = true
-        animationDelegate.sensitivity = 8000
+        animationDelegate.sensitivity = 5000
         animationDelegate.gravity = 32
         
         flipView.font = "HelveticaNeue-Bold"
@@ -196,10 +190,10 @@ class AnimationViewController: UIViewController {
         flipView.fontAlignment = "right" // not working yet... maybe when words wrap?
         flipView.textOffset = CGPointMake(125.0, 330.0);
         
-
-        self.view.sendSubviewToBack(flipView)
+        self.view.addSubview(flipView)
         self.view.bringSubviewToFront(schedulizerLabel)
         self.view.bringSubviewToFront(nameLabel)
+
         self.nameLabel.text = "Social Context"
         
         //========================================================================================================================//
@@ -210,11 +204,23 @@ class AnimationViewController: UIViewController {
         for squares in self.timeSlotLabelsOnViewArray {
             self.view.bringSubviewToFront(squares)
         }
+
         print(tempUserNameIdentifier)
         step = tempUserNameIdentifier.count - 1
         self.displayTargetSitterSchedule()
+        
+        //========================= PAN-GESTURE ===============================//
+        let showGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target:self, action: "handleSwipe:")
+        showGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Up
+        flipView.addGestureRecognizer(showGestureRecognizer)
+//                showGestureRecognizer.maximumNumberOfTouches = 1;
+        //        self.panRecognizer.minimumNumberOfTouches = 1;
+        let hideGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipe:")
+        hideGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Down
+        flipView.addGestureRecognizer(hideGestureRecognizer)
+        //========================= PAN-GESTURE ===============================//
     }
-//((((((((((((((((((((((((((((((((END -- MAIN BUTTON)))))))))))))))))))))))))))//
+//[[[[[[[[[[[[[[[[[[[[[[[  END -- MAIN BUTTON  ]]]]]]]]]]]]]]]]]]]]]]]//
     var timeSlotIndex:Int = 0
 //===========================> (SWIPE - HANDLER) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     func handleSwipe(recognizer:UISwipeGestureRecognizer){

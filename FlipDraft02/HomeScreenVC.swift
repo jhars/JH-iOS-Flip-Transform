@@ -8,12 +8,36 @@
 
 import UIKit
 
+var sitterFlipBookHasBeenLoaded = false
+
 class HomeScreenVC: UIViewController {
 
+    @IBAction func searchButton(sender: AnyObject) {
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if sitterFlipBookHasBeenLoaded == false {
+            
+            let targetVC:SitterMatchVC = storyboard.instantiateViewControllerWithIdentifier("SitterMatchView") as! SitterMatchVC
+            self.presentViewController(targetVC, animated: true, completion: nil)
+            sitterFlipBookHasBeenLoaded = true
+            
+        } else {
+            
+            let targetVC:AnimationViewController = storyboard.instantiateViewControllerWithIdentifier("AnimationView") as! AnimationViewController
+            self.presentViewController(targetVC, animated: true, completion: nil)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        flipView.removeFromSuperview()
-        print("removed all")
+//        print(flipView)
+//        flipView.removeFromSuperview()
+//        print("removed all flipViews")
+//        sitterModelObjects.removeAll()
+//        print(sitterModelObjects)
+//        print("sitterModelObjects Removed")
+//        tempUserSitterSchedIdentifier.removeAll()
+//        print(tempSitterDisplayDictionary)
+//        print(sitterFlipBookHasBeenLoaded)
+
     }
 
     override func didReceiveMemoryWarning() {

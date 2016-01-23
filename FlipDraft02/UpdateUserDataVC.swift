@@ -14,6 +14,8 @@ import Alamofire
 
 var CurrentUserID = String()
 
+
+
 class UpdateUserDataVC: UIViewController {
     
     var sitterOrNot:Bool = false
