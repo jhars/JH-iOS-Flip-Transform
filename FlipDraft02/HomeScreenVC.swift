@@ -8,7 +8,7 @@
 
 import UIKit
 
-var sitterFlipBookHasBeenLoaded = false
+
 
 class HomeScreenVC: UIViewController {
 
@@ -18,7 +18,6 @@ class HomeScreenVC: UIViewController {
             
             let targetVC:SitterMatchVC = storyboard.instantiateViewControllerWithIdentifier("SitterMatchView") as! SitterMatchVC
             self.presentViewController(targetVC, animated: true, completion: nil)
-            sitterFlipBookHasBeenLoaded = true
             
         } else {
             
@@ -28,8 +27,9 @@ class HomeScreenVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(flipView)
+
 //        flipView.removeFromSuperview()
+//        print(flipView)
 //        print("removed all flipViews")
 //        sitterModelObjects.removeAll()
 //        print(sitterModelObjects)

@@ -6,6 +6,7 @@ import UIKit
 
 var step = 0
 var baseLayer = false
+var sitterFlipBookHasBeenLoaded = false
 var tempSitterDisplayDictionary = [ : ]
 var tempTimeSlotArrFromAPI = [Int]()
 
@@ -132,8 +133,6 @@ class AnimationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        flipView.removeFromSuperview()
-        
-        print("on view did load")
         animationDelegate.transformView = flipView
         animationDelegate.controller = self
         animationDelegate.perspectiveDepth = 75000
@@ -147,53 +146,47 @@ class AnimationViewController: UIViewController {
         flipView.fontAlignment = "right" // not working yet... maybe when words wrap?
         flipView.textOffset = CGPointMake(125.0, 330.0);
         
-//BASE-LAYER + dummyDATA
-        if baseLayer == false {
-            flipView.printText("BASE LAYER", usingImage: nil, backgroundColor: UIColor.lightGrayColor(), textColor: UIColor.blueColor())
-            tempUserCnxScoreIdentifier.append(0)
-            tempUserSitterSchedIdentifier.append([ "fri0" : 1,"fri1": 0,"fri2":0,"mon0":0,"mon1":1,"mon2":0,"sat0":0,"sat1":0,"sat2":0,"sun0":1,"sun1":0,"sun2":0,"thu0":0,"thu1":1,"thu2":0,"tue0":0,"tue1":1,"tue2":1,"wed0":0,"wed1":0,"wed2":0])
-            tempUserNameIdentifier.append("BASE-LAYER")
-            baseLayer = true
-            self.view.bringSubviewToFront(flipView)
+        if sitterFlipBookHasBeenLoaded == false {
+            print("on view did load")
+
+//
+            //BASE-LAYER + dummyDATA
+            if baseLayer == false {
+                flipView.printText("BASE LAYER", usingImage: nil, backgroundColor: UIColor.lightGrayColor(), textColor: UIColor.blueColor())
+                tempUserCnxScoreIdentifier.append(0)
+                tempUserSitterSchedIdentifier.append([ "fri0" : 1,"fri1": 0,"fri2":0,"mon0":0,"mon1":1,"mon2":0,"sat0":0,"sat1":0,"sat2":0,"sun0":1,"sun1":0,"sun2":0,"thu0":0,"thu1":1,"thu2":0,"tue0":0,"tue1":1,"tue2":1,"wed0":0,"wed1":0,"wed2":0])
+                tempUserNameIdentifier.append("BASE-LAYER")
+                baseLayer = true
+                self.view.bringSubviewToFront(flipView)
+                print("do I need a baseLayer???")
+            } else {
+                print("base layer loaded on initial ViewDidLoad")
+            }
+
+            self.view.sendSubviewToBack(flipView)
+            self.coverLabel.backgroundColor = UIColor.lightGrayColor()
+            self.view.bringSubviewToFront(self.coverLabel)
+            self.view.bringSubviewToFront(flipThruBtn)
+            sitterFlipBookHasBeenLoaded = true
+
         } else {
-            print("base layer loaded on initial ViewDidLoad")
+            self.loadAnimationVcElements()
+            
         }
-        self.view.sendSubviewToBack(flipView)
-        self.coverLabel.backgroundColor = UIColor.lightGrayColor()
-        self.view.bringSubviewToFront(self.coverLabel)
-        self.view.bringSubviewToFront(flipThruBtn)
-        
 
 
-        
     }
  // __________________________________ END ViewDidLoad ____________________________//
-//[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[MAIN BUTTON]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]//
-    @IBAction func tappedFlipThruSitters(sender: AnyObject) {
+    func loadAnimationVcElements () {
         //flipView.center = self.view.center
+        //        if sitterFlipBookHasBeenLoaded == false {
         animationDelegate.startAnimation(kDirectionNone)
-        self.view.addSubview(flipView)
-        self.view.bringSubviewToFront(NavBar)
-        self.view.bringSubviewToFront(TopNavBar)
         self.flipThruBtn.removeFromSuperview()
-        
-        animationDelegate.transformView = flipView
-        animationDelegate.controller = self
-        animationDelegate.perspectiveDepth = 75000
-        animationDelegate.nextDuration = 0.22
-        animationDelegate.shadow = true
-        animationDelegate.sensitivity = 5000
-        animationDelegate.gravity = 32
-        
-        flipView.font = "HelveticaNeue-Bold"
-        flipView.fontSize = 36.0
-        flipView.fontAlignment = "right" // not working yet... maybe when words wrap?
-        flipView.textOffset = CGPointMake(125.0, 330.0);
         
         self.view.addSubview(flipView)
         self.view.bringSubviewToFront(schedulizerLabel)
         self.view.bringSubviewToFront(nameLabel)
-
+        
         self.nameLabel.text = "Social Context"
         
         //========================================================================================================================//
@@ -204,22 +197,28 @@ class AnimationViewController: UIViewController {
         for squares in self.timeSlotLabelsOnViewArray {
             self.view.bringSubviewToFront(squares)
         }
-
+        
         print(tempUserNameIdentifier)
         step = tempUserNameIdentifier.count - 1
+        print(step)
         self.displayTargetSitterSchedule()
         
         //========================= PAN-GESTURE ===============================//
         let showGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target:self, action: "handleSwipe:")
         showGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Up
         flipView.addGestureRecognizer(showGestureRecognizer)
-//                showGestureRecognizer.maximumNumberOfTouches = 1;
+        //                showGestureRecognizer.maximumNumberOfTouches = 1;
         //        self.panRecognizer.minimumNumberOfTouches = 1;
         let hideGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipe:")
         hideGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Down
         flipView.addGestureRecognizer(hideGestureRecognizer)
         //========================= PAN-GESTURE ===============================//
     }
+//[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[MAIN BUTTON]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]//
+    @IBAction func tappedFlipThruSitters(sender: AnyObject) {
+        self.loadAnimationVcElements()
+        }
+
 //[[[[[[[[[[[[[[[[[[[[[[[  END -- MAIN BUTTON  ]]]]]]]]]]]]]]]]]]]]]]]//
     var timeSlotIndex:Int = 0
 //===========================> (SWIPE - HANDLER) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -241,14 +240,12 @@ class AnimationViewController: UIViewController {
             } else {
                 step = 0
             }
-            print(step);print(tempUserNameIdentifier[step]);print(tempUserCnxScoreIdentifier[step]);print(tempUserSitterSchedIdentifier[step])
-            
+
             for squares in self.timeSlotLabelsOnViewArray {
                 self.view.bringSubviewToFront(squares)
             }
 
             for timeSlot in tempUserSitterSchedIdentifier[step] {
-
                 var Fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
                 print(Fri0)
                 self.displayTargetSitterSchedule()
