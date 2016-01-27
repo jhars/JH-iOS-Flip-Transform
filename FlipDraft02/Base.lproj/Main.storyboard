@@ -267,6 +267,12 @@
                                     <navigationItem title="Browse Sitters" id="QS2-pd-FKl"/>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mutual Friends Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc9-C1-Yip">
+                                <rect key="frame" x="20" y="74" width="160" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -393,6 +399,7 @@
                         <outlet property="WED_2" destination="ZsV-fq-eie" id="gXb-Ja-Box"/>
                         <outlet property="coverLabel" destination="Yv0-cN-8CP" id="zM7-eN-2fe"/>
                         <outlet property="flipThruBtn" destination="Bsu-jY-UqQ" id="Wif-Mx-Cf7"/>
+                        <outlet property="mutualFriendsLabel" destination="nc9-C1-Yip" id="Qzy-r9-hfQ"/>
                         <outlet property="nameLabel" destination="SJH-VE-9we" id="Jst-fr-AXX"/>
                         <outlet property="schedulizerLabel" destination="fDA-8E-phv" id="9cm-na-DZs"/>
                     </connections>

@@ -26,6 +26,7 @@ var UserDataHasBeenLoaded = Bool()
 var tempUserNameIdentifier = [String]()
 var tempUserCnxScoreIdentifier = [Int]()
 var tempUserSitterSchedIdentifier = [NSDictionary]()
+var tempUserSitterNumOfMutualIdentifier = [Int]()
 
 class SitterMatchVC: UIViewController {
     
@@ -82,9 +83,13 @@ class SitterMatchVC: UIViewController {
 //Need To ADD ERROR HANDLING HERE
                         if snapshot.value != nil {
                             let sitterObjDict = snapshot.value as! NSDictionary
-                            print(sitterObjDict)
+                            let mutualFriends = sitterObjDict.valueForKey("mutualFriends") as! NSArray
+                            
+                            let numberOfMutualFrnds = sitterObjDict.valueForKey("numberOfMutual") as! Int
+                            tempUserSitterNumOfMutualIdentifier.append(numberOfMutualFrnds)
+//                            print(numberOfMutualFrnds)
+                            
                             let imgUrlModel = sitterObjDict["profileImgUrl"] as! String
-                        
                             let AlamoRef = Alamofire.request(.GET, imgUrlModel)
                             AlamoRef.responseImage { response in
                                 if let image = response.result.value {
