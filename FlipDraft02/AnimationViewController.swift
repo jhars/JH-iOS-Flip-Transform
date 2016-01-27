@@ -20,15 +20,16 @@ class AnimationViewController: UIViewController {
     var timeSlotLabelsOnViewArray = [UILabel]()
     //[[[[[[[[[[ CENTER-BUTTON ]]]]]]]]]]]\\
     @IBOutlet weak var flipThruBtn: UIButton!
-    
     @IBOutlet weak var coverLabel: UILabel!
     
-// ================ SCHEDULIZER ================== //
-//************************************************//
     @IBOutlet weak var schedulizerLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var TopNavBar: UINavigationBar!
     @IBOutlet weak var NavBar: UINavigationBar!
+    
+// ================ SCHEDULIZER ================== //
+//************************************************//
+
     //MONDAY
     var mon0 = 0;var mon1 = 0;var mon2 = 0
     @IBOutlet weak var MON_0: UILabel!
@@ -141,10 +142,9 @@ class AnimationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("on view did load")
-//        tempUserSitterSchedIdentifier.removeAll()
         print(tempUserNameIdentifier.count)
         print(tempUserSitterSchedIdentifier.count)
-//        flipView.removeFromSuperview()
+
 
         animationDelegate.transformView = flipView
         animationDelegate.controller = self
@@ -180,9 +180,6 @@ class AnimationViewController: UIViewController {
         } else {
             self.loadGetFlippingButton()
         }
-        
-        var flipperAsView = flipView as! UIView
-        print(flipperAsView)
     }
     
     @IBAction func tappedFlipThruSitters(sender: AnyObject) {
@@ -211,7 +208,8 @@ class AnimationViewController: UIViewController {
             self.coverLabel.removeFromSuperview()
             
             self.view.addSubview(flipView)
-            self.view.addSubview(schedulizerLabel)
+            self.view.bringSubviewToFront(schedulizerLabel)
+            self.view.bringSubviewToFront(nameLabel)
             self.bringScheduleSquaresToFront()
             self.nameLabel.text = "Social Context"
             print(step)

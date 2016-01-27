@@ -29,12 +29,16 @@ var tempUserSitterSchedIdentifier = [NSDictionary]()
 
 class SitterMatchVC: UIViewController {
     
+    @IBOutlet weak var activityWheel: UIActivityIndicatorView!
+    
+    
     var currentUserId:String = ""
     var tempFireBaseUrlForCurrentUser:String = ""
     var cnxImageUrl:String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityWheel.startAnimating()
         if sitterFlipBookHasBeenLoaded == false {
             returnUserData()
         } else {

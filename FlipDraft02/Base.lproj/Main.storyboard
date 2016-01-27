@@ -1000,7 +1000,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mj2-Zt-RNt" firstAttribute="centerY" secondItem="FAB-3T-JYm" secondAttribute="centerY" id="AKY-6L-es9"/>
                             <constraint firstItem="mj2-Zt-RNt" firstAttribute="centerX" secondItem="FAB-3T-JYm" secondAttribute="centerX" id="KtZ-JM-SGq"/>
@@ -1013,7 +1013,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="showSitter" id="sEQ-aF-YqL"/>
+                        <outlet property="activityWheel" destination="mj2-Zt-RNt" id="1RS-Ch-AQ0"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="showSitter" animates="NO" id="sEQ-aF-YqL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20b-FH-ai7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1073,7 +1074,7 @@
         <image name="book-logo" width="53" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WUM-Mh-kGH"/>
+        <segue reference="UdQ-cz-VXO"/>
         <segue reference="vfg-As-u2a"/>
     </inferredMetricsTieBreakers>
 </document>
