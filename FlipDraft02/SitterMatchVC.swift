@@ -35,7 +35,12 @@ class SitterMatchVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if sitterFlipBookHasBeenLoaded == false {
             returnUserData()
+        } else {
+            print("sitterFlipBookHasBeenLoaded = true, will not reload")
+        }
+
 
     }
     
@@ -58,7 +63,7 @@ class SitterMatchVC: UIViewController {
 
                 let userEmail : NSString = result.valueForKey("email") as! NSString
                 print(userEmail)
-
+                
 
                     //=================================================================\\
                     //   [SITTER MATCH MODEL]()  ->   is this delegation...?
@@ -66,7 +71,9 @@ class SitterMatchVC: UIViewController {
                     
                     let currentUserPath = self.tempFireBaseUrlForCurrentUser
                     let fireBaseRef = Firebase(url:(currentUserPath as String) + "/sitterList/")
-                    
+                
+
+                
                     fireBaseRef.queryOrderedByValue().observeEventType(.ChildAdded, withBlock: { snapshot in
 //Need To ADD ERROR HANDLING HERE
                         if snapshot.value != nil {
@@ -85,15 +92,11 @@ class SitterMatchVC: UIViewController {
 //                                    print(sitterTimeArrayModel)
                                     
                                     let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel,timeSlots: sitterTimeArrayModel)
-//                                    let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel)
-//                                    print(SitterObject.name)
-//                                    print(SitterObject.cnxScore)
-//                                    print(SitterObject.timeSlots)
+
 
                                     sitterModelObjects.append(SitterObject)
                                     flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.lightGrayColor())
 //                                    step += 1
-                                    
                                     tempUserNameIdentifier.append(sitterNameModel)
                                     tempUserCnxScoreIdentifier.append(sitterScoreModel)
                                     tempUserSitterSchedIdentifier.append(sitterTimeArrayModel)
@@ -102,14 +105,7 @@ class SitterMatchVC: UIViewController {
                                     //schedule cycle as you flip
                                     //using the name OR index as an identifier
                                     //but I still need the name in the flipView Object
-                                    
-                                    
-//                                    var tempFlipperView = flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.lightGrayColor())
-//                                    print(tempFlipperView)
-                                    
-//                                    if ((SitterObject.timeSlots?) != nil) {
-//                                        print(SitterObject.timeSlots)
-//                                    }
+                                    //can I pass BACING LAYER through Segue?
                                 }
                                 AlamoRef.resume()
                                 UserDataHasBeenLoaded = true
@@ -120,6 +116,7 @@ class SitterMatchVC: UIViewController {
                         }// ----- END 'if/else' ... directly above --------\\
                     }) // |DB| ====== END FIRE BASE ========= |DB| //
             } // ----- END 'else' Statement --------------//
+            
             self.performSegueWithIdentifier("showSitter", sender: nil)
 //            task.reloadDate()
         }) // - - - - END Graph Request - - -  - //

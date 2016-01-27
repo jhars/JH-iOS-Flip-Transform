@@ -4,17 +4,18 @@
 import UIKit
 
 
-var step = 0
+
 var baseLayer = false
 var sitterFlipBookHasBeenLoaded = false
 var tempSitterDisplayDictionary = [ : ]
 var tempTimeSlotArrFromAPI = [Int]()
+var step:Int = Int()
 
 var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(-100,100,575,500))
 
 class AnimationViewController: UIViewController {
-    
-    var sitterObjArray = [SitterMatchModel]()
+
+//    var sitterObjArray = [SitterMatchModel]()
     var animationDelegate:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceControlled, directionType: kDirectionNone)
     var timeSlotLabelsOnViewArray = [UILabel]()
     //[[[[[[[[[[ CENTER-BUTTON ]]]]]]]]]]]\\
@@ -64,11 +65,16 @@ class AnimationViewController: UIViewController {
     @IBOutlet weak var SUN_1: UILabel!
     @IBOutlet weak var SUN_2: UILabel!
 //**************************************************//
+    var dictionary: [UILabel:Int] = [:]
 //--------------- END SCHEDULIZER ----------------- //
 
     
     func displayTargetSitterSchedule () {
         print("update schedulizer here")
+        print(step)
+        print("great error HERE!!")
+//Getting All UserData in Model (as opposed to seperate & unsynced arrays...)
+        //will allow us to call this data much easier
 
 //Friday
         self.fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
@@ -127,12 +133,19 @@ class AnimationViewController: UIViewController {
         if self.wed0 == 1 { self.WED_0.backgroundColor = UIColor.blueColor() } else { self.WED_0.backgroundColor = UIColor.greenColor() }
         if self.wed1 == 1 { self.WED_1.backgroundColor = UIColor.blueColor() } else { self.WED_1.backgroundColor = UIColor.greenColor() }
         if self.wed2 == 1 { self.WED_2.backgroundColor = UIColor.blueColor() } else { self.WED_2.backgroundColor = UIColor.greenColor() }
-
     }
+    
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("on view did load")
+//        tempUserSitterSchedIdentifier.removeAll()
+        print(tempUserNameIdentifier.count)
+        print(tempUserSitterSchedIdentifier.count)
 //        flipView.removeFromSuperview()
+
         animationDelegate.transformView = flipView
         animationDelegate.controller = self
         animationDelegate.perspectiveDepth = 75000
@@ -145,63 +158,84 @@ class AnimationViewController: UIViewController {
         flipView.fontSize = 36.0
         flipView.fontAlignment = "right" // not working yet... maybe when words wrap?
         flipView.textOffset = CGPointMake(125.0, 330.0);
-        
-        if sitterFlipBookHasBeenLoaded == false {
-            print("on view did load")
-
-//
-            //BASE-LAYER + dummyDATA
-            if baseLayer == false {
-                flipView.printText("BASE LAYER", usingImage: nil, backgroundColor: UIColor.lightGrayColor(), textColor: UIColor.blueColor())
-                tempUserCnxScoreIdentifier.append(0)
-                tempUserSitterSchedIdentifier.append([ "fri0" : 1,"fri1": 0,"fri2":0,"mon0":0,"mon1":1,"mon2":0,"sat0":0,"sat1":0,"sat2":0,"sun0":1,"sun1":0,"sun2":0,"thu0":0,"thu1":1,"thu2":0,"tue0":0,"tue1":1,"tue2":1,"wed0":0,"wed1":0,"wed2":0])
-                tempUserNameIdentifier.append("BASE-LAYER")
-                baseLayer = true
-                self.view.bringSubviewToFront(flipView)
-                print("do I need a baseLayer???")
-            } else {
-                print("base layer loaded on initial ViewDidLoad")
-            }
-
-            self.view.sendSubviewToBack(flipView)
-            self.coverLabel.backgroundColor = UIColor.lightGrayColor()
-            self.view.bringSubviewToFront(self.coverLabel)
-            self.view.bringSubviewToFront(flipThruBtn)
-            sitterFlipBookHasBeenLoaded = true
-
+        //BASE LAYER
+        if baseLayer == false {
+            flipView.printText("BASE LAYER", usingImage: nil, backgroundColor: UIColor.lightGrayColor(), textColor: UIColor.blueColor())
+            tempUserCnxScoreIdentifier.append(0)
+            tempUserSitterSchedIdentifier.append([ "fri0" : 1,"fri1": 0,"fri2":0,"mon0":0,"mon1":1,"mon2":0,"sat0":0,"sat1":0,"sat2":0,"sun0":1,"sun1":0,"sun2":0,"thu0":0,"thu1":1,"thu2":0,"tue0":0,"tue1":1,"tue2":1,"wed0":0,"wed1":0,"wed2":0])
+            tempUserNameIdentifier.append("BASE-LAYER")
+            baseLayer = true
+            self.view.addSubview(flipView)
+            print("do I need a baseLayer???")
+            step = tempUserNameIdentifier.count - 1
+            animationDelegate.startAnimation(kDirectionNone)
         } else {
-            self.loadAnimationVcElements()
-            
+            print("base layer loaded on initial ViewDidLoad")
         }
 
+        // if
+        if sitterFlipBookHasBeenLoaded == true {
+            print("already loaded")
+            self.loadAnimationVcElements()
+        } else {
+            self.loadGetFlippingButton()
+        }
+        
+        var flipperAsView = flipView as! UIView
+        print(flipperAsView)
+    }
+    
+    @IBAction func tappedFlipThruSitters(sender: AnyObject) {
+        self.loadAnimationVcElements()
+    }
+    
+
+    
+    func bringScheduleSquaresToFront() {
+        for squares in self.timeSlotLabelsOnViewArray {
+            self.view.bringSubviewToFront(squares)
+        }
+    }
+    func loadGetFlippingButton() {
+        self.view.sendSubviewToBack(flipView)
+        self.coverLabel.backgroundColor = UIColor.lightGrayColor()
+        self.view.bringSubviewToFront(self.coverLabel)
+        self.view.bringSubviewToFront(flipThruBtn)
 
     }
  // __________________________________ END ViewDidLoad ____________________________//
     func loadAnimationVcElements () {
-        //flipView.center = self.view.center
-        //        if sitterFlipBookHasBeenLoaded == false {
-        animationDelegate.startAnimation(kDirectionNone)
-        self.flipThruBtn.removeFromSuperview()
         
-        self.view.addSubview(flipView)
-        self.view.bringSubviewToFront(schedulizerLabel)
-        self.view.bringSubviewToFront(nameLabel)
+
+            self.flipThruBtn.removeFromSuperview()
+            self.coverLabel.removeFromSuperview()
+            
+            self.view.addSubview(flipView)
+            self.view.addSubview(schedulizerLabel)
+            self.bringScheduleSquaresToFront()
+            self.nameLabel.text = "Social Context"
+            print(step)
+            print("checkpoint-01")
+            print(tempUserNameIdentifier)
+        if sitterFlipBookHasBeenLoaded == false {
+            step = tempUserNameIdentifier.count - 1
+            sitterFlipBookHasBeenLoaded = true
+        }
+            self.displayTargetSitterSchedule()
+
         
-        self.nameLabel.text = "Social Context"
-        
-        //========================================================================================================================//
         self.timeSlotLabelsOnViewArray = [FRI_0, FRI_1,FRI_2,MON_0,MON_1,MON_2,SAT_0,SAT_1,SAT_2,SUN_0,SUN_1,SUN_2,THU_0,THU_1,THU_2,TUE_0,TUE_1,TUE_2,WED_0,WED_1,WED_2]
         tempTimeSlotArrFromAPI = [fri0,fri1,fri2,mon0,mon1,mon2,sat0,sat1,sat2,sun0,sun1,sun2,thu0,thu1,thu2,tue0,tue1,tue2,wed0,wed1,wed2]
-        //========================================================================================================================//
-        print("checkpoint-01")
-        for squares in self.timeSlotLabelsOnViewArray {
-            self.view.bringSubviewToFront(squares)
-        }
         
-        print(tempUserNameIdentifier)
-        step = tempUserNameIdentifier.count - 1
-        print(step)
-        self.displayTargetSitterSchedule()
+        for (index, element) in self.timeSlotLabelsOnViewArray.enumerate()
+        {
+            self.dictionary[element] = tempTimeSlotArrFromAPI[index]
+        }
+        //========================================================================================================================//
+//        print(self.dictionary)
+        //========================================================================================================================//
+
+
         
         //========================= PAN-GESTURE ===============================//
         let showGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target:self, action: "handleSwipe:")
@@ -213,11 +247,11 @@ class AnimationViewController: UIViewController {
         hideGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Down
         flipView.addGestureRecognizer(hideGestureRecognizer)
         //========================= PAN-GESTURE ===============================//
+        self.bringScheduleSquaresToFront()
     }
+
 //[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[MAIN BUTTON]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]//
-    @IBAction func tappedFlipThruSitters(sender: AnyObject) {
-        self.loadAnimationVcElements()
-        }
+
 
 //[[[[[[[[[[[[[[[[[[[[[[[  END -- MAIN BUTTON  ]]]]]]]]]]]]]]]]]]]]]]]//
     var timeSlotIndex:Int = 0
@@ -228,7 +262,7 @@ class AnimationViewController: UIViewController {
 //  Flick-UP => FORWARD
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Up) {
             animationDelegate.startAnimation(kDirectionBackward)
-            self.view.addSubview(flipView)
+//            self.view.addSubview(flipView)
 //            self.nameLabel.text = "Wendy Darling"
             print("on UP Swipe!")
             self.view.bringSubviewToFront(NavBar);self.view.bringSubviewToFront(TopNavBar);self.view.bringSubviewToFront(schedulizerLabel);self.view.bringSubviewToFront(nameLabel)
@@ -244,18 +278,14 @@ class AnimationViewController: UIViewController {
             for squares in self.timeSlotLabelsOnViewArray {
                 self.view.bringSubviewToFront(squares)
             }
+            self.displayTargetSitterSchedule()
 
-            for timeSlot in tempUserSitterSchedIdentifier[step] {
-                var Fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
-                print(Fri0)
-                self.displayTargetSitterSchedule()
-            }
 
         }
 //  Flick-DOWN => BACKWARD
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Down) {
             animationDelegate.startAnimation(kDirectionForward)
-            self.view.addSubview(flipView)
+//            self.view.addSubview(flipView)
 //            self.nameLabel.text = "Peter Pan"
             print("on down swipe")
             self.view.bringSubviewToFront(NavBar);self.view.bringSubviewToFront(TopNavBar);self.view.bringSubviewToFront(schedulizerLabel);self.view.bringSubviewToFront(nameLabel)
@@ -265,17 +295,14 @@ class AnimationViewController: UIViewController {
             } else {
                 step = tempUserNameIdentifier.count - 1
             }
-            print(step);print(tempUserNameIdentifier[step]);print(tempUserCnxScoreIdentifier[step]);print(tempUserSitterSchedIdentifier[step])
+//            print(step);print(tempUserNameIdentifier[step]);print(tempUserCnxScoreIdentifier[step]);print(tempUserSitterSchedIdentifier[step])
             
             for squares in self.timeSlotLabelsOnViewArray {
                 self.view.bringSubviewToFront(squares)
             }
-            for timeSlot in tempUserSitterSchedIdentifier[step] {
-
-                var Fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
-                print(Fri0)
+//            for timeSlot in tempUserSitterSchedIdentifier[step] {
                 self.displayTargetSitterSchedule()
-            }
+//            }
         }
     }
     // ---------- END HandleSwipe func ---------------//
