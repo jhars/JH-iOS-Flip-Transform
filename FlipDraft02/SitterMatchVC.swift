@@ -82,6 +82,7 @@ class SitterMatchVC: UIViewController {
 //Need To ADD ERROR HANDLING HERE
                         if snapshot.value != nil {
                             let sitterObjDict = snapshot.value as! NSDictionary
+                            print(sitterObjDict)
                             let imgUrlModel = sitterObjDict["profileImgUrl"] as! String
                         
                             let AlamoRef = Alamofire.request(.GET, imgUrlModel)
@@ -90,20 +91,23 @@ class SitterMatchVC: UIViewController {
                                     
                                     let sitterImageModel = image
                                     let sitterNameModel = sitterObjDict["userName"] as! String
+                                    tempUserNameIdentifier.append(sitterNameModel)
+
                                     let sitterScoreModel = sitterObjDict["cnxScore"] as! Int
+                                    tempUserCnxScoreIdentifier.append(sitterScoreModel)
+
 //                                    for schedMatches
                                     let sitterTimeArrayModel = sitterObjDict["SitterSchedule"] as! NSDictionary
+                                    tempUserSitterSchedIdentifier.append(sitterTimeArrayModel)
 //                                    print(sitterTimeArrayModel)
                                     
-                                    let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel,timeSlots: sitterTimeArrayModel)
-
-
+                                    let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel,timeSlots: sitterTimeArrayModel, mutualFriends: sitterObjDict)
                                     sitterModelObjects.append(SitterObject)
+                                    
                                     flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.lightGrayColor())
 //                                    step += 1
-                                    tempUserNameIdentifier.append(sitterNameModel)
-                                    tempUserCnxScoreIdentifier.append(sitterScoreModel)
-                                    tempUserSitterSchedIdentifier.append(sitterTimeArrayModel)
+                                    
+
                                     //Arrays load in SAME Order, this is good!
                                     //You can pair/sync them together have
                                     //schedule cycle as you flip

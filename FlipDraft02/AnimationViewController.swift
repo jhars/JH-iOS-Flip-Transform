@@ -135,10 +135,7 @@ class AnimationViewController: UIViewController {
         if self.wed1 == 1 { self.WED_1.backgroundColor = UIColor.blueColor() } else { self.WED_1.backgroundColor = UIColor.greenColor() }
         if self.wed2 == 1 { self.WED_2.backgroundColor = UIColor.blueColor() } else { self.WED_2.backgroundColor = UIColor.greenColor() }
     }
-    
-
-    
-    
+// __________________________________ END ViewDidLoad ____________________________//
     override func viewDidLoad() {
         super.viewDidLoad()
         print("on view did load")
@@ -149,18 +146,18 @@ class AnimationViewController: UIViewController {
         animationDelegate.transformView = flipView
         animationDelegate.controller = self
         animationDelegate.perspectiveDepth = 75000
-        animationDelegate.nextDuration = 0.44
+        animationDelegate.nextDuration = 0.20
         animationDelegate.shadow = true
-        animationDelegate.sensitivity = 8000
-        animationDelegate.gravity = 32
+        animationDelegate.sensitivity = 5000
+        animationDelegate.gravity = 32000
         
         flipView.font = "HelveticaNeue-Bold"
         flipView.fontSize = 36.0
         flipView.fontAlignment = "right" // not working yet... maybe when words wrap?
         flipView.textOffset = CGPointMake(125.0, 330.0);
-        //BASE LAYER
+//BASE LAYER
         if baseLayer == false {
-            flipView.printText("BASE LAYER", usingImage: nil, backgroundColor: UIColor.lightGrayColor(), textColor: UIColor.blueColor())
+            flipView.printText("End of Results", usingImage: nil, backgroundColor: UIColor.lightGrayColor(), textColor: UIColor.blueColor())
             tempUserCnxScoreIdentifier.append(0)
             tempUserSitterSchedIdentifier.append([ "fri0" : 1,"fri1": 0,"fri2":0,"mon0":0,"mon1":1,"mon2":0,"sat0":0,"sat1":0,"sat2":0,"sun0":1,"sun1":0,"sun2":0,"thu0":0,"thu1":1,"thu2":0,"tue0":0,"tue1":1,"tue2":1,"wed0":0,"wed1":0,"wed2":0])
             tempUserNameIdentifier.append("BASE-LAYER")
@@ -181,13 +178,9 @@ class AnimationViewController: UIViewController {
             self.loadGetFlippingButton()
         }
     }
-    
     @IBAction func tappedFlipThruSitters(sender: AnyObject) {
         self.loadAnimationVcElements()
     }
-    
-
-    
     func bringScheduleSquaresToFront() {
         for squares in self.timeSlotLabelsOnViewArray {
             self.view.bringSubviewToFront(squares)
@@ -200,7 +193,7 @@ class AnimationViewController: UIViewController {
         self.view.bringSubviewToFront(flipThruBtn)
 
     }
- // __________________________________ END ViewDidLoad ____________________________//
+
     func loadAnimationVcElements () {
         
 
@@ -259,49 +252,48 @@ class AnimationViewController: UIViewController {
 
 //  Flick-UP => FORWARD
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Up) {
-            animationDelegate.startAnimation(kDirectionBackward)
-//            self.view.addSubview(flipView)
-//            self.nameLabel.text = "Wendy Darling"
+//            animationDelegate.startAnimation(kDirectionBackward)
             print("on UP Swipe!")
-            self.view.bringSubviewToFront(NavBar);self.view.bringSubviewToFront(TopNavBar);self.view.bringSubviewToFront(schedulizerLabel);self.view.bringSubviewToFront(nameLabel)
-
+            
             if step < (tempUserNameIdentifier.count - 1) {
-                print(tempUserNameIdentifier.count)
-                print("No More Sitters")
+                animationDelegate.startAnimation(kDirectionBackward)
+                print("SitterList Endpoint on UP Swipe")
                 step += 1
             } else {
-                step = 0
+//                step = 1
+                print("end of sitters -- on Swipe Up")
             }
-
-            for squares in self.timeSlotLabelsOnViewArray {
-                self.view.bringSubviewToFront(squares)
-            }
-            self.displayTargetSitterSchedule()
-
-
         }
 //  Flick-DOWN => BACKWARD
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Down) {
-            animationDelegate.startAnimation(kDirectionForward)
-//            self.view.addSubview(flipView)
-//            self.nameLabel.text = "Peter Pan"
+//                animationDelegate.startAnimation(kDirectionForward)
+            //on the right track here, just need
+            //some additional stoppage for schedulizer
             print("on down swipe")
-            self.view.bringSubviewToFront(NavBar);self.view.bringSubviewToFront(TopNavBar);self.view.bringSubviewToFront(schedulizerLabel);self.view.bringSubviewToFront(nameLabel)
-            
             if step > 0 {
+                animationDelegate.startAnimation(kDirectionForward)
                 step -= 1
             } else {
-                step = tempUserNameIdentifier.count - 1
+//                animationDelegate.startAnimation(kDirectionNone)
+                print("SitterList EndPoint on down swipe")
             }
-//            print(step);print(tempUserNameIdentifier[step]);print(tempUserCnxScoreIdentifier[step]);print(tempUserSitterSchedIdentifier[step])
-            
-            for squares in self.timeSlotLabelsOnViewArray {
-                self.view.bringSubviewToFront(squares)
-            }
-//            for timeSlot in tempUserSitterSchedIdentifier[step] {
-                self.displayTargetSitterSchedule()
-//            }
+
         }
+        
+        self.view.bringSubviewToFront(NavBar);self.view.bringSubviewToFront(TopNavBar);self.view.bringSubviewToFront(schedulizerLabel);self.view.bringSubviewToFront(nameLabel)
+//        if step == 0 {
+//            self.view.bringSubviewToFront(nameLabel)
+//            self.view.bringSubviewToFront(schedulizerLabel)
+//        } else {
+//            self.bringScheduleSquaresToFront()
+//            self.displayTargetSitterSchedule()
+//        }
+        
+        
+        self.bringScheduleSquaresToFront()
+        self.displayTargetSitterSchedule()
+        
+
     }
     // ---------- END HandleSwipe func ---------------//
 //===========================> (thru Sitter Array) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
