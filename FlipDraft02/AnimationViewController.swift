@@ -284,6 +284,7 @@ class AnimationViewController: UIViewController {
     @IBAction func tappedFlipThruSitters(sender: AnyObject) {
         self.loadAnimationVcElements()
     }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 //        animationDelegate.startAnimation(kDirectionNone)

@@ -267,13 +267,16 @@
                                     <navigationItem title="Browse Sitters" id="QS2-pd-FKl"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="IqL-by-MbV">
-                                <rect key="frame" x="20" y="81" width="318" height="59"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="IqL-by-MbV">
+                                <rect key="frame" x="312" y="80" width="268" height="59"/>
                                 <color key="backgroundColor" red="0.30196078431372547" green="1" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Mutual Friends">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="grT-50-2Eu" kind="show" id="Cyg-9M-8dw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -284,6 +287,7 @@
                             <constraint firstItem="NJu-qd-ME2" firstAttribute="leading" secondItem="nma-ZE-TU7" secondAttribute="trailing" constant="8" symbolic="YES" id="2H2-t5-BjG"/>
                             <constraint firstItem="2hH-ZP-fof" firstAttribute="leading" secondItem="IbT-Dc-gkF" secondAttribute="leading" id="2Jc-Sr-svS"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UYG-nA-eSo" secondAttribute="bottom" id="2hy-8e-cdQ"/>
+                            <constraint firstItem="IqL-by-MbV" firstAttribute="leading" secondItem="Yv0-cN-8CP" secondAttribute="trailing" constant="-288" id="4FC-6X-QWP"/>
                             <constraint firstItem="6gi-mp-mkO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="4VH-3L-udr"/>
                             <constraint firstItem="IbT-Dc-gkF" firstAttribute="firstBaseline" secondItem="ZsV-fq-eie" secondAttribute="firstBaseline" id="4at-O2-48T"/>
                             <constraint firstItem="fDA-8E-phv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="68C-Mi-Vbk"/>
@@ -296,6 +300,7 @@
                             <constraint firstItem="Lrr-Ir-7ao" firstAttribute="firstBaseline" secondItem="myo-CK-uLO" secondAttribute="firstBaseline" id="BYq-Cz-dU5"/>
                             <constraint firstItem="8Ch-dJ-92e" firstAttribute="leading" secondItem="Rem-w1-g7M" secondAttribute="trailing" constant="8" symbolic="YES" id="ByN-Gz-zYr"/>
                             <constraint firstItem="nma-ZE-TU7" firstAttribute="baseline" secondItem="4AU-vE-T4f" secondAttribute="baseline" id="CUa-4Q-tWh"/>
+                            <constraint firstItem="IqL-by-MbV" firstAttribute="top" secondItem="SJH-VE-9we" secondAttribute="bottom" constant="-23" id="Cvy-gD-lbb"/>
                             <constraint firstItem="OLI-S6-epE" firstAttribute="leading" secondItem="ruC-iq-Ohv" secondAttribute="leading" id="Daj-nE-nDZ"/>
                             <constraint firstItem="ruC-iq-Ohv" firstAttribute="firstBaseline" secondItem="ik6-rD-uJF" secondAttribute="firstBaseline" id="Eb6-nJ-3Ix"/>
                             <constraint firstItem="fDA-8E-phv" firstAttribute="leading" secondItem="SJH-VE-9we" secondAttribute="trailing" constant="-600" id="God-gu-fIB"/>
@@ -368,7 +373,6 @@
                             <constraint firstItem="NJu-qd-ME2" firstAttribute="baseline" secondItem="nma-ZE-TU7" secondAttribute="baseline" id="vBQ-Bc-1VE"/>
                             <constraint firstItem="zA4-s9-hwO" firstAttribute="leading" secondItem="rks-sH-CaS" secondAttribute="trailing" constant="8" symbolic="YES" id="vUc-hk-YXI"/>
                             <constraint firstItem="UYG-nA-eSo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="vXo-Kh-9tF"/>
-                            <constraint firstItem="SJH-VE-9we" firstAttribute="leading" secondItem="IqL-by-MbV" secondAttribute="trailing" constant="-180" id="w2s-Jd-UjA"/>
                             <constraint firstItem="NJu-qd-ME2" firstAttribute="trailing" secondItem="mgt-tM-bnl" secondAttribute="trailing" id="wWx-2c-3Sy"/>
                             <constraint firstItem="IbT-Dc-gkF" firstAttribute="baseline" secondItem="ZsV-fq-eie" secondAttribute="baseline" id="yBA-Rd-EFR"/>
                             <constraint firstItem="8Ch-dJ-92e" firstAttribute="baseline" secondItem="mgt-tM-bnl" secondAttribute="baseline" id="yRZ-iZ-hwe"/>
@@ -929,6 +933,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book-logo" translatesAutoresizingMaskIntoConstraints="NO" id="edC-Qo-xGb">
+                                <rect key="frame" x="202" y="232" width="197" height="136"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="197" id="Sl4-b3-2A6"/>
+                                    <constraint firstAttribute="height" constant="136" id="fex-Lm-znt"/>
+                                </constraints>
+                            </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1R-iC-hNe">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
@@ -947,13 +958,6 @@
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="zA3-5u-Efp"/>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book-logo" translatesAutoresizingMaskIntoConstraints="NO" id="edC-Qo-xGb">
-                                <rect key="frame" x="202" y="232" width="197" height="136"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="197" id="Sl4-b3-2A6"/>
-                                    <constraint firstAttribute="height" constant="136" id="fex-Lm-znt"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1079,11 +1083,53 @@
             </objects>
             <point key="canvasLocation" x="3234" y="1055"/>
         </scene>
+        <!--Mutual FriendsTVC-->
+        <scene sceneID="ir5-TG-JmO">
+            <objects>
+                <tableViewController id="grT-50-2Eu" customClass="mutualFriendsTVC" customModule="FlipDraft02" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ysl-ua-bEq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="fp3-jd-iOJ">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Title" id="nEl-LA-sI7">
+                                    <barButtonItem key="leftBarButtonItem" title="Back to Sitters" id="daU-a5-mF2">
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="si6-6U-9UX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Odi-n6-KKC">
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Odi-n6-KKC" id="ruh-Dv-tTN">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="grT-50-2Eu" id="qzf-kY-Jvy"/>
+                            <outlet property="delegate" destination="grT-50-2Eu" id="A0T-O0-AGa"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="izo-e7-H3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3987" y="549"/>
+        </scene>
     </scenes>
     <resources>
         <image name="book-logo" width="53" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="si6-6U-9UX"/>
         <segue reference="WUM-Mh-kGH"/>
         <segue reference="vfg-As-u2a"/>
     </inferredMetricsTieBreakers>
