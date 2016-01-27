@@ -27,8 +27,7 @@ class AnimationViewController: UIViewController {
     @IBOutlet weak var TopNavBar: UINavigationBar!
     @IBOutlet weak var NavBar: UINavigationBar!
     
-    @IBOutlet weak var mutualFriendsLabel: UILabel!
-    
+    @IBOutlet weak var mutualFriendsButton: UIButton!
     
 // ================ SCHEDULIZER ================== //
 //************************************************//
@@ -71,17 +70,73 @@ class AnimationViewController: UIViewController {
 //**************************************************//
     var dictionary: [UILabel:Int] = [:]
 //--------------- END SCHEDULIZER ----------------- //
-    func displayTargetSitterSchedule () {
-        print("update schedulizer here")
-        print(step)
-        print("great error HERE!!")
+    
+    // __________________________________ START ViewDidLoad ____________________________//
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("on view did load")
+        print(tempUserNameIdentifier.count)
+        print(tempUserSitterSchedIdentifier.count)
         
-        print(tempUserSitterNumOfMutualIdentifier)
+        animationDelegate.transformView = flipView
+        animationDelegate.controller = self
+        animationDelegate.perspectiveDepth = 75000
+        animationDelegate.nextDuration = 0.20
+        animationDelegate.shadow = true
+        animationDelegate.sensitivity = 5000
+        animationDelegate.gravity = 32000
+        
+        flipView.font = "HelveticaNeue-Bold"
+        flipView.fontSize = 36.0
+        flipView.fontAlignment = "right" // not working yet... maybe when words wrap?
+        flipView.textOffset = CGPointMake(125.0, 330.0);
+        //BASE LAYER
+        if baseLayer == false {
+            flipView.printText("End of Results", usingImage: nil, backgroundColor: UIColor.lightGrayColor(), textColor: UIColor.blueColor())
+            tempUserCnxScoreIdentifier.append(0)
+            tempUserSitterNumOfMutualIdentifier.append(0)
+            tempUserSitterSchedIdentifier.append([ "fri0" : 0,"fri1": 0,"fri2":0,"mon0":0,"mon1":0,"mon2":0,"sat0":0,"sat1":0,"sat2":0,"sun0":0,"sun1":0,"sun2":0,"thu0":0,"thu1":0,"thu2":0,"tue0":0,"tue1":0,"tue2":0,"wed0":0,"wed1":0,"wed2":0])
+            tempUserNameIdentifier.append("BASE-LAYER")
+            
+            var baseLayerTimeSlot = [ "fri0" : 0,"fri1": 0,"fri2":0,"mon0":0,"mon1":0,"mon2":0,"sat0":0,"sat1":0,"sat2":0,"sun0":0,"sun1":0,"sun2":0,"thu0":0,"thu1":0,"thu2":0,"tue0":0,"tue1":0,"tue2":0,"wed0":0,"wed1":0,"wed2":0]
+            let MatchObject = SitterMatchModel(name: "Base Layer", cnxScore: 0, img: UIImage(named: "page4")!,timeSlots: baseLayerTimeSlot, mutualFriends: ["Base Camp"], numberOfMutualFriends: 0)
+            sitterModelObjects.append(MatchObject)
+            baseLayer = true
+            self.view.addSubview(flipView)
+            print("do I need a baseLayer???")
+            step = tempUserNameIdentifier.count - 1
+            animationDelegate.startAnimation(kDirectionNone)
+        } else {
+            print("base layer loaded on initial ViewDidLoad")
+        }
+        
+        // if
+        if sitterFlipBookHasBeenLoaded == true {
+            print("already loaded")
+            self.loadAnimationVcElements()
+        } else {
+            self.loadGetFlippingButton()
+        }
+    }
+    // _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ END ViewDidLoad  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _//
+    
+    
+    func displayTargetSitterSchedule () {
+        print("update MatchData here")
+        print(step)
+        print("great Print-ChkPnt HERE!!")
+        let targetMatchData = sitterModelObjects[step].numberOfMutualFriends! as Int
+        var mutualBtnTitle =  String(targetMatchData) + " Mutual Connections"
+        self.mutualFriendsButton.setTitle(mutualBtnTitle, forState: UIControlState.Normal)
+        
+        if step == 0 {
+            self.view.sendSubviewToBack(self.mutualFriendsButton)
+        } else {
+            self.view.bringSubviewToFront(self.mutualFriendsButton)
+            print("mutual friends above")
+        }
 
-        self.mutualFriendsLabel.text =  String(tempUserSitterNumOfMutualIdentifier[step]) + " Mutual Connections"
-        self.view.bringSubviewToFront(self.mutualFriendsLabel)
-//Getting All UserData in Model (as opposed to seperate & unsynced arrays...)
-        //will allow us to call this data much easier
+        //Import Data from Model Here!!
 
 //Friday
         self.fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
@@ -141,73 +196,16 @@ class AnimationViewController: UIViewController {
         if self.wed1 == 1 { self.WED_1.backgroundColor = UIColor.blueColor() } else { self.WED_1.backgroundColor = UIColor.greenColor() }
         if self.wed2 == 1 { self.WED_2.backgroundColor = UIColor.blueColor() } else { self.WED_2.backgroundColor = UIColor.greenColor() }
     }
-// __________________________________ END ViewDidLoad ____________________________//
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("on view did load")
-        print(tempUserNameIdentifier.count)
-        print(tempUserSitterSchedIdentifier.count)
 
-        animationDelegate.transformView = flipView
-        animationDelegate.controller = self
-        animationDelegate.perspectiveDepth = 75000
-        animationDelegate.nextDuration = 0.20
-        animationDelegate.shadow = true
-        animationDelegate.sensitivity = 5000
-        animationDelegate.gravity = 32000
-        
-        flipView.font = "HelveticaNeue-Bold"
-        flipView.fontSize = 36.0
-        flipView.fontAlignment = "right" // not working yet... maybe when words wrap?
-        flipView.textOffset = CGPointMake(125.0, 330.0);
-//BASE LAYER
-        if baseLayer == false {
-            flipView.printText("End of Results", usingImage: nil, backgroundColor: UIColor.lightGrayColor(), textColor: UIColor.blueColor())
-            tempUserCnxScoreIdentifier.append(0)
-            tempUserSitterNumOfMutualIdentifier.append(0)
-            tempUserSitterSchedIdentifier.append([ "fri0" : 0,"fri1": 0,"fri2":0,"mon0":0,"mon1":0,"mon2":0,"sat0":0,"sat1":0,"sat2":0,"sun0":0,"sun1":0,"sun2":0,"thu0":0,"thu1":0,"thu2":0,"tue0":0,"tue1":0,"tue2":0,"wed0":0,"wed1":0,"wed2":0])
-            tempUserNameIdentifier.append("BASE-LAYER")
-            baseLayer = true
-            self.view.addSubview(flipView)
-            print("do I need a baseLayer???")
-            step = tempUserNameIdentifier.count - 1
-            animationDelegate.startAnimation(kDirectionNone)
-        } else {
-            print("base layer loaded on initial ViewDidLoad")
-        }
-
-        // if
-        if sitterFlipBookHasBeenLoaded == true {
-            print("already loaded")
-            self.loadAnimationVcElements()
-        } else {
-            self.loadGetFlippingButton()
-        }
-    }
-    @IBAction func tappedFlipThruSitters(sender: AnyObject) {
-        self.loadAnimationVcElements()
-    }
-    func bringScheduleSquaresToFront() {
-        for squares in self.timeSlotLabelsOnViewArray {
-            self.view.bringSubviewToFront(squares)
-        }
-    }
-    func loadGetFlippingButton() {
-        self.view.sendSubviewToBack(flipView)
-        self.coverLabel.backgroundColor = UIColor.lightGrayColor()
-        self.view.bringSubviewToFront(self.coverLabel)
-        self.view.bringSubviewToFront(flipThruBtn)
-    }
-//LOAD AnimationVC elements
+    //LOAD AnimationVC elements
     func loadAnimationVcElements () {
         self.flipThruBtn.removeFromSuperview()
         self.coverLabel.removeFromSuperview()
-
+        
         self.view.addSubview(flipView)
         self.view.bringSubviewToFront(schedulizerLabel)
         self.view.bringSubviewToFront(nameLabel)
         self.bringScheduleSquaresToFront()
-        self.nameLabel.text = "Social Context"
         print(step)
         print(tempUserNameIdentifier)
         
@@ -238,16 +236,22 @@ class AnimationViewController: UIViewController {
         
         self.bringScheduleSquaresToFront()
     }
+    
+    func bringScheduleSquaresToFront() {
+        for squares in self.timeSlotLabelsOnViewArray {
+            self.view.bringSubviewToFront(squares)
+        }
+    }
+    func loadGetFlippingButton() {
+        self.view.sendSubviewToBack(flipView)
+        self.coverLabel.backgroundColor = UIColor.lightGrayColor()
+        self.view.bringSubviewToFront(self.coverLabel)
+        self.view.bringSubviewToFront(flipThruBtn)
+    }
 
-//[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[MAIN BUTTON]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]//
-
-
-//[[[[[[[[[[[[[[[[[[[[[[[  END -- MAIN BUTTON  ]]]]]]]]]]]]]]]]]]]]]]]//
     var timeSlotIndex:Int = 0
 //===========================> (SWIPE - HANDLER) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     func handleSwipe(recognizer:UISwipeGestureRecognizer){
-
-
 //  Flick-UP => FORWARD
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Up) {
             if step < (tempUserNameIdentifier.count - 1) {
@@ -255,44 +259,31 @@ class AnimationViewController: UIViewController {
                 print("on UP Swipe!")
                 step += 1
             } else {
-//                step = 1
                 print("SitterList Endpoint on UP Swipe")
+
             }
         }
 //  Flick-DOWN => BACKWARD
         if (recognizer.direction == UISwipeGestureRecognizerDirection.Down) {
-//                animationDelegate.startAnimation(kDirectionForward)
-            //on the right track here, just need
-            //some additional stoppage for schedulizer
             print("on down swipe")
             if step > 0 {
                 animationDelegate.startAnimation(kDirectionForward)
                 step -= 1
             } else {
-//                animationDelegate.startAnimation(kDirectionNone)
                 print("SitterList EndPoint on down swipe")
             }
-
         }
-        
         self.view.bringSubviewToFront(NavBar);self.view.bringSubviewToFront(TopNavBar);self.view.bringSubviewToFront(schedulizerLabel);self.view.bringSubviewToFront(nameLabel)
-//        if step == 0 {
-//            self.view.bringSubviewToFront(nameLabel)
-//            self.view.bringSubviewToFront(schedulizerLabel)
-//        } else {
-//            self.bringScheduleSquaresToFront()
-//            self.displayTargetSitterSchedule()
-//        }
-        
-        
+
         self.bringScheduleSquaresToFront()
         self.displayTargetSitterSchedule()
-        
-
     }
     // ---------- END HandleSwipe func ---------------//
-//===========================> (thru Sitter Array) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
+//================> (thru Sitter Array) >>>>>>>>>>>>>>>>>>>>>>>]]]]]
+//[[[[[[[[[[[[[[[[[[[[[[[  MAIN BUTTON  ]]]]]]]]]]]]]]]]]]]]]]]
+    @IBAction func tappedFlipThruSitters(sender: AnyObject) {
+        self.loadAnimationVcElements()
+    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 //        animationDelegate.startAnimation(kDirectionNone)

@@ -267,12 +267,14 @@
                                     <navigationItem title="Browse Sitters" id="QS2-pd-FKl"/>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mutual Friends Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc9-C1-Yip">
-                                <rect key="frame" x="20" y="74" width="160" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="IqL-by-MbV">
+                                <rect key="frame" x="20" y="81" width="318" height="59"/>
+                                <color key="backgroundColor" red="0.30196078431372547" green="1" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -366,6 +368,7 @@
                             <constraint firstItem="NJu-qd-ME2" firstAttribute="baseline" secondItem="nma-ZE-TU7" secondAttribute="baseline" id="vBQ-Bc-1VE"/>
                             <constraint firstItem="zA4-s9-hwO" firstAttribute="leading" secondItem="rks-sH-CaS" secondAttribute="trailing" constant="8" symbolic="YES" id="vUc-hk-YXI"/>
                             <constraint firstItem="UYG-nA-eSo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="vXo-Kh-9tF"/>
+                            <constraint firstItem="SJH-VE-9we" firstAttribute="leading" secondItem="IqL-by-MbV" secondAttribute="trailing" constant="-180" id="w2s-Jd-UjA"/>
                             <constraint firstItem="NJu-qd-ME2" firstAttribute="trailing" secondItem="mgt-tM-bnl" secondAttribute="trailing" id="wWx-2c-3Sy"/>
                             <constraint firstItem="IbT-Dc-gkF" firstAttribute="baseline" secondItem="ZsV-fq-eie" secondAttribute="baseline" id="yBA-Rd-EFR"/>
                             <constraint firstItem="8Ch-dJ-92e" firstAttribute="baseline" secondItem="mgt-tM-bnl" secondAttribute="baseline" id="yRZ-iZ-hwe"/>
@@ -399,7 +402,7 @@
                         <outlet property="WED_2" destination="ZsV-fq-eie" id="gXb-Ja-Box"/>
                         <outlet property="coverLabel" destination="Yv0-cN-8CP" id="zM7-eN-2fe"/>
                         <outlet property="flipThruBtn" destination="Bsu-jY-UqQ" id="Wif-Mx-Cf7"/>
-                        <outlet property="mutualFriendsLabel" destination="nc9-C1-Yip" id="Qzy-r9-hfQ"/>
+                        <outlet property="mutualFriendsButton" destination="IqL-by-MbV" id="YKV-N8-iKR"/>
                         <outlet property="nameLabel" destination="SJH-VE-9we" id="Jst-fr-AXX"/>
                         <outlet property="schedulizerLabel" destination="fDA-8E-phv" id="9cm-na-DZs"/>
                     </connections>

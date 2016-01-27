@@ -13,14 +13,16 @@ class SitterMatchModel: NSObject {
     var cnxScore:Int?
     var img:UIImage?
     var timeSlots:NSDictionary?
-    var mutualFriends:NSDictionary?
+    var mutualFriends:NSArray?
+    var numberOfMutualFriends:Int?
     
 //    init(name:String, cnxScore:Int,img:UIImage) {
-    init(name:String, cnxScore:Int,img:UIImage,timeSlots:NSDictionary,mutualFriends:NSDictionary) {
+    init(name:String, cnxScore:Int,img:UIImage,timeSlots:NSDictionary,mutualFriends:NSArray,numberOfMutualFriends:Int) {
         self.name = name
         self.cnxScore = cnxScore
         self.img = img
         self.timeSlots = timeSlots
         self.mutualFriends = mutualFriends
+        self.numberOfMutualFriends = numberOfMutualFriends
     }
 }

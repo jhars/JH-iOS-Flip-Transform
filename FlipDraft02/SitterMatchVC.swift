@@ -32,7 +32,6 @@ class SitterMatchVC: UIViewController {
     
     @IBOutlet weak var activityWheel: UIActivityIndicatorView!
     
-    
     var currentUserId:String = ""
     var tempFireBaseUrlForCurrentUser:String = ""
     var cnxImageUrl:String = ""
@@ -45,8 +44,6 @@ class SitterMatchVC: UIViewController {
         } else {
             print("sitterFlipBookHasBeenLoaded = true, will not reload")
         }
-
-
     }
     
     let fireBaseRef = Firebase(url: "https://sitterbookapi.firebaseio.com/users/")
@@ -69,15 +66,12 @@ class SitterMatchVC: UIViewController {
                 let userEmail : NSString = result.valueForKey("email") as! NSString
                 print(userEmail)
                 
-
                     //=================================================================\\
                     //   [SITTER MATCH MODEL]()  ->   is this delegation...?
                     //=================================================================\\
-                    
                     let currentUserPath = self.tempFireBaseUrlForCurrentUser
+                //Add 'if' statement here for '/ParentList' Route
                     let fireBaseRef = Firebase(url:(currentUserPath as String) + "/sitterList/")
-                
-
                 
                     fireBaseRef.queryOrderedByValue().observeEventType(.ChildAdded, withBlock: { snapshot in
 //Need To ADD ERROR HANDLING HERE
@@ -106,19 +100,11 @@ class SitterMatchVC: UIViewController {
                                     tempUserSitterSchedIdentifier.append(sitterTimeArrayModel)
 //                                    print(sitterTimeArrayModel)
                                     
-                                    let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel,timeSlots: sitterTimeArrayModel, mutualFriends: sitterObjDict)
+                                    let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel,timeSlots: sitterTimeArrayModel, mutualFriends: mutualFriends, numberOfMutualFriends: numberOfMutualFrnds)
                                     sitterModelObjects.append(SitterObject)
                                     
                                     flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.lightGrayColor())
-//                                    step += 1
-                                    
 
-                                    //Arrays load in SAME Order, this is good!
-                                    //You can pair/sync them together have
-                                    //schedule cycle as you flip
-                                    //using the name OR index as an identifier
-                                    //but I still need the name in the flipView Object
-                                    //can I pass BACING LAYER through Segue?
                                 }
                                 AlamoRef.resume()
                                 UserDataHasBeenLoaded = true
@@ -136,7 +122,7 @@ class SitterMatchVC: UIViewController {
     } //============================ END  func returnUserData() ============================== //
 
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let newsTVC = segue.destinationViewController as! AnimationViewController
-//        newsTVC.sitterObjArray = sitterModelObjects
+//        let animationVC = segue.destinationViewController as! AnimationViewController
+//        animationVC.sitterObjArray = sitterModelObjects // self.sitterModelObject
 //    }
 }
