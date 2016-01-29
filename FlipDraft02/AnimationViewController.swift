@@ -135,43 +135,19 @@ class AnimationViewController: UIViewController {
         
         let targetScheduleData = targetMatchData.timeSlots! as NSDictionary
         print(targetScheduleData)
-        
-        
-//        for scheduleIndex in 0...20 {
-//            tempTimeSlotArrFromAPI[scheduleIndex] = tempUserSitterSchedIdentifier[step][scheduleDataKeys[scheduleIndex]] as! Int
-//            print(tempTimeSlotArrFromAPI)
-//            if tempTimeSlotArrFromAPI[scheduleIndex] == 1 {
-//                //if matching date, squareColor = Green
-//                print(tempUserParentSchedule)
-//                if tempUserParentSchedule[scheduleIndex] == true {
-//                    self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.greenColor()
-//                } else {
-//                    self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.blueColor()
-//                }
-//            } else {
-//                self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.grayColor()
-//            }
-//            print(scheduleIndex)
-//        }
         for scheduleIndex in 0...20 {
             tempTimeSlotArrFromAPI[scheduleIndex] = tempUserSitterSchedIdentifier[step][scheduleDataKeys[scheduleIndex]] as! Int
 //            print(tempTimeSlotArrFromAPI)
-            if tempTimeSlotArrFromAPI[scheduleIndex] == 1 {
-                print(tempUserParentSchedule)
-                if tempUserParentSchedule[scheduleIndex] == true {
-                    self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.greenColor()
-                } else {
-                    self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.blueColor()
-                }
-
-            } else {
+            if tempTimeSlotArrFromAPI[scheduleIndex] != 1 {
                 self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.grayColor()
+                print("greyColor")
+            } else if ( (tempUserParentSchedule.count == 21) && (tempUserParentSchedule[scheduleIndex] == true) ) {
+                    self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor(red: 1.0, green: 92/255, blue: 103/255, alpha: 1.0) //Red/Orange
+                    print("orange")
+            } else {
+                self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor(red: 150/255, green: 255/255, blue: 193/255, alpha: 1.0) //App Color
             }
-            print(scheduleIndex)
         }
-        
-//        flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.lightGrayColor())
-        
     }
 
     //LOAD AnimationVC elements
@@ -182,6 +158,7 @@ class AnimationViewController: UIViewController {
         self.view.addSubview(flipView)
         self.view.bringSubviewToFront(schedulizerLabel)
         self.view.bringSubviewToFront(nameLabel)
+
         self.bringScheduleSquaresToFront()
         print(step)
         print(tempUserNameIdentifier)
