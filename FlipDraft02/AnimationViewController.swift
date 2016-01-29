@@ -29,47 +29,31 @@ class AnimationViewController: UIViewController {
     
     @IBOutlet weak var mutualFriendsButton: UIButton!
     
-// ================ SCHEDULIZER ================== //
-//************************************************//
-
+    // ================ SCHEDULIZER ================== //
+    //************************************************//
     //MONDAY
     var mon0 = 0;var mon1 = 0;var mon2 = 0
-    @IBOutlet weak var MON_0: UILabel!
-    @IBOutlet weak var MON_1: UILabel!
-    @IBOutlet weak var MON_2: UILabel!
+    @IBOutlet weak var MON_0: UILabel!;@IBOutlet weak var MON_1: UILabel!;@IBOutlet weak var MON_2: UILabel!
     //TUESDAY
     var tue0 = 0;var tue1 = 0;var tue2 = 0
-    @IBOutlet weak var TUE_0: UILabel!
-    @IBOutlet weak var TUE_1: UILabel!
-    @IBOutlet weak var TUE_2: UILabel!
+    @IBOutlet weak var TUE_0: UILabel!;@IBOutlet weak var TUE_1: UILabel!;@IBOutlet weak var TUE_2: UILabel!
     //WEDNESDAY
     var wed0 = 0;var wed1 = 0;var wed2 = 0
-    @IBOutlet weak var WED_0: UILabel!
-    @IBOutlet weak var WED_1: UILabel!
-    @IBOutlet weak var WED_2: UILabel!
+    @IBOutlet weak var WED_0: UILabel!;@IBOutlet weak var WED_1: UILabel!;@IBOutlet weak var WED_2: UILabel!
     //THURSDAY
     var thu0 = 0;var thu1 = 0;var thu2 = 0
-    @IBOutlet weak var THU_0: UILabel!
-    @IBOutlet weak var THU_1: UILabel!
-    @IBOutlet weak var THU_2: UILabel!
+    @IBOutlet weak var THU_0: UILabel!;@IBOutlet weak var THU_1: UILabel!;@IBOutlet weak var THU_2: UILabel!
     //FRIDAY
     var fri0 = 0;var fri1 = 0;var fri2 = 0
-    @IBOutlet weak var FRI_0: UILabel!
-    @IBOutlet weak var FRI_1: UILabel!
-    @IBOutlet weak var FRI_2: UILabel!
+    @IBOutlet weak var FRI_0: UILabel!;@IBOutlet weak var FRI_1: UILabel!;@IBOutlet weak var FRI_2: UILabel!
     //SATURDAY
     var sat0 = 0;var sat1 = 0;var sat2 = 0
-    @IBOutlet weak var SAT_0: UILabel!
-    @IBOutlet weak var SAT_1: UILabel!
-    @IBOutlet weak var SAT_2: UILabel!
+    @IBOutlet weak var SAT_0: UILabel!;@IBOutlet weak var SAT_1: UILabel!;@IBOutlet weak var SAT_2: UILabel!
     //SUNDAY
     var sun0 = 0;var sun1 = 0;var sun2 = 0
-    @IBOutlet weak var SUN_0: UILabel!
-    @IBOutlet weak var SUN_1: UILabel!
-    @IBOutlet weak var SUN_2: UILabel!
-//**************************************************//
-    var dictionary: [UILabel:Int] = [:]
-//--------------- END SCHEDULIZER ----------------- //
+    @IBOutlet weak var SUN_0: UILabel!;@IBOutlet weak var SUN_1: UILabel!;@IBOutlet weak var SUN_2: UILabel!
+    //**************************************************//
+    //--------------- END SCHEDULIZER ----------------- //
     
     // __________________________________ START ViewDidLoad ____________________________//
     override func viewDidLoad() {
@@ -122,79 +106,41 @@ class AnimationViewController: UIViewController {
     
     
     func displayTargetSitterSchedule () {
-        print("update MatchData here")
-        print(step)
-        print("great Print-ChkPnt HERE!!")
-        let targetMatchData = sitterModelObjects[step].numberOfMutualFriends! as Int
-        var mutualBtnTitle =  String(targetMatchData) + " Mutual Connections"
-        self.mutualFriendsButton.setTitle(mutualBtnTitle, forState: UIControlState.Normal)
+        self.timeSlotLabelsOnViewArray = [FRI_0, FRI_1,FRI_2,MON_0,MON_1,MON_2,SAT_0,SAT_1,SAT_2,SUN_0,SUN_1,SUN_2,THU_0,THU_1,THU_2,TUE_0,TUE_1,TUE_2,WED_0,WED_1,WED_2]
+        tempTimeSlotArrFromAPI = [fri0,fri1,fri2,mon0,mon1,mon2,sat0,sat1,sat2,sun0,sun1,sun2,thu0,thu1,thu2,tue0,tue1,tue2,wed0,wed1,wed2]
+        print("update MatchData here");print(step);print("great Print-ChkPnt HERE!!")
         
+        let targetMatchData = sitterModelObjects[step]
+        
+        UserDataHasBeenLoaded = true
+        print("userDataHasBeenLoaded =  \(UserDataHasBeenLoaded)")
+        
+        
+        let targetMutualFriendData = targetMatchData.numberOfMutualFriends! as Int
+        var mutualBtnTitle =  String(targetMutualFriendData) + " Mutual Connections"
+        self.mutualFriendsButton.setTitle(mutualBtnTitle, forState: UIControlState.Normal)
         if step == 0 {
             self.view.sendSubviewToBack(self.mutualFriendsButton)
         } else {
             self.view.bringSubviewToFront(self.mutualFriendsButton)
             print("mutual friends above")
         }
-
         //Import Data from Model Here!!
-
-//Friday
-        self.fri0 = tempUserSitterSchedIdentifier[step]["fri0"] as! Int
-        self.fri1 = tempUserSitterSchedIdentifier[step]["fri1"] as! Int
-        self.fri2 = tempUserSitterSchedIdentifier[step]["fri2"] as! Int
+        var scheduleDataKeys = ["fri0","fri1","fri2","mon0","mon1","mon2","sat0","sat1","sat2","sun0","sun1","sun2","thu0","thu1","thu2","tue0","tue1","tue2","wed0","wed1","wed2"]
         
-        if self.fri0 == 1 { self.FRI_0.backgroundColor = UIColor.blueColor() } else { self.FRI_0.backgroundColor = UIColor.greenColor() }
-        if self.fri1 == 1 { self.FRI_1.backgroundColor = UIColor.blueColor() } else { self.FRI_1.backgroundColor = UIColor.greenColor() }
-        if self.fri2 == 1 { self.FRI_2.backgroundColor = UIColor.blueColor() } else { self.FRI_2.backgroundColor = UIColor.greenColor() }
+        let targetScheduleData = targetMatchData.timeSlots! as NSDictionary
+        print(targetScheduleData)
         
-//Monday
-        self.mon0 = tempUserSitterSchedIdentifier[step]["mon0"] as! Int
-        self.mon1 = tempUserSitterSchedIdentifier[step]["mon1"] as! Int
-        self.mon2 = tempUserSitterSchedIdentifier[step]["mon2"] as! Int
-        
-        if self.mon0 == 1 { self.MON_0.backgroundColor = UIColor.blueColor() } else { self.MON_0.backgroundColor = UIColor.greenColor() }
-        if self.mon1 == 1 { self.MON_1.backgroundColor = UIColor.blueColor() } else { self.MON_1.backgroundColor = UIColor.greenColor() }
-        if self.mon2 == 1 { self.MON_2.backgroundColor = UIColor.blueColor() } else { self.MON_2.backgroundColor = UIColor.greenColor() }
-        
-//Saturday
-        self.sat0 = tempUserSitterSchedIdentifier[step]["sat0"] as! Int
-        self.sat1 = tempUserSitterSchedIdentifier[step]["sat1"] as! Int
-        self.sat2 = tempUserSitterSchedIdentifier[step]["sat2"] as! Int
-        if self.sat0 == 1 { self.SAT_0.backgroundColor = UIColor.blueColor() } else { self.SAT_0.backgroundColor = UIColor.greenColor() }
-        if self.sat1 == 1 { self.SAT_1.backgroundColor = UIColor.blueColor() } else { self.SAT_1.backgroundColor = UIColor.greenColor() }
-        if self.sat2 == 1 { self.SAT_2.backgroundColor = UIColor.blueColor() } else { self.SAT_2.backgroundColor = UIColor.greenColor() }
-//Sunday
-        self.sun0 = tempUserSitterSchedIdentifier[step]["sun0"] as! Int
-        self.sun1 = tempUserSitterSchedIdentifier[step]["sun1"] as! Int
-        self.sun2 = tempUserSitterSchedIdentifier[step]["sun2"] as! Int
-        
-        if self.sun0 == 1 { self.SUN_0.backgroundColor = UIColor.blueColor() } else { self.SUN_0.backgroundColor = UIColor.greenColor() }
-        if self.sun1 == 1 { self.SUN_1.backgroundColor = UIColor.blueColor() } else { self.SUN_1.backgroundColor = UIColor.greenColor() }
-        if self.sun2 == 1 { self.SUN_2.backgroundColor = UIColor.blueColor() } else { self.SUN_2.backgroundColor = UIColor.greenColor() }
-//Thursday
-        self.thu0 = tempUserSitterSchedIdentifier[step]["thu0"] as! Int
-        self.thu1 = tempUserSitterSchedIdentifier[step]["thu1"] as! Int
-        self.thu2 = tempUserSitterSchedIdentifier[step]["thu2"] as! Int
-        
-        if self.thu0 == 1 { self.THU_0.backgroundColor = UIColor.blueColor() } else { self.THU_0.backgroundColor = UIColor.greenColor() }
-        if self.thu1 == 1 { self.THU_1.backgroundColor = UIColor.blueColor() } else { self.THU_1.backgroundColor = UIColor.greenColor() }
-        if self.thu2 == 1 { self.THU_2.backgroundColor = UIColor.blueColor() } else { self.THU_2.backgroundColor = UIColor.greenColor() }
-//Tuesday
-        self.tue0 = tempUserSitterSchedIdentifier[step]["tue0"] as! Int
-        self.tue1 = tempUserSitterSchedIdentifier[step]["tue1"] as! Int
-        self.tue2 = tempUserSitterSchedIdentifier[step]["tue2"] as! Int
-        
-        if self.tue0 == 1 { self.TUE_0.backgroundColor = UIColor.blueColor() } else { self.TUE_0.backgroundColor = UIColor.greenColor() }
-        if self.tue1 == 1 { self.TUE_1.backgroundColor = UIColor.blueColor() } else { self.TUE_1.backgroundColor = UIColor.greenColor() }
-        if self.tue2 == 1 { self.TUE_2.backgroundColor = UIColor.blueColor() } else { self.TUE_2.backgroundColor = UIColor.greenColor() }
-//Wednesday
-        self.wed0 = tempUserSitterSchedIdentifier[step]["wed0"] as! Int
-        self.wed1 = tempUserSitterSchedIdentifier[step]["wed1"] as! Int
-        self.wed2 = tempUserSitterSchedIdentifier[step]["wed2"] as! Int
-        
-        if self.wed0 == 1 { self.WED_0.backgroundColor = UIColor.blueColor() } else { self.WED_0.backgroundColor = UIColor.greenColor() }
-        if self.wed1 == 1 { self.WED_1.backgroundColor = UIColor.blueColor() } else { self.WED_1.backgroundColor = UIColor.greenColor() }
-        if self.wed2 == 1 { self.WED_2.backgroundColor = UIColor.blueColor() } else { self.WED_2.backgroundColor = UIColor.greenColor() }
+        for scheduleIndex in 0...20 {
+            tempTimeSlotArrFromAPI[scheduleIndex] = tempUserSitterSchedIdentifier[step][scheduleDataKeys[scheduleIndex]] as! Int
+            print(tempTimeSlotArrFromAPI)
+            if tempTimeSlotArrFromAPI[scheduleIndex] == 1 {
+                self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.blueColor()
+            } else {
+                self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.greenColor()
+            }
+            print(scheduleIndex)
+        }
     }
 
     //LOAD AnimationVC elements
@@ -217,11 +163,6 @@ class AnimationViewController: UIViewController {
         self.displayTargetSitterSchedule()
         self.timeSlotLabelsOnViewArray = [FRI_0, FRI_1,FRI_2,MON_0,MON_1,MON_2,SAT_0,SAT_1,SAT_2,SUN_0,SUN_1,SUN_2,THU_0,THU_1,THU_2,TUE_0,TUE_1,TUE_2,WED_0,WED_1,WED_2]
         tempTimeSlotArrFromAPI = [fri0,fri1,fri2,mon0,mon1,mon2,sat0,sat1,sat2,sun0,sun1,sun2,thu0,thu1,thu2,tue0,tue1,tue2,wed0,wed1,wed2]
-        //self.dictionary
-        for (index, element) in self.timeSlotLabelsOnViewArray.enumerate() {
-            self.dictionary[element] = tempTimeSlotArrFromAPI[index]
-        }
-        //========================================================================================================================//
         //========================================================================================================================//
         //========================= PAN-GESTURE ===============================//
         let showGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target:self, action: "handleSwipe:")
