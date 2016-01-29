@@ -28,6 +28,20 @@ class UpdateUserDataVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBAction func updatBtnTapped(sender: AnyObject) {
+        baseLayer = false
+        sitterFlipBookHasBeenLoaded = false
+        UserDataHasBeenLoaded = false
+
+//        sitterMatchModelName.removeAll()
+//        sitterMatchModelScore.removeAll()
+//        sitterModelObjects.removeAll()
+//        
+//        tempUserNameIdentifier.removeAll()
+//        tempUserCnxScoreIdentifier.removeAll()
+//        tempUserSitterSchedIdentifier.removeAll()
+//        tempUserSitterNumOfMutualIdentifier.removeAll()
+        flipView.imageStackArray.removeAllObjects()
+        
         self.returnUserData()
     }
     

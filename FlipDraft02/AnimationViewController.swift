@@ -3,7 +3,6 @@
 // ************************************ //
 import UIKit
 
-// :
 
 var baseLayer = false
 var sitterFlipBookHasBeenLoaded = false
@@ -69,6 +68,7 @@ class AnimationViewController: UIViewController {
         animationDelegate.shadow = true
         animationDelegate.sensitivity = 5000
         animationDelegate.gravity = 32000
+        animationDelegate.startAnimation(kDirectionNone)
         
         flipView.font = "HelveticaNeue-Bold"
         flipView.fontSize = 36.0
@@ -79,17 +79,18 @@ class AnimationViewController: UIViewController {
             flipView.printText("End of Results", usingImage: nil, backgroundColor: UIColor.lightGrayColor(), textColor: UIColor.blueColor())
             tempUserCnxScoreIdentifier.append(0)
             tempUserSitterNumOfMutualIdentifier.append(0)
-            tempUserSitterSchedIdentifier.append([ "fri0" : 0,"fri1": 0,"fri2":0,"mon0":0,"mon1":0,"mon2":0,"sat0":0,"sat1":0,"sat2":0,"sun0":0,"sun1":0,"sun2":0,"thu0":0,"thu1":0,"thu2":0,"tue0":0,"tue1":0,"tue2":0,"wed0":0,"wed1":0,"wed2":0])
+            let baseLayerTimeSlot = [ "fri0":0,"fri1":0,"fri2":0,"mon0":0,"mon1":0,"mon2":0,"sat0":0,"sat1":0,"sat2":0,"sun0":0,"sun1":0,"sun2":0,"thu0":0,"thu1":0,"thu2":0,"tue0":0,"tue1":0,"tue2":0,"wed0":0,"wed1":0,"wed2":0]
+            tempUserSitterSchedIdentifier.append(baseLayerTimeSlot)
             tempUserNameIdentifier.append("BASE-LAYER")
             
-            var baseLayerTimeSlot = [ "fri0" : 0,"fri1": 0,"fri2":0,"mon0":0,"mon1":0,"mon2":0,"sat0":0,"sat1":0,"sat2":0,"sun0":0,"sun1":0,"sun2":0,"thu0":0,"thu1":0,"thu2":0,"tue0":0,"tue1":0,"tue2":0,"wed0":0,"wed1":0,"wed2":0]
+         
             let MatchObject = SitterMatchModel(name: "Base Layer", cnxScore: 0, img: UIImage(named: "page4")!,timeSlots: baseLayerTimeSlot, mutualFriends: ["Base Camp"], numberOfMutualFriends: 0)
             sitterModelObjects.append(MatchObject)
             baseLayer = true
             self.view.addSubview(flipView)
             print("do I need a baseLayer???")
             step = tempUserNameIdentifier.count - 1
-            animationDelegate.startAnimation(kDirectionNone)
+
         } else {
             print("base layer loaded on initial ViewDidLoad")
         }
@@ -117,7 +118,7 @@ class AnimationViewController: UIViewController {
         
         
         let targetMutualFriendData = targetMatchData.numberOfMutualFriends! as Int
-        var mutualBtnTitle =  String(targetMutualFriendData) + " Mutual Connections"
+        let mutualBtnTitle =  String(targetMutualFriendData) + " Mutual Connections"
         self.mutualFriendsButton.setTitle(mutualBtnTitle, forState: UIControlState.Normal)
         if step == 0 {
             self.view.sendSubviewToBack(self.mutualFriendsButton)
