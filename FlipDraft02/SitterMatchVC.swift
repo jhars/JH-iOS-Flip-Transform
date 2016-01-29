@@ -18,7 +18,7 @@ var sitterMatchModelScore = [Int]()
 var sitterModelObjects = [SitterMatchModel]()
 var UserDataHasBeenLoaded = Bool()
 
-var flipViewArray = [FlipView]()
+var flipViewArray = [flipView]
 
 var tempUserNameIdentifier = [String]()
 var tempUserCnxScoreIdentifier = [Int]()

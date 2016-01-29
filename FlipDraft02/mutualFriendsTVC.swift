@@ -20,19 +20,26 @@ class mutualFriendsTVC: UITableViewController {
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        let numOfMutFrnd = (sitterModelObjects[step].mutualFriends!.count - 1) as Int
+        print(numOfMutFrnd)
+        return numOfMutFrnd
+        
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("mutualFrndsTable", forIndexPath: indexPath)
 
         // Configure the cell...
+        let mutFrndArray = sitterModelObjects[step].mutualFriends! as NSArray
+        print(mutFrndArray)
+        
+        cell.textLabel?.text = mutFrndArray[indexPath.row].valueForKey("name") as! String
 
         return cell
     }
