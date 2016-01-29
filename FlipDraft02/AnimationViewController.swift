@@ -136,13 +136,36 @@ class AnimationViewController: UIViewController {
         let targetScheduleData = targetMatchData.timeSlots! as NSDictionary
         print(targetScheduleData)
         
+        
+//        for scheduleIndex in 0...20 {
+//            tempTimeSlotArrFromAPI[scheduleIndex] = tempUserSitterSchedIdentifier[step][scheduleDataKeys[scheduleIndex]] as! Int
+//            print(tempTimeSlotArrFromAPI)
+//            if tempTimeSlotArrFromAPI[scheduleIndex] == 1 {
+//                //if matching date, squareColor = Green
+//                print(tempUserParentSchedule)
+//                if tempUserParentSchedule[scheduleIndex] == true {
+//                    self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.greenColor()
+//                } else {
+//                    self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.blueColor()
+//                }
+//            } else {
+//                self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.grayColor()
+//            }
+//            print(scheduleIndex)
+//        }
         for scheduleIndex in 0...20 {
             tempTimeSlotArrFromAPI[scheduleIndex] = tempUserSitterSchedIdentifier[step][scheduleDataKeys[scheduleIndex]] as! Int
-            print(tempTimeSlotArrFromAPI)
+//            print(tempTimeSlotArrFromAPI)
             if tempTimeSlotArrFromAPI[scheduleIndex] == 1 {
-                self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.blueColor()
+                print(tempUserParentSchedule)
+                if tempUserParentSchedule[scheduleIndex] == true {
+                    self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.greenColor()
+                } else {
+                    self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.blueColor()
+                }
+
             } else {
-                self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.greenColor()
+                self.timeSlotLabelsOnViewArray[scheduleIndex].backgroundColor = UIColor.grayColor()
             }
             print(scheduleIndex)
         }

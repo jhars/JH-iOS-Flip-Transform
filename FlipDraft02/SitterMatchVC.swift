@@ -43,7 +43,7 @@ class SitterMatchVC: UIViewController {
         }
     }
     
-    let fireBaseRef = Firebase(url: "https://sitterbookapi.firebaseio.com/users/")
+//    let fireBaseRef = Firebase(url: "https://sitterbookapi.firebaseio.com/users/")
     //=================================================================\\
     func returnUserData() {
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "email,id,name,photos"])
@@ -69,6 +69,7 @@ class SitterMatchVC: UIViewController {
                     let currentUserPath = self.tempFireBaseUrlForCurrentUser
                 //Add 'if' statement here for '/ParentList' Route
                     let fireBaseRef = Firebase(url:(currentUserPath as String) + "/sitterList/")
+//                    let UserObjectRef = Firebase(url:(currentUserPath as String) )
                 
                     fireBaseRef.queryOrderedByValue().observeEventType(.ChildAdded, withBlock: { snapshot in
 //Need To ADD ERROR HANDLING HERE

@@ -20,12 +20,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yv0-cN-8CP">
-                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDA-8E-phv">
                                 <rect key="frame" x="0.0" y="449" width="600" height="112"/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -250,9 +244,13 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsu-jY-UqQ">
-                                <rect key="frame" x="230" y="241" width="140" height="30"/>
+                                <rect key="frame" x="212" y="276" width="176" height="47"/>
                                 <color key="backgroundColor" red="0.64035166628609552" green="1" blue="0.79920211566955335" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Flip Through Sitters!"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <state key="normal" title="Flip Through Sitters!">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="tappedFlipThruSitters:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kcT-s8-RIe"/>
                                 </connections>
@@ -269,15 +267,22 @@
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="IqL-by-MbV">
                                 <rect key="frame" x="312" y="80" width="268" height="59"/>
-                                <color key="backgroundColor" red="0.30196078431372547" green="1" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <color key="backgroundColor" red="0.64035166629999996" green="1" blue="0.79920211569999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="14"/>
                                 <state key="normal" title="Mutual Friends">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="grT-50-2Eu" kind="show" id="Cyg-9M-8dw"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yv0-cN-8CP">
+                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -475,6 +480,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Main Menu &gt;" id="dal-Cm-HWf">
                                             <connections>
+                                                <action selector="tapMainMenuBtn:" destination="0l0-zg-5yH" id="asK-cE-Zx0"/>
                                                 <segue destination="J0N-1E-Wai" kind="popoverPresentation" popoverAnchorBarButtonItem="dal-Cm-HWf" id="jvQ-6z-WMj">
                                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                 </segue>
@@ -485,9 +491,7 @@
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8V9-Ko-0Tv">
                                 <rect key="frame" x="20" y="68" width="560" height="56"/>
-                                <color key="backgroundColor" red="1" green="0.85285458305557249" blue="0.33950074391620555" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                <state key="normal" title="Update My Info!"/>
                                 <connections>
                                     <action selector="updatBtnTapped:" destination="0l0-zg-5yH" eventType="touchUpInside" id="G9f-k6-g4h"/>
                                 </connections>
@@ -810,8 +814,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlg-m2-HgI">
+                                <rect key="frame" x="20" y="471" width="560" height="58"/>
+                                <state key="normal" title="UPDATE INFO"/>
+                                <connections>
+                                    <action selector="tapUpdateInfoBtn:" destination="0l0-zg-5yH" eventType="touchUpInside" id="wG1-2F-XYQ"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.85285458309999995" blue="0.33950074390000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.64035166629999996" green="1" blue="0.79920211569999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="S6d-Hu-Fpi" firstAttribute="leading" secondItem="AwV-Ro-3Ao" secondAttribute="trailing" constant="4" id="2Eh-57-9jK"/>
                             <constraint firstItem="ote-KK-KG7" firstAttribute="top" secondItem="8Wd-aj-gKs" secondAttribute="bottom" constant="8" id="5ja-46-ut9"/>
@@ -827,6 +838,7 @@
                             <constraint firstItem="wWg-Ob-Gms" firstAttribute="top" secondItem="xeu-wh-xFk" secondAttribute="bottom" constant="10" id="EIL-BU-yri"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8Wd-aj-gKs" secondAttribute="trailing" id="F5S-nf-u23"/>
                             <constraint firstItem="7tS-G9-hFy" firstAttribute="leading" secondItem="S6d-Hu-Fpi" secondAttribute="trailing" constant="8" id="FKS-Bd-Mjl"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="zlg-m2-HgI" secondAttribute="leading" id="Fio-gB-GCD"/>
                             <constraint firstItem="xeu-wh-xFk" firstAttribute="top" secondItem="S6d-Hu-Fpi" secondAttribute="bottom" constant="12" id="Gyo-Du-IN6"/>
                             <constraint firstItem="KyM-FW-zEH" firstAttribute="leading" secondItem="KoH-fi-oJD" secondAttribute="trailing" constant="8" id="H99-6w-AHe"/>
                             <constraint firstAttribute="leadingMargin" secondItem="8Wd-aj-gKs" secondAttribute="leading" id="HEN-vd-eCS"/>
@@ -845,6 +857,7 @@
                             <constraint firstItem="lTw-x3-VxT" firstAttribute="top" secondItem="Dd8-X7-fcR" secondAttribute="bottom" constant="12" id="SjW-f8-hoa"/>
                             <constraint firstItem="eor-zC-NHP" firstAttribute="top" secondItem="R93-fa-FM8" secondAttribute="bottom" constant="10" id="T4n-8Q-JiR"/>
                             <constraint firstItem="vbe-sK-4QS" firstAttribute="leading" secondItem="kyC-WT-tQC" secondAttribute="trailing" constant="8" id="TLH-Sa-ZYx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zlg-m2-HgI" secondAttribute="trailing" id="TfQ-vs-jrx"/>
                             <constraint firstItem="MnQ-nY-rzS" firstAttribute="leading" secondItem="vbe-sK-4QS" secondAttribute="trailing" constant="88" id="V1K-QR-50x"/>
                             <constraint firstItem="9YW-9L-eih" firstAttribute="leading" secondItem="piL-wj-enW" secondAttribute="leadingMargin" constant="-20" id="XFM-ct-YUA"/>
                             <constraint firstItem="2D8-Ok-6zf" firstAttribute="leading" secondItem="vbe-sK-4QS" secondAttribute="trailing" constant="48" id="XXB-YO-3nh"/>
@@ -860,6 +873,7 @@
                             <constraint firstItem="Dd8-X7-fcR" firstAttribute="leading" secondItem="XYm-r9-d2y" secondAttribute="trailing" constant="8" id="mD9-zG-l7D"/>
                             <constraint firstItem="kBj-UF-vMG" firstAttribute="leading" secondItem="KyM-FW-zEH" secondAttribute="trailing" constant="8" id="mMn-EY-5ok"/>
                             <constraint firstItem="KyM-FW-zEH" firstAttribute="top" secondItem="e26-5q-qWT" secondAttribute="bottom" constant="10" id="mze-ya-Fjy"/>
+                            <constraint firstItem="zlg-m2-HgI" firstAttribute="top" secondItem="KyM-FW-zEH" secondAttribute="bottom" constant="23" id="nk7-Pa-4wV"/>
                             <constraint firstItem="Oew-nx-xtk" firstAttribute="leading" secondItem="R93-fa-FM8" secondAttribute="trailing" constant="8" id="nxY-tW-oh3"/>
                             <constraint firstItem="pNt-k9-1Ak" firstAttribute="top" secondItem="5AF-l8-pWz" secondAttribute="bottom" constant="12" id="o5b-Hp-sqG"/>
                             <constraint firstItem="vbe-sK-4QS" firstAttribute="leading" secondItem="Ago-xl-F5D" secondAttribute="trailing" constant="84" id="oEt-Bv-e4B"/>
@@ -959,7 +973,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.64035166629999996" green="1" blue="0.79920211569999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fC9-Ai-I4F" firstAttribute="top" secondItem="DQw-AI-gdx" secondAttribute="top" id="2eH-jI-dN1"/>
                             <constraint firstItem="edC-Qo-xGb" firstAttribute="centerY" secondItem="DQw-AI-gdx" secondAttribute="centerY" id="3VL-Mn-3rf"/>
@@ -1129,8 +1143,8 @@
         <image name="book-logo" width="53" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="si6-6U-9UX"/>
-        <segue reference="WUM-Mh-kGH"/>
         <segue reference="vfg-As-u2a"/>
+        <segue reference="WUM-Mh-kGH"/>
+        <segue reference="si6-6U-9UX"/>
     </inferredMetricsTieBreakers>
 </document>

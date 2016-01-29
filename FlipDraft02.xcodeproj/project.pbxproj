@@ -21,7 +21,6 @@
 		92C678571C41F0510083F68F /* SitterMatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C678561C41F0510083F68F /* SitterMatchModel.swift */; };
 		92DBC3CE1C40E5F00004F91C /* FacebookOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DBC3CD1C40E5F00004F91C /* FacebookOAuthViewController.swift */; };
 		92E8CB6C1C59316E0002A77C /* mutualFriendsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E8CB6B1C59316E0002A77C /* mutualFriendsTVC.swift */; };
-		92E8CB6E1C59376F0002A77C /* ShowMutualFrndsCtlr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E8CB6D1C59376F0002A77C /* ShowMutualFrndsCtlr.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +41,6 @@
 		92C678561C41F0510083F68F /* SitterMatchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SitterMatchModel.swift; sourceTree = "<group>"; };
 		92DBC3CD1C40E5F00004F91C /* FacebookOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookOAuthViewController.swift; sourceTree = "<group>"; };
 		92E8CB6B1C59316E0002A77C /* mutualFriendsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mutualFriendsTVC.swift; sourceTree = "<group>"; };
-		92E8CB6D1C59376F0002A77C /* ShowMutualFrndsCtlr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMutualFrndsCtlr.swift; sourceTree = "<group>"; };
 		B54BE5B76902CE967389C66E /* Pods-FlipDraft02.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlipDraft02.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlipDraft02/Pods-FlipDraft02.debug.xcconfig"; sourceTree = "<group>"; };
 		BAEDF5D3C7D47799DFDD66A1 /* Pods-FlipDraft02.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlipDraft02.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlipDraft02/Pods-FlipDraft02.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +77,7 @@
 		921BFE241C41BFF700D3B92E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				92E8CB6B1C59316E0002A77C /* mutualFriendsTVC.swift */,
 				923943021C409A4400BACD2C /* AnimationViewController.swift */,
 				92C678511C41DD330083F68F /* SitterMatchVC.swift */,
 				92C678551C41E3C80083F68F /* Browse-Sitters Ctlrs */,
@@ -138,8 +137,6 @@
 			children = (
 				923AA8421C4091B20012AE6C /* Assets.xcassets */,
 				923AA83F1C4091B20012AE6C /* Main.storyboard */,
-				92E8CB6B1C59316E0002A77C /* mutualFriendsTVC.swift */,
-				92E8CB6D1C59376F0002A77C /* ShowMutualFrndsCtlr.swift */,
 				921BFE241C41BFF700D3B92E /* View Controllers */,
 				927947591C44A7C000AD3361 /* User Model */,
 				923942FF1C4099DE00BACD2C /* Support Files */,
@@ -295,7 +292,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92E8CB6E1C59376F0002A77C /* ShowMutualFrndsCtlr.swift in Sources */,
 				92C678541C41E3670083F68F /* FlipBrowseSittersVC.swift in Sources */,
 				923943031C409A4400BACD2C /* AnimationViewController.swift in Sources */,
 				92C678571C41F0510083F68F /* SitterMatchModel.swift in Sources */,
