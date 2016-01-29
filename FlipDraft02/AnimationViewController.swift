@@ -32,6 +32,7 @@ class AnimationViewController: UIViewController {
     
     @IBOutlet weak var mutualFriendsButton: UIButton!
     
+    @IBOutlet weak var cnxPercentageLabel: UILabel!
     // ================ SCHEDULIZER ================== //
     //************************************************//
     //MONDAY
@@ -131,8 +132,13 @@ class AnimationViewController: UIViewController {
             print("mutual friends above")
         }
         //Import Data from Model Here!!
-        var scheduleDataKeys = ["fri0","fri1","fri2","mon0","mon1","mon2","sat0","sat1","sat2","sun0","sun1","sun2","thu0","thu1","thu2","tue0","tue1","tue2","wed0","wed1","wed2"]
+        let cnxScore = targetMatchData.cnxScore! as Float
         
+        let tempCnx = cnxScore * 100
+        self.cnxPercentageLabel.text = String(tempCnx) + "%"
+        self.view.bringSubviewToFront(cnxPercentageLabel)
+        
+        var scheduleDataKeys = ["fri0","fri1","fri2","mon0","mon1","mon2","sat0","sat1","sat2","sun0","sun1","sun2","thu0","thu1","thu2","tue0","tue1","tue2","wed0","wed1","wed2"]
         let targetScheduleData = targetMatchData.timeSlots! as NSDictionary
         print(targetScheduleData)
         for scheduleIndex in 0...20 {

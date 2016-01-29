@@ -21,7 +21,7 @@ var UserDataHasBeenLoaded = Bool()
 var flipViewArray = [flipView]
 
 var tempUserNameIdentifier = [String]()
-var tempUserCnxScoreIdentifier = [Int]()
+var tempUserCnxScoreIdentifier = [Float]()
 var tempUserSitterSchedIdentifier = [NSDictionary]()
 var tempUserSitterNumOfMutualIdentifier = [Int]()
 
@@ -90,8 +90,9 @@ class SitterMatchVC: UIViewController {
                                     let sitterNameModel = sitterObjDict["userName"] as! String
                                     tempUserNameIdentifier.append(sitterNameModel)
 
-                                    let sitterScoreModel = sitterObjDict["cnxScore"] as! Int
+                                    let sitterScoreModel = sitterObjDict["cnxMatch"] as! Float
                                     tempUserCnxScoreIdentifier.append(sitterScoreModel)
+                                    
 
 //                                    for schedMatches
                                     let sitterTimeArrayModel = sitterObjDict["SitterSchedule"] as! NSDictionary

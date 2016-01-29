@@ -10,14 +10,14 @@ import Foundation
 
 class SitterMatchModel: NSObject {
     var name:String?
-    var cnxScore:Int?
+    var cnxScore:Float?
     var img:UIImage?
     var timeSlots:NSDictionary?
     var mutualFriends:NSArray?
     var numberOfMutualFriends:Int?
     
 //    init(name:String, cnxScore:Int,img:UIImage) {
-    init(name:String, cnxScore:Int,img:UIImage,timeSlots:NSDictionary,mutualFriends:NSArray,numberOfMutualFriends:Int) {
+    init(name:String, cnxScore:Float,img:UIImage,timeSlots:NSDictionary,mutualFriends:NSArray,numberOfMutualFriends:Int) {
         self.name = name
         self.cnxScore = cnxScore
         self.img = img

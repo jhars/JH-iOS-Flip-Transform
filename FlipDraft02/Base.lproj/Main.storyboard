@@ -283,9 +283,16 @@
                                     <segue destination="grT-50-2Eu" kind="show" id="Cyg-9M-8dw"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qq4-2m-b5K">
+                                <rect key="frame" x="538" y="51" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.64035166629999996" green="1" blue="0.79920211569999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="qq4-2m-b5K" secondAttribute="trailing" constant="16" id="0Vu-fy-zj3"/>
                             <constraint firstItem="4AU-vE-T4f" firstAttribute="leading" secondItem="ruC-iq-Ohv" secondAttribute="trailing" constant="8" symbolic="YES" id="0cU-bm-Ku4"/>
                             <constraint firstItem="IbT-Dc-gkF" firstAttribute="leading" secondItem="bdU-Wh-mIs" secondAttribute="trailing" constant="8" symbolic="YES" id="1V5-0L-94j"/>
                             <constraint firstItem="mgt-tM-bnl" firstAttribute="leading" secondItem="NJu-qd-ME2" secondAttribute="leading" id="1ji-6i-gHi"/>
@@ -381,6 +388,7 @@
                             <constraint firstItem="NJu-qd-ME2" firstAttribute="trailing" secondItem="mgt-tM-bnl" secondAttribute="trailing" id="wWx-2c-3Sy"/>
                             <constraint firstItem="IbT-Dc-gkF" firstAttribute="baseline" secondItem="ZsV-fq-eie" secondAttribute="baseline" id="yBA-Rd-EFR"/>
                             <constraint firstItem="8Ch-dJ-92e" firstAttribute="baseline" secondItem="mgt-tM-bnl" secondAttribute="baseline" id="yRZ-iZ-hwe"/>
+                            <constraint firstItem="SJH-VE-9we" firstAttribute="top" secondItem="qq4-2m-b5K" secondAttribute="bottom" constant="-28" id="z7j-hf-TuD"/>
                             <constraint firstItem="nma-ZE-TU7" firstAttribute="leading" secondItem="4AU-vE-T4f" secondAttribute="trailing" constant="8" symbolic="YES" id="z92-1N-b5d"/>
                             <constraint firstItem="ik6-rD-uJF" firstAttribute="leading" secondItem="2hH-ZP-fof" secondAttribute="trailing" constant="8" symbolic="YES" id="zIf-ga-uFK"/>
                         </constraints>
@@ -409,6 +417,7 @@
                         <outlet property="WED_0" destination="Lrr-Ir-7ao" id="cHm-7S-PEB"/>
                         <outlet property="WED_1" destination="ik6-rD-uJF" id="FGc-uv-C2X"/>
                         <outlet property="WED_2" destination="ZsV-fq-eie" id="gXb-Ja-Box"/>
+                        <outlet property="cnxPercentageLabel" destination="qq4-2m-b5K" id="Ybd-wr-bFf"/>
                         <outlet property="coverLabel" destination="Yv0-cN-8CP" id="zM7-eN-2fe"/>
                         <outlet property="flipThruBtn" destination="Bsu-jY-UqQ" id="Wif-Mx-Cf7"/>
                         <outlet property="mutualFriendsButton" destination="IqL-by-MbV" id="YKV-N8-iKR"/>
