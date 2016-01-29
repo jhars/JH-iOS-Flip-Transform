@@ -10,11 +10,15 @@ var tempSitterDisplayDictionary = [ : ]
 var tempTimeSlotArrFromAPI = [Int]()
 var step:Int = Int()
 
+//protocol AnimationCtlrDelegate {
+//    var flipView:FlipView {get}
+//}
 var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(-100,100,575,500))
-
+// flipview2??
 class AnimationViewController: UIViewController {
-
+//    var flipView = FlipView(animationType: kAnimationFlipVertical, frame: CGRectMake(-100,100,575,500))
 //    var sitterObjArray = [SitterMatchModel]()
+
     var animationDelegate:AnimationDelegate = AnimationDelegate(sequenceType: kSequenceControlled, directionType: kDirectionNone)
     var timeSlotLabelsOnViewArray = [UILabel]()
     //[[[[[[[[[[ CENTER-BUTTON ]]]]]]]]]]]\\
@@ -142,6 +146,9 @@ class AnimationViewController: UIViewController {
             }
             print(scheduleIndex)
         }
+        
+//        flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.lightGrayColor())
+        
     }
 
     //LOAD AnimationVC elements
@@ -162,8 +169,6 @@ class AnimationViewController: UIViewController {
         }
         
         self.displayTargetSitterSchedule()
-        self.timeSlotLabelsOnViewArray = [FRI_0, FRI_1,FRI_2,MON_0,MON_1,MON_2,SAT_0,SAT_1,SAT_2,SUN_0,SUN_1,SUN_2,THU_0,THU_1,THU_2,TUE_0,TUE_1,TUE_2,WED_0,WED_1,WED_2]
-        tempTimeSlotArrFromAPI = [fri0,fri1,fri2,mon0,mon1,mon2,sat0,sat1,sat2,sun0,sun1,sun2,thu0,thu1,thu2,tue0,tue1,tue2,wed0,wed1,wed2]
         //========================================================================================================================//
         //========================= PAN-GESTURE ===============================//
         let showGestureRecognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target:self, action: "handleSwipe:")

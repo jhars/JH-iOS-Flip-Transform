@@ -28,9 +28,9 @@ class UpdateUserDataVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBAction func updatBtnTapped(sender: AnyObject) {
-        baseLayer = false
-        sitterFlipBookHasBeenLoaded = false
-        UserDataHasBeenLoaded = false
+//        baseLayer = false
+//        sitterFlipBookHasBeenLoaded = false
+//        UserDataHasBeenLoaded = false
 
 //        sitterMatchModelName.removeAll()
 //        sitterMatchModelScore.removeAll()
@@ -40,7 +40,7 @@ class UpdateUserDataVC: UIViewController {
 //        tempUserCnxScoreIdentifier.removeAll()
 //        tempUserSitterSchedIdentifier.removeAll()
 //        tempUserSitterNumOfMutualIdentifier.removeAll()
-        flipView.imageStackArray.removeAllObjects()
+//        flipView.imageStackArray.removeAllObjects()
         
         self.returnUserData()
     }
@@ -57,246 +57,50 @@ class UpdateUserDataVC: UIViewController {
                 break;
         }
     }
-    var Monday0 = false
-    var Monday1 = false
-    var Monday2 = false
-    var Tuesday0 = false
-    var Tuesday1 = false
-    var Tuesday2 = false
-    var Wednesday0 = false
-    var Wednesday1 = false
-    var Wednesday2 = false
-    var Thursday0 = false
-    var Thursday1 = false
-    var Thursday2 = false
-    var Friday0 = false
-    var Friday1 = false
-    var Friday2 = false
-    var Saturday0 = false
-    var Saturday1 = false
-    var Saturday2 = false
-    var Sunday0 = false
-    var Sunday1 = false
-    var Sunday2 = false
+    var Monday0 = false;var Monday1 = false;var Monday2 = false
+    var Tuesday0 = false;var Tuesday1 = false;var Tuesday2 = false
+    var Wednesday0 = false;var Wednesday1 = false;var Wednesday2 = false
+    var Thursday0 = false;var Thursday1 = false;var Thursday2 = false
+    var Friday0 = false;var Friday1 = false;var Friday2 = false
+    var Saturday0 = false;var Saturday1 = false;var Saturday2 = false
+    var Sunday0 = false;var Sunday1 = false;var Sunday2 = false
     
-    @IBOutlet weak var m0: UIButton!
-    @IBOutlet weak var m1: UIButton!
-    @IBOutlet weak var m2: UIButton!
-    @IBOutlet weak var t0: UIButton!
-    @IBOutlet weak var t1: UIButton!
-    @IBOutlet weak var t2: UIButton!
-    @IBOutlet weak var w0: UIButton!
-    @IBOutlet weak var w1: UIButton!
-    @IBOutlet weak var w2: UIButton!
-    @IBOutlet weak var th0: UIButton!
-    @IBOutlet weak var th1: UIButton!
-    @IBOutlet weak var th2: UIButton!
-    @IBOutlet weak var f0: UIButton!
-    @IBOutlet weak var f1: UIButton!
-    @IBOutlet weak var f2: UIButton!
-    @IBOutlet weak var sat0: UIButton!
-    @IBOutlet weak var sat1: UIButton!
-    @IBOutlet weak var sat2: UIButton!
-    @IBOutlet weak var sun0: UIButton!
-    @IBOutlet weak var sun1: UIButton!
-    @IBOutlet weak var sun2: UIButton!
+    @IBOutlet weak var m0: UIButton!;   @IBOutlet weak var m1: UIButton!;   @IBOutlet weak var m2: UIButton!
+    @IBOutlet weak var t0: UIButton!;    @IBOutlet weak var t1: UIButton!;    @IBOutlet weak var t2: UIButton!
+    @IBOutlet weak var w0: UIButton!;    @IBOutlet weak var w1: UIButton!;    @IBOutlet weak var w2: UIButton!
+    @IBOutlet weak var th0: UIButton!;    @IBOutlet weak var th1: UIButton!;    @IBOutlet weak var th2: UIButton!
+    @IBOutlet weak var f0: UIButton!;    @IBOutlet weak var f1: UIButton!;    @IBOutlet weak var f2: UIButton!
+    @IBOutlet weak var sat0: UIButton!;    @IBOutlet weak var sat1: UIButton!;    @IBOutlet weak var sat2: UIButton!
+    @IBOutlet weak var sun0: UIButton!;    @IBOutlet weak var sun1: UIButton!;    @IBOutlet weak var sun2: UIButton!
     
 //MONDAY
-    @IBAction func chooseMon0(sender: AnyObject) {
-        if Monday0 == false {
-            Monday0 = true
-            m0.backgroundColor = UIColor.blueColor()
-        } else {
-            Monday0 = false
-            m0.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    @IBAction func chooseMon1(sender: AnyObject) {
-        if Monday1 == false {
-            Monday1 = true
-            m1.backgroundColor = UIColor.blueColor()
-        } else {
-            Monday1 = false
-            m1.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    @IBAction func chooseMon2(sender: AnyObject) {
-        if Monday2 == false {
-            Monday2 = true
-            m2.backgroundColor = UIColor.blueColor()
-        } else {
-            Monday2 = false
-            m2.backgroundColor = UIColor.whiteColor()
-        }
-    }
+    @IBAction func chooseMon0(sender: AnyObject) {if Monday0 == false {Monday0 = true;m0.backgroundColor = UIColor.blueColor()} else {Monday0 = false;m0.backgroundColor = UIColor.whiteColor()}}
+    @IBAction func chooseMon1(sender: AnyObject) {if Monday1 == false {Monday1 = true;m1.backgroundColor = UIColor.blueColor()} else {Monday1 = false;m1.backgroundColor = UIColor.whiteColor()}}
+    @IBAction func chooseMon2(sender: AnyObject) {if Monday2 == false {Monday2 = true;m2.backgroundColor = UIColor.blueColor()} else {Monday2 = false;m2.backgroundColor = UIColor.whiteColor()}}
 //TUESDAY
-    @IBAction func chooseTue0(sender: AnyObject) {
-        if Tuesday0 == false {
-            Tuesday0 = true
-            t0.backgroundColor = UIColor.blueColor()
-        } else {
-            Tuesday0 = false
-            t0.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    @IBAction func chooseTue1(sender: AnyObject) {
-        if Tuesday1 == false {
-            Tuesday1 = true
-            t1.backgroundColor = UIColor.blueColor()
-        } else {
-            Tuesday1 = false
-            t1.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    @IBAction func chooseTue2(sender: AnyObject) {
-        if Tuesday2 == false {
-            Tuesday2 = true
-            t2.backgroundColor = UIColor.blueColor()
-        } else {
-            Tuesday2 = false
-            t2.backgroundColor = UIColor.whiteColor()
-        }
-    }
+    @IBAction func chooseTue0(sender: AnyObject) {if Tuesday0 == false {Tuesday0 = true;t0.backgroundColor = UIColor.blueColor()} else {Tuesday0 = false;t0.backgroundColor = UIColor.whiteColor()}}
+    @IBAction func chooseTue1(sender: AnyObject) {if Tuesday1 == false {Tuesday1 = true;t1.backgroundColor = UIColor.blueColor()} else {Tuesday1 = false;t1.backgroundColor = UIColor.whiteColor()}}
+    @IBAction func chooseTue2(sender: AnyObject) {if Tuesday2 == false {Tuesday2 = true;t2.backgroundColor = UIColor.blueColor()} else {Tuesday2 = false;t2.backgroundColor = UIColor.whiteColor()}}
 //WEDNESDAY
-    @IBAction func chooseWed0(sender: AnyObject) {
-        if Wednesday0 == false {
-            Wednesday0 = true
-            w0.backgroundColor = UIColor.blueColor()
-        } else {
-            Wednesday0 = false
-            w0.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    @IBAction func chooseWed1(sender: AnyObject) {
-        if Wednesday1 == false {
-            Wednesday1 = true
-            w1.backgroundColor = UIColor.blueColor()
-        } else {
-            Wednesday1 = false
-            w1.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    @IBAction func chooseWed2(sender: AnyObject) {
-        if Wednesday2 == false {
-            Wednesday2 = true
-            w2.backgroundColor = UIColor.blueColor()
-        } else {
-            Wednesday2 = false
-            w2.backgroundColor = UIColor.whiteColor()
-        }
-    }
+    @IBAction func chooseWed0(sender: AnyObject) {if Wednesday0 == false {Wednesday0 = true;w0.backgroundColor = UIColor.blueColor()} else {Wednesday0 = false;w0.backgroundColor = UIColor.whiteColor()}}
+    @IBAction func chooseWed1(sender: AnyObject) {if Wednesday1 == false {Wednesday1 = true;w1.backgroundColor = UIColor.blueColor()} else {Wednesday1 = false;w1.backgroundColor = UIColor.whiteColor()}}
+    @IBAction func chooseWed2(sender: AnyObject) {if Wednesday2 == false {Wednesday2 = true;w2.backgroundColor = UIColor.blueColor()} else {Wednesday2 = false;w2.backgroundColor = UIColor.whiteColor()}}
 //THURSDAY
-    @IBAction func chooseThu0(sender: AnyObject) {
-        if Thursday0 == false {
-            Thursday0 = true
-            th0.backgroundColor = UIColor.blueColor()
-        } else {
-            Thursday0 = false
-            th0.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    @IBAction func chooseThu1(sender: AnyObject) {
-        if Thursday1 == false {
-            Thursday1 = true
-            th1.backgroundColor = UIColor.blueColor()
-        } else {
-            Thursday1 = false
-            th1.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    @IBAction func chooseThu2(sender: AnyObject) {
-        if Thursday2 == false {
-            Thursday2 = true
-            th2.backgroundColor = UIColor.blueColor()
-        } else {
-            Thursday2 = false
-            th2.backgroundColor = UIColor.whiteColor()
-        }
-    }
+    @IBAction func chooseThu0(sender: AnyObject) {if Thursday0 == false {Thursday0 = true;th0.backgroundColor = UIColor.blueColor()} else {Thursday0 = false;th0.backgroundColor = UIColor.whiteColor()}}
+    @IBAction func chooseThu1(sender: AnyObject) {if Thursday1 == false {Thursday1 = true;th1.backgroundColor = UIColor.blueColor()} else {Thursday1 = false;th1.backgroundColor = UIColor.whiteColor()}}
+    @IBAction func chooseThu2(sender: AnyObject) {if Thursday2 == false {Thursday2 = true;th2.backgroundColor = UIColor.blueColor()} else {Thursday2 = false;th2.backgroundColor = UIColor.whiteColor()}}
 //FRIDAY
-    @IBAction func chooseFri0(sender: AnyObject) {
-        if Friday0 == false {
-            Friday0 = true
-            f0.backgroundColor = UIColor.blueColor()
-        } else {
-            Friday0 = false
-            f0.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    @IBAction func chooseFri1(sender: AnyObject) {
-        if Friday1 == false {
-            Friday1 = true
-            f1.backgroundColor = UIColor.blueColor()
-        } else {
-            Friday1 = false
-            f1.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    @IBAction func chooseFri2(sender: AnyObject) {
-        if Friday2 == false {
-            Friday2 = true
-            f2.backgroundColor = UIColor.blueColor()
-        } else {
-            Friday2 = false
-            f2.backgroundColor = UIColor.whiteColor()
-        }
-    }
+    @IBAction func chooseFri0(sender: AnyObject) {if Friday0 == false {Friday0 = true;f0.backgroundColor = UIColor.blueColor()} else {Friday0 = false;f0.backgroundColor = UIColor.whiteColor()}}
+    @IBAction func chooseFri1(sender: AnyObject) {if Friday1 == false {Friday1 = true;f1.backgroundColor = UIColor.blueColor()} else {Friday1 = false;f1.backgroundColor = UIColor.whiteColor()}}
+    @IBAction func chooseFri2(sender: AnyObject) {if Friday2 == false {Friday2 = true;f2.backgroundColor = UIColor.blueColor()} else {Friday2 = false;f2.backgroundColor = UIColor.whiteColor()}}
 //SATURDAY
-    @IBAction func chooseSat0(sender: AnyObject) {
-        if Saturday0 == false {
-            Saturday0 = true
-            sat0.backgroundColor = UIColor.blueColor()
-        } else {
-            Saturday0 = false
-            sat0.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    @IBAction func chooseSat1(sender: AnyObject) {
-        if Saturday1 == false {
-            Saturday1 = true
-            sat1.backgroundColor = UIColor.blueColor()
-        } else {
-            Saturday1 = false
-            sat1.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    @IBAction func chooseSat2(sender: AnyObject) {
-        if Saturday2 == false {
-            Saturday2 = true
-            sat2.backgroundColor = UIColor.blueColor()
-        } else {
-            Saturday2 = false
-            sat2.backgroundColor = UIColor.whiteColor()
-        }
-    }
+    @IBAction func chooseSat0(sender: AnyObject) {if Saturday0 == false {Saturday0 = true;sat0.backgroundColor = UIColor.blueColor()} else { Saturday0 = false;sat0.backgroundColor = UIColor.whiteColor()}}
+    @IBAction func chooseSat1(sender: AnyObject) {if Saturday1 == false {Saturday1 = true;sat1.backgroundColor = UIColor.blueColor()} else {Saturday1 = false;sat1.backgroundColor = UIColor.whiteColor()}}
+    @IBAction func chooseSat2(sender: AnyObject) {if Saturday2 == false {Saturday2 = true;sat2.backgroundColor = UIColor.blueColor()} else {Saturday2 = false;sat2.backgroundColor = UIColor.whiteColor()}}
 //SUNDAY
-    @IBAction func chooseSun0(sender: AnyObject) {
-        if Sunday0 == false {
-            Sunday0 = true
-            sun0.backgroundColor = UIColor.blueColor()
-        } else {
-            Sunday0 = false
-            sun0.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    @IBAction func chooseSun1(sender: AnyObject) {
-        if Sunday1 == false {
-            Sunday1 = true
-            sun1.backgroundColor = UIColor.blueColor()
-        } else {
-            Sunday1 = false
-            sun1.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    @IBAction func chooseSun2(sender: AnyObject) {
-        if Sunday2 == false {
-            Sunday2 = true
-            sun2.backgroundColor = UIColor.blueColor()
-        } else {
-            Sunday2 = false
-            sun2.backgroundColor = UIColor.whiteColor()
-        }
-    }
+    @IBAction func chooseSun0(sender: AnyObject) { if Sunday0 == false { Sunday0 = true; sun0.backgroundColor = UIColor.blueColor() } else { Sunday0 = false; sun0.backgroundColor = UIColor.whiteColor() } }
+    @IBAction func chooseSun1(sender: AnyObject) { if Sunday1 == false { Sunday1 = true; sun1.backgroundColor = UIColor.blueColor() } else { Sunday1 = false; sun1.backgroundColor = UIColor.whiteColor() } }
+    @IBAction func chooseSun2(sender: AnyObject) { if Sunday2 == false { Sunday2 = true; sun2.backgroundColor = UIColor.blueColor() } else { Sunday2 = false; sun2.backgroundColor = UIColor.whiteColor() } }
     
 
 

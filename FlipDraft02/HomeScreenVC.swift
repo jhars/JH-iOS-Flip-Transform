@@ -27,7 +27,8 @@ class HomeScreenVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        print(flipView.imageStackArray.count)
+        
 //        flipView.removeFromSuperview()
 //        print(flipView)
 //        print("removed all flipViews")

@@ -18,10 +18,7 @@ var sitterMatchModelScore = [Int]()
 var sitterModelObjects = [SitterMatchModel]()
 var UserDataHasBeenLoaded = Bool()
 
-//var tempSitterDisplayDictionary:NSDictionary = [String : NSArray<String>]()
-//var tempSitterDisplayDictionary = [String : Array<String>]()
-//var tempSitterDisplayDictionary = [ : ]
-
+var flipViewArray = [FlipView]()
 
 var tempUserNameIdentifier = [String]()
 var tempUserCnxScoreIdentifier = [Int]()
@@ -103,7 +100,10 @@ class SitterMatchVC: UIViewController {
                                     let SitterObject = SitterMatchModel(name: sitterNameModel, cnxScore: sitterScoreModel, img: sitterImageModel,timeSlots: sitterTimeArrayModel, mutualFriends: mutualFriends, numberOfMutualFriends: numberOfMutualFrnds)
                                     sitterModelObjects.append(SitterObject)
                                     
+//                                    flipViewArray.append(flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.lightGrayColor()))
                                     flipView.printText(sitterNameModel, usingImage: sitterImageModel, backgroundColor: nil, textColor: UIColor.lightGrayColor())
+                                    
+                                    
 
                                 }
                                 AlamoRef.resume()
